@@ -1,10 +1,263 @@
+<p>\documentclass[a4paper]{www2007-submission}
+</p><p>\begin{document}
+\title{Collaborative discovery of Semantic Web content}
+\maketitle
+</p><p>\section{Abstract}
+The Semantic Web is growing, but its size is still only a small fraction of that of the WWW and it is a difficult task to locate this information. We propose to discover this information by creating a ping service that aggregates "pings" (notifications) about Semantic Web data and by involving a human element in it by letting users to collaboratively discover Semantic Web content while browsing the Web.
+</p><p>\section{Introduction}
+</p>
+<ul><li> The Semantic Web is growing. Notes about swoogle survey regarding amount of data and commont namespaces
+</li></ul>
+<p>Yet, all those RDF documents are spread among the Web and are difficult to find, and so to query. One can query swoogle, but he won't have a real-time overview of new documents that appeared, or have been discovered.
+</p>
+<pre> (In discussions with people involved with searching for the Semantic Web we have discovered that getting quality data or even a large set of links to quality RDF data is a hard task. You can crawl the whole we but that is a laborious task.)
+</pre>
+<p>[@@ we need to keep focus on both services, collaborative aspect is important for our paper]
+</p><p>Thus, the goal of Ping The Semantic Web - \footnote{\url{<a href="http://pingthesemanticweb.com}}" class="external free" rel="nofollow">http://pingthesemanticweb.com}}</a> - is to provide a web service where people can send a ping each time they find a Semantic Web document. All know RDF documents by the web service can be requested without any restrictions. That way anyone can find, query, and mash-up new Semantic Web data, being updated in almost real-time. The first section of this paper will introduce this service, how it works, and how it makes a classification of different document it gets.
+</p><p>Yet, in order to avoid people to manually ping the service, some browsing tools have been introduced so that anyone can automatically ping a document they discover, even if they are no authors of this document, contrary to many blog ping service. Thus, anyone can help to discover new documents on the Semantic Web. The second section [@@ fix section numbers later] will present this pinging interfaces. Then we will overview different ways to enhance this pinging mechanisms.
+</p><p>The goal of this project is to create an infrastructure letting people easily create, find and publish RDF documents. Our hope is that this system become a development vector for the Semantic Web helping and encouraging developers to use RDF and RDF technologies to describe the resources they generate on the Web.
+</p><p>On the next section [@@ fix section numbers later] , we will introduce different ways to browse or query this data, and interface that uses the documents feeds. Finally, we will present some statistics about currently stored documents on Ping The Semantic Web.
+</p><p>\section{Detecting and pinging SW data via the browser}
+\subsection{What is autodiscovery and how does it work&nbsp;?}
+Autodiscovery offers a means for automatically finding machine-processable resources associated with a particular web page. [@@ sentenced copied from FOAF wiki, might be reformulated]]
+</p><p>By adding autodiscovery links in their HTML header, websites maintainer thus give browsers a way to discover that a given web page contain an alternate version, understandable by machines rather than humans.
+This practice became popular thanks to the use of RSS, since people added the following code in their webpage or blog header, so that modern browsers as Firefox will discover an associate RSS feed for the page and offer users the ability to subscribe to it:
+</p><p>\begin{verbatim}  &lt;link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="<a href="http://apassant.net/blog/feed/rdf" class="external free" rel="nofollow">http://apassant.net/blog/feed/rdf</a>" /&gt;
+\end{verbatim}
+Yet, this feature have been extended to other machine-readable formats, especially various RDF vocabularies as FOAF, ICRA, DOAP or SIOC. 
+Thus, once can add a link to his FOAF profile in his homepage, so that using some browser extension as Foaf-er or Semantic Radar that will be introduced in the next section, visitors are informed that an alternate description of the webpage author is available and browsable.
+</p><p>Moreover, SIOC exporters offer autodiscovery links so that any online community that plugs a SIOC exporter on its websites will help to discover and browse SIOC data.
+</p><p>It is its the ease of understanding and implementing RDF autodiscovery that makes it a popular choice for indicating presence of RDF data (or any other metadata for that matter). 
+</p><p>\begin{verbatim}[@@ Add some notes in references&nbsp;?]]
+RSS autodiscovery
+</p>
+<pre> * <a href="http://diveintomark.org/archives/2002/06/02/important_change_to_the_link_tag" class="external free" rel="nofollow">http://diveintomark.org/archives/2002/06/02/important_change_to_the_link_tag</a>
+</pre>
+<p>RDF auto-discovery
+</p>
+<pre> * <a href="http://www.w3.org/TR/rdf-syntax-grammar/#section-rdf-in-HTML" class="external free" rel="nofollow">http://www.w3.org/TR/rdf-syntax-grammar/#section-rdf-in-HTML</a>
+</pre>
+<p>Different types of files.
+</p>
+<pre> * FOAF: <a href="http://rdfweb.org/topic/Autodiscovery" class="external free" rel="nofollow">http://rdfweb.org/topic/Autodiscovery</a>
+   * <a href="http://iandavis.com/blog/2003/02/foafAutodiscovery" class="external free" rel="nofollow">http://iandavis.com/blog/2003/02/foafAutodiscovery</a>
+ * ICRA: <a href="http://www.icra.org/systemspecification/#specificLink" class="external free" rel="nofollow">http://www.icra.org/systemspecification/#specificLink</a>
+ * SIOC: ...
+ * DOAP: ...
+</pre>
+<p>(also discussion at <a href="http://chatlogs.planetrdf.com/swig/2006-11-13#T18-25-32" class="external free" rel="nofollow">http://chatlogs.planetrdf.com/swig/2006-11-13#T18-25-32</a> )
+\end{verbatim}
+</p><p>\subsection{Semantic Radar: Discovering RDF resources by browsing the Web}
+</p><p>\begin{figure}
+</p>
+<pre>   \begin{center}
+       \includegraphics[width=0.75\linewidth]{figures/Semradar_env.jpg}
+       \caption{Main Terms in the SIOC Ontology}
+       \label{fig:siocMainTerms}
+   \end{center}
+</pre>
+<p>\end{figure}
+</p><p><br />
+</p>
+<ul><li> Semantic Radar XUL extension for Firefox
+</li></ul>
+<p>Semantic Radar ( \footnote{\url{<a href="http://sioc-project.org/firefox/}}" class="external free" rel="nofollow">http://sioc-project.org/firefox/}}</a> ) is a Firefox browser extension which inspects web pages for discovering Semantic Web metadata and informs about presence of it by showing an icon in browser's status bar. It is written in XUL [@@ ref] and works by looking for RDF auto-discovery links in the web pages a user is browsing. 
+</p><p>When an auto-discovery link is detected the Semantic Radar examines <i>title</i> attribute of the <i>link</i> tag. If title is [@@ in future: contains] a string matching one of the data types the application is built to detect, it alerts a use by displaying corresponding icon in browser's status bar. Currently supported data types are FOAF, SIOC and DOAP (and the patterns used to detect them are same as their abbreviations - "FOAF", "SIOC", "DOAP").
+</p><p>[@@ add link to swig + DanC email about issues regaring title of the link but mention that this is what we currently use but it might change for something more machine-redeable]
+</p><p>[@@ add a picture here?]
+</p><p>This function makes users aware of the invisible Semantic Web that is a part of web pages they are exporing every day. An important aspect of the tool is that it is not specific to any particular ontology (there were separate tools for detecting FOAF or other ontologies before that) and that it provides a coherent (generic? overall?) indication of presence of Semantic Web as people browse the Web as usual. 
+[@@ potential in education and outreach of the Semantic Web]
+</p><p>When finding presence of such data, in addition of displaying an icon, Semantic Radar offers links to online browsing interfaces [@@ does it lead to foaf-er for foaf-data&nbsp;?] that show and interpret (thanks to the use of well-known ontologies) Semantic Data in an understandable form for humans. 
+Thus, users that browse the Web can browse the associated Semantic Web part on the same time, without any additional effort.
+</p><p>The second function of Semantic Radar is pinging and it is important for collaborative discovery of Semantic Web data. Whenever RDF autodiscovery link is discovered by the application it sends a "ping" to Ping the Semantic Web service which collects and aggregates these notifications (pings). As a result of this the users are building a "map" of the Semantic Web, once again without effors. 
+</p><p>An important characteristic of this process is that we can assume that users perform random walks on the web [@@ reference to the Google papers] and the data collected by this random browsing will provide (a realistic view of the data distribution?) / (new and maybe unexpected results) + will cover a wider and a more diverse area compared to pings sent only by authoring systems configured to ping the service once new data are created. (And a number of people browsing is larger that the number of people authoring content).
+</p><p>It provides not only information on what pages containing links to RDF are out there but also what people are *interested* in! (Note: that indicates interest in the page which does not necessarily mean interest in the RDF content. We have to keep it in mind.)
+</p><p>[@@Note: can also twist this towards attention economy - or put that into related work]
+</p>
+<ul><li> Semantic Radar Javascript for Opera, Greasemonkey
+</li></ul>
+<pre> * sadly, this does not offer pinging at the moment. can write in future work that need to develop Radars for other browsers
+</pre>
+<ul><li> Restricting pings from an Intranet site
+</li></ul>
+<pre> * a blacklist is in progress
+ <a href="http://wiki.sioc-project.org/index.php?title=@@_Idea:_archieve_ping_only_if_PTSW_can_access_the_resource_at_the_same_time_(will_avoid_websites_behind_firewalls_...&amp;action=edit&amp;redlink=1" class="new" title="@@ Idea: archieve ping only if PTSW can access the resource at the same time (will avoid websites behind firewalls ... (page does not exist)">@@ Idea: archieve ping only if PTSW can access the resource at the same time (will avoid websites behind firewalls ...</a>
+</pre>
+<ul><li> Privacy issues 
+</li></ul>
+<pre> * you can control it + it's not spyware
+ * it is not a concern to creators of metadata as they already advertise presence of the data via autodiscovery links
+ * people using the browser may be concerned that their trail is sent to Ping the Semantic Web.
+   * need to address privacy issues both on the SemRadar and on PTSW side
+</pre>
+<p>The ping function of Semantic Radar can be switched off at any time by clicking the radar icon in status bar or via extension preferences. [@@ re. https:// connections]
+</p><p>\section{Pinging a server with the location of SW data}
+</p>
+<ul><li> How does Ping the Semantic Web work
+</li></ul>
+<p>Ping the Semantic Web is a pinging web service. It works like a multiplexer for RDF documents. It receives notification that RDF documents can be found at some URLs. It will creates an archive of these notifications (pings) and it will send this list to other web services, web crawlers or software agent that request it. The goal of the service is act as a central service where developers can find RDF documents to develop applications that could need such documents. This sort of web service is already widely use for aggregating web feeds documents. Weblogs.com is one of them and receives millions of pings each day. From that web service, other website such as Technorati.com (a popular web feed search engine) had access to enough data to be developed and useful to users.
+</p><p>Each time <i>Ping the Semantic Web</i> receives a ping it does the following: checking the Web document referenced by the pinged URL. First of all, the service will tries to negotiate the content with the remote web server. The service will use the following <i>Accept</i> parameter of the HTTP header request:
+</p><p><i>Accept: text/html, application/rdf+xml, text/rdf+n3, application/turtle, application/rdf+n3, */*</i>
+</p><p>When a web server receive that request, it will do the following: if it has the choice, it will send a HTML document, otherwise it will send a RDF/XML document, a RDF/N3 document, Etc. One could ask: why the service doesn't request RDF documents before HTML ones? The reason is simply because most people doesn't use content negotiation to deliver web documents. The most widely used method is to include &lt;link&gt; HTML elements into HTML files that link to RDF documents. For this reason, Ping the Semantic Web care more about the HTML file than the RDF documents because it has a greater potential of finding RDF documents from them.
+</p><p>After doing the negotiation of content with the remote web server, <i>Ping the Semantic Web</i> will check what is the file type it received from it. If the document is a HTML file, it will tries to extract the &lt;link type="" href=""&gt; HTML elements with the mime types "application/rdf+xml" or "text/rdf+n3". Then, for each item of the list, <i>Ping the Semantic Web</i> will retrieves the web document linked from the HTML file.
+</p><p>The only attributes <i>Ping the Semantic Web</i> will check with the &lt;link&gt; HTML element is "type" and "href". They are the only attributes the service can trust. Many developers will use the "title" attribute to explicit the ontology used in the linked RDF document (by exemple &lt;link ... title="SIOC"&gt;), but this method is prone to errors and doesn't guaranties that we will find what we are supposed to. Considering that, the only thing <i>Ping the Semantic Web</i> needs to know is the type of the document referred by the link, and if it understands the type, then he will follow the reference of the link and will analyze it.
+</p><p>Ultimately, <i>Ping the Semantic Web</i> will retrieve a RDF document serialized using XML or N3: directly from the remote web server or from links in a HTML file.
+</p><p>The serialization language used to write RDF documents is of no importance to <i>Ping the Semantic Web</i>. The service is only interested in the RDF triples and not how they are written. The serialization method is only used to help crawlers that request pings list from the service with RDF documents they can understand: some will understand XML serialized documents, other N3 serialized documents and others will understand both.
+</p><p>Once the service knows that the document it downloaded is a RDF document, it will try to categorize it in one or more of these 6 categories:
+</p>
+<ol><li>RDF  - Resource Description Framework
+</li><li>SIOC - Semantically Interlinked Online Communities
+</li><li>FOAF - Friend of a Friend
+</li><li>DOAP - Description of a Project
+</li><li>RDFS - Resource Description Framework Schema
+</li><li>OWL  - Web Ontology Language
+</li></ol>
+<p>A SIOC, FOAF, DOAP, RDFS or OWL document is automatically a RDF document. However, a RDF document is not necessarily one of the five other categories.
+</p><p>When Ping the Semantic Web analyze a RDF document, it check if a class of the SIOC, FOAF, DOAP, RDFS or OWL ontology has been instantiated in the RDF document. If one of these class is instantiated in the document, Ping the Semantic Web will tag the document with that category. If a RDF document instantiate a SIOC and a FOAF class, the document will be tagged as a RDF document with types: RDF, SIOC and FOAF.
+</p><p>The categorization of RDF documents in "types" is used to help crawlers to get pings list of documents they can understand. So, if a RDF document is tagged with the type FOAF, Ping the Semantic Web assure that there is at least one resource described as a rdf:type of the Class of the ontology in it. That way we are minimizing the work of the software that request a list of pings by assuring him that it will understand all the documents it will gets from the list.
+</p><p><br />
+We can visualize the analyzing process done by <i>Ping the Semantic Web</i> using this SPARQL query: 
+</p><p>\begin{verbatim}
+PREFIX rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#" class="external free" rel="nofollow">http://www.w3.org/2000/01/rdf-schema#</a>&gt;    
+PREFIX rdf: &lt;<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" class="external free" rel="nofollow">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>&gt;  
+PREFIX owl: &lt;<a href="http://www.w3.org/2002/07/owl#" class="external free" rel="nofollow">http://www.w3.org/2002/07/owl#</a>&gt;  
+PREFIX sioc: &lt;<a href="http://rdfs.org/sioc/ns#" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#</a>&gt;  
+PREFIX foaf: &lt;<a href="http://xmlns.com/foaf/0.1/" class="external free" rel="nofollow">http://xmlns.com/foaf/0.1/</a>&gt;  
+prefix doap: &lt;<a href="http://usefulinc.com/ns/doap#" class="external free" rel="nofollow">http://usefulinc.com/ns/doap#</a>&gt;
+</p><p>SELECT DISTINCT&nbsp;?rdfs&nbsp;?owl&nbsp;?foaf&nbsp;?sioc&nbsp;?doap
+FROM &lt;<a href="http://johnbreslin.com/blog/index.php?sioc_type=user&amp;sioc_id=1" class="external free" rel="nofollow">http://johnbreslin.com/blog/index.php?sioc_type=user&amp;sioc_id=1</a>&gt;
+WHERE 
+{
+</p>
+<pre>   {?foaf rdf:type foaf:Person}
+   UNION
+   {?sioc rdf:type sioc:Post} 
+   UNION
+   {?rdfs rdf:type rdfs:Class}
+   UNION
+   {?doap rdf:type doap:Project}
+   UNION
+   {?owl rdf:type owl:Ontology}
+</pre>
+<p>}
+</p><p>\end{verbatim}
+</p><p>If any of "rdfs, owl, foaf, sioc, doap" variable is bound, the RDF document will be typed with the related ontology. The query above is not complete. In fact <i>Ping the Semantic Web</i> if any of the classes of the FOAF, SIOC, DOAP, OWL and RDFS is instantiated into the RDF document.
+</p><p><br />
+</p><p><br />
+</p>
+<ul><li> Data formats that can be used on PTSW - RDF/XML, N3
+</li><li> Exporting a list of Semantic Web data sources
+</li></ul>
+<p><br />
+</p><p><i>Ping the Semantic Web</i> export its pings archive in numerous way. The goal is that requesting services can apply many restriction to have a list of RDF documents they need. This way we remove a lot of work for these services so they can concentrate on manipulating the data instead of searching it.
+</p><p>Services interested in getting all the newly discovered RDF documents can download a list of the RDF documents pinged in the last hour or the last day. A service can requests pings where a specific namespace is defined in a RDF document. It can request pings that came from a single domain name. Finally it can restricts the pings list by specifying the serialization language used to write the RDF document (XML or N3).
+</p><p>\section{New ways of getting data to the ping service}
+</p>
+<ul><li> Sites pushing data, e.g. from a WordPress plugin
+</li><li> Tell a bot on IRC?
+</li></ul>
+<p>A good starting point for this section could be that schema that explicits some sources of data for PTSW:
+</p><p><br />
+\begin{figure}
+</p>
+<pre>   \begin{center}
+       \includegraphics[width=0.75\linewidth]{figures/Pingthesemanticweb_env.jpg}
+       \caption{Main Terms in the SIOC Ontology}
+       \label{fig:siocMainTerms}
+   \end{center}
+</pre>
+<p>\end{figure}
+</p><p><br />
+</p><p>RDF documents exist <i>in the wild</i>. These documents are created by individual people, are linked on their web site, but they are not of great use considering that they are nearly non-existent because they are hard to find. However, A new generation of tools hav been developed to detect and aggregate these disparate RDF documents. The Semantic Radar we talked about in this article is one example: it run in background FireFox, analyze web documents users browse and notify <i>Ping the Semantic Web</i> each time it founds one. Another way is by using a bookmarklet. A user can install that special bookmark and click it when he suspect that a web page links to a RDF document. By clicking on it, he notify <i>Ping the Semantic Web</i> that a document can be found at the URL. Finally another way is by pinging a URL using the service's web interface. In any of these case, RDF documents are discovered by people while they are surfing the Web.
+</p><p><a href="http://wiki.sioc-project.org/index.php?title=@@_Uldis:_you_could_write_about_the_importance_of_the_human_interaction_with_the_Web_to_discover_new_documents_(re:_what_we_talking_about_on_IRC)&amp;action=edit&amp;redlink=1" class="new" title="@@ Uldis: you could write about the importance of the human interaction with the Web to discover new documents (re: what we talking about on IRC) (page does not exist)">@@  Uldis: you could write about the importance of the human interaction with the Web to discover new documents (re: what we talking about on IRC) </a>
+</p><p><br />
+Another way to generate and discover RDF documents is when people install add-on in their personal publishing blog such as a blog. That way, each time the blogger publish a blog article a RDF document describing that article will be published as well. Then <i>Ping the Semantic Web</i> will be pinged by the blogging system so the newly published article will be instantly archived by the web service and be available to other services requesting RDF documents.
+</p><p>Finally bigger web service generating thousands of RDF documents, such as Talk Digger (www.talkdigger.com), also ping <i>Ping the Semantic Web</i> each time they create or change a document in their system.
+</p><p><a href="http://wiki.sioc-project.org/index.php?title=@@_have_to_finish_this_paragraph_depending_on_the_place_where_it_will_be_in_the_text...&amp;action=edit&amp;redlink=1" class="new" title="@@ have to finish this paragraph depending on the place where it will be in the text... (page does not exist)">@@  have to finish this paragraph depending on the place where it will be in the text... </a>
+</p><p>\section{An analysis of the data being gathered so far}
+\subsection{Overview of statistics from PTSW}
+So far, Ping the Semantic Web received about 240 000 ping requests. From these 240 000 ping requests, about 45 000 where already indexed but the RDF document have been re-pinged at least one hour after it has been indexed for the first time.
+</p><p>About 50 000 RDF documents are know by the service. About 46 000 of them are tagged with the FOAF type, 44 000 with the SIOC type, 275 with the DOAP type, 47 with the RDFS type and 170 with the OWL type.
+</p><p>About 44 000 of the RDF documents are serialized using XML and about 6000 are serialized using N3. However, we should take care because only 6 of the N3 serialized files doesn't came from the Talk Digger web service. One of the cause of this disproportion between XML and N3 serialized RDF document could be the non existence of mime type standard for that file format. Another one could be the its unpopularity vis-a-vis its rival: XML. However we think that this situation should change in the future considering the adoption of SPARQL RDF query language.
+</p><p>We should take care when analysing these numbers. In fact, if we don't count RDF files generated by Talk Digger, we would have these numbers:
+</p>
+<ul><li>RDF documents: 	   4601
+</li><li>FOAF documents:    2246
+</li><li>SIOC documents:    532
+</li><li>DOAP documents:    277
+</li><li>RDFs documents:    47
+</li><li>OWL documents: 	   171
+</li><li>XML serialization: 4595
+</li><li>N3 serialization:  6
+</li></ul>
+<p>855 RDF documents came directly from one of the SIOC exporter program used by the blogging system: WordPress, Dotclear, b2Evolution and Drupal. Each time a new blog article is published, Ping the Semantic Web is noticed and the new result is automatically indexed. 77 individual blogs already installed the SIOC exporter add-on to their blog system.
+</p>
+<ul><li> Do you have any statistics about date when these documents were added&nbsp;?
+</li></ul>
+<ul><li> When new data is shown, how do you decide if it is SIOC, FOAF, DOAP etc. if there is a combination of terms being used.
+</li></ul>
+<ul><li> It would be good to add an evaluation that shows that collaborative discovery is of value. For this we could use one or a couple of data formats (e.g., FOAF, SIOC and/or DOAP) - e.g., take the list of "SIOC data sources", compare that to those who ping PTSW directly and finally compare that with a list of those resources that are discovered by people + radar:
+</li></ul>
+<pre> * for precise data it 'd be good to know or understand where the data came from
+</pre>
+<p>\subsection{Common errors}
+While most of the pinged files that we fetched for our tests were successfully parsed by our RDF testing suite (a set of python tools using redland API), about 3\% of them lead to error and cannot have been parsed.
+</p><p>Thus, we identified different kind of errors:
+</p><p><a href="http://wiki.sioc-project.org/index.php?title=@@_make_%5C%25_for_XML_/_RDF_errors&amp;action=edit&amp;redlink=1" class="new" title="@@ make \% for XML / RDF errors (page does not exist)">@@ make \% for XML / RDF errors</a>
+</p><p>The most important errors (87\%) are related to XML errors, as "&amp;" entity not declared or UTF-8 encoding problems. This kind of errors appeared in exporters, as for SIOC data, as some blog posts contain data that could be in various languages.
+</p><p>Even if these errors are related to XML serialization of RDF and cannot be directly connected to a misenderstood of RDF by Semantic Web metadata creators, the other part of errors are directly RDF-related (13\%).
+While exporting-tools ensure to produce correct RDF data (as TalkDigger and SIOC exporters), manually creating RDF can still be a source of errors, dispatched in the following way:
+</p>
+<pre>* 41\% caused by multiple object node elements
+* 33\% caused by undefined namespaces in properties
+* while other are various errors as using properties and elements where this is forbidden.
+</pre>
+<p>Regarding this error analysis, we only concentrated on the syntaxic aspect of RDF data to identify errors.
+Thus, we didn't check if all the parsed files are using properties or classes that indeed correspond to existing ontology concepts. 
+Yet, a quick overview let appear that some of them use non-existing properties, or deprecated ones. This leads to the consistency problem of Semantic Web meta-data, that could be another domain of research regarding some data.
+</p><p>\section{Related Work}
+\subsection{Work related to Semantic Radar}
+While Semantic Radar offers a way to discover various RDF data as DOAP, SIOC or FOAF, some tools dedicated to only one kind of files already existed before:
+</p>
+<pre>* FOAF-er: \footnote{\url{<a href="http://crschmidt.net/foaf/foafer.html}}" class="external free" rel="nofollow">http://crschmidt.net/foaf/foafer.html}}</a>
+* DOADP-er: \footnote{\url{<a href="http://crschmidt.net/doap/doaper.html}}" class="external free" rel="nofollow">http://crschmidt.net/doap/doaper.html}}</a>
+</pre>
+<p>Yet, more than the pinging aspect, the goal of Semantic Radar is to combine all of these discovery plugins in a single interface. 
+Thus, people interested in Semantic Web technologies do not have to concentrate on plugins for various vocabularies (and think about which vocabularies they might be interested in), and the plug-in can be automatically updated to manage new vocabularies without user intervention thanks to Firefox plugin extension update mechanism, that also uses RDF.
+</p><p>\subsection{Work related to Ping Services}
+\subsection{Other related work}
+Embedding metadata using RDFa or microformats and extracting it using GRDDL:
+</p>
+<pre>* \footnote{\url{<a href="http://www.w3.org/TR/xhtml-rdfa-primer/}}" class="external free" rel="nofollow">http://www.w3.org/TR/xhtml-rdfa-primer/}}</a>
+* \footnote{\url{<a href="http://www-sop.inria.fr/acacia/personnel/Fabien.Gandon/tmp/grddl/rdfaprimer/PrimerRDFaSection.html}}" class="external free" rel="nofollow">http://www-sop.inria.fr/acacia/personnel/Fabien.Gandon/tmp/grddl/rdfaprimer/PrimerRDFaSection.html}}</a>
+* \footnote{\url{<a href="http://www.w3.org/2003/g/data-view}}" class="external free" rel="nofollow">http://www.w3.org/2003/g/data-view}}</a>
+</pre>
+<p>To this regard the Semantic Radar and Ping the Semantic Web service can be extended to detect pages with GRDDL transformations present and extract RDF from them. 
+</p><p>[@@Note: ] However potentially *every* XHTML contains some RDFa and it will not be feasible to ping for every document. Besides, that will significantly lower the quality of data because we will get many documents that are not actually meant to RDF and do not contain anything valuable:
+</p>
+<pre>* \footnote{\url{<a href="http://www.mail-archive.com/public-rdf-in-xhtml-tf@w3.org/msg00313.html}}" class="external free" rel="nofollow">http://www.mail-archive.com/public-rdf-in-xhtml-tf@w3.org/msg00313.html}}</a>
 
+</pre>
+<p>\footnote{\url{<a href="http://www-sop.inria.fr/acacia/personnel/Fabien.Gandon/tmp/grddl/rdfaprimer/PrimerRDFaSection.html}}" class="external free" rel="nofollow">http://www-sop.inria.fr/acacia/personnel/Fabien.Gandon/tmp/grddl/rdfaprimer/PrimerRDFaSection.html}}</a>
+</p><p>\section{Future Work}
+</p>
+<pre>* Explore relations to Attention Economy - in some regard it also shows the resources / pages that people find important.
+</pre>
+<p>Could talk about the future triple store generated by know RDF documents (ref: \footnote{\url{<a href="http://tinyurl.com/yjj22t).}}" class="external free" rel="nofollow">http://tinyurl.com/yjj22t).}}</a> Don't know if it is really in relation with the article, should check later.
+</p><p>\section{Conclusions}
+\section{References}
+Swoogle references:
+\footnote{\url{<a href="http://ebiquity.umbc.edu/paper/html/id/183/Swoogle-A-Search-and-Metadata-Engine-for-the-Semantic-Web}}" class="external free" rel="nofollow">http://ebiquity.umbc.edu/paper/html/id/183/Swoogle-A-Search-and-Metadata-Engine-for-the-Semantic-Web}}</a> (swoogle recommends this paper when quoting them)
+\footnote{\url{<a href="http://ebiquity.umbc.edu/paper/html/id/241/Finding-and-Ranking-Knowledge-on-the-Semantic-Web}}" class="external free" rel="nofollow">http://ebiquity.umbc.edu/paper/html/id/241/Finding-and-Ranking-Knowledge-on-the-Semantic-Web}}</a> (ISWC paper)
+</p><p><br />
+Ping the Semantic Web: \footnote{\url{<a href="http://pingthesemanticweb.com}}" class="external free" rel="nofollow">http://pingthesemanticweb.com}}</a>
+</p><p>Semantic Radar: \footnote{\url{<a href="http://sioc-project.org/firefox}}" class="external free" rel="nofollow">http://sioc-project.org/firefox}}</a>
+\end{document}
+</p>
 <!-- 
 NewPP limit report
-Preprocessor node count: 0/1000000
+Preprocessor node count: 1/1000000
 Post-expand include size: 0/2097152 bytes
 Template argument size: 0/2097152 bytes
 Expensive parser function count: 0/100
 -->
-
-<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1417-1!1!0!!en!2!edit=0 and timestamp 20160530174810 -->
