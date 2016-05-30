@@ -1,0 +1,81 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Error_reports"><span class="tocnumber">1</span> <span class="toctext">Error reports</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Sep_3.2C_2008_Illegal_URI"><span class="tocnumber">1.1</span> <span class="toctext">Sep 3, 2008 Illegal URI</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Sep_5.2C_2008_Sesame_issue_with_empty_URI_properties"><span class="tocnumber">1.2</span> <span class="toctext">Sep 5, 2008 Sesame issue with empty URI properties</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="#Solution"><span class="tocnumber">1.2.1</span> <span class="toctext">Solution</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-5"><a href="#Sep_23.2C_2008_Problems_downloading_the_zipped_files"><span class="tocnumber">1.3</span> <span class="toctext">Sep 23, 2008 Problems downloading the zipped files</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Sep_24.2C_2008_Post_files_without_actual_data"><span class="tocnumber">1.4</span> <span class="toctext">Sep 24, 2008 Post files without actual data</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="Error_reports"> Error reports </span></h2>
+<p>Please describe problems with the data here
+</p><p><br />
+</p>
+<h3> <span class="mw-headline" id="Sep_3.2C_2008_Illegal_URI"> Sep 3, 2008 Illegal URI </span></h3>
+<p>The post file <tt>http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=71610</tt> has an illegal URI on line 56. The Jena parser's error report is:
+</p><p><tt>
+</p>
+<pre>WARN [main] (RDFDefaultErrorHandler.java:36) - 
+<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=71610#" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=71610#</a> (line 56 column 101): 
+{W107} Bad URI: &lt;<a href="http://redjohno@eudoramail.com" class="external free" rel="nofollow">http://redjohno@eudoramail.com</a>&gt; 
+Code: 59/PROHIBITED_COMPONENT_PRESENT in USER: A component that is prohibited by the scheme is present.
+</pre>
+<p></tt>
+</p><p>Presumably the <tt>http:</tt> should be <tt>mailto:</tt>, but I don't know if it stems from an error in the source data, or indicates a problem with the RDF generation script.
+</p>
+<h3> <span class="mw-headline" id="Sep_5.2C_2008_Sesame_issue_with_empty_URI_properties"> Sep 5, 2008 Sesame issue with empty URI properties </span></h3>
+<p>In nearly every file there is a line like this:
+</p><p><tt> 
+</p>
+<pre>&lt;foaf:Document rdf:about=""&gt;
+</pre>
+<p></tt>
+</p><p>the "rfd:about" without an URI makes Sesames RDF/XML parser crash with 
+an error like this: 
+</p><p><tt> 
+</p>
+<pre>Not a valid (absolute) URI:  [line 17, column 3]
+</pre>
+<p></tt>
+</p><p>if the <tt>rdf:about</tt> is removed everything works fine. 
+</p><p>Sesame uses a SAX parser and creates a new URI from the value the parser delivers. <tt>""</tt> is in this case not a valid URI for Sesame.
+I do not know if this is a bug of Sesame or whether empty URIs are allowed or not - in general. At least Sesame does not like them.
+</p>
+<h4> <span class="mw-headline" id="Solution"> Solution </span></h4>
+<p>The described problem was discussed here <a href="http://tuukka.iki.fi/tmp/sioc-2008-09-02.html" class="external free" rel="nofollow">http://tuukka.iki.fi/tmp/sioc-2008-09-02.html</a> and a solution for Jena suggested. Hopefully it works with Sesame, too.
+</p><p>Yes, there is a way to do this in Sesame:
+<tt> 
+</p>
+<pre>connection.add(file, URLDecoder.decode(file.getName(), "utf-8"), RDFFormat.RDFXML);
+</pre>
+<p></tt>
+Thanks for the suggestion.
+</p>
+<h3> <span class="mw-headline" id="Sep_23.2C_2008_Problems_downloading_the_zipped_files"> Sep 23, 2008 Problems downloading the zipped files </span></h3>
+<p>Some people have reported timeouts when downloading the very large files. We've made a second store of the data sets available, which you can access using the same username and password for the original download site.
+</p><p>You can access the second store at <a href="http://download.sioc-project.org" class="external text" rel="nofollow">download.sioc-project.org</a>.
+</p>
+<h3> <span class="mw-headline" id="Sep_24.2C_2008_Post_files_without_actual_data"> Sep 24, 2008 Post files without actual data </span></h3>
+<pre>randomity	some of the files in boards.ie-post.tar.gz have no data. They have a &lt;?xml..., a &lt;rdf:RDF... , and a full &lt;foaf:Document&gt; declaration, but no actual data
+randomity	e.g. post/000/000/http%3A%2F%2Fboards.ie%2Fvbulletin%2Fsioc.php%3Fsioc_type%3Dpost%26
+randomity	sioc_id%3D1967011
+thosch	randomity: these should all be posts that were deleted/are access restricted. 
+thosch	if you check the post of the respective id on the boards.ie server you can see it: <a href="http://boards.ie/vbulletin/showpost.php?p=1967011" class="external free" rel="nofollow">http://boards.ie/vbulletin/showpost.php?p=1967011</a>
+thosch	but of course these posts shouldn't be in the dump, but it wasn't easy to remove all of them.
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 31/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1596-1!1!0!!en!2!edit=0 and timestamp 20160530174253 -->

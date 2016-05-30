@@ -1,0 +1,170 @@
+<p>by <a href="http://wiki.sioc-project.org/index.php/User:Wikier" title="User:Wikier">Sergio Fernández</a> (<a href="http://wiki.sioc-project.org/index.php/CTIC" title="CTIC" class="mw-redirect">CTIC</a>), <a href="http://wiki.sioc-project.org/index.php/User:CaptSolo" title="User:CaptSolo">Uldis Bojārs</a> (<a href="http://wiki.sioc-project.org/index.php/DERI" title="DERI">DERI</a>), <a href="http://wiki.sioc-project.org/index.php/User:Scor" title="User:Scor">Stéphane Corlosquet</a> (<a href="http://wiki.sioc-project.org/index.php/DERI" title="DERI">DERI</a>) and <a href="http://wiki.sioc-project.org/index.php/User:Thosch" title="User:Thosch">Thomas Schandl</a> (<a href="http://wiki.sioc-project.org/index.php/DERI" title="DERI">DERI</a>)
+</p>
+<pre>Disclaimer: this document is <b>NOT official</b> and must not be considered as such.
+</pre>
+<p>There are many open points that we need to study in order to update the <a href="http://wiki.sioc-project.org/index.php/Ontology" title="Ontology">ontology</a>.
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#General_issues"><span class="tocnumber">1</span> <span class="toctext">General issues</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Specification"><span class="tocnumber">1.1</span> <span class="toctext">Specification</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Namespaces"><span class="tocnumber">1.2</span> <span class="toctext">Namespaces</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Publishing"><span class="tocnumber">1.3</span> <span class="toctext">Publishing</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#mod_rewrite_approach"><span class="tocnumber">1.3.1</span> <span class="toctext">mod_rewrite approach</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#mod_mime_approach"><span class="tocnumber">1.3.2</span> <span class="toctext">mod_mime approach</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="#Versioning"><span class="tocnumber">1.4</span> <span class="toctext">Versioning</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Authors"><span class="tocnumber">1.5</span> <span class="toctext">Authors</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#Ontology"><span class="tocnumber">2</span> <span class="toctext">Ontology</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#Follow_up_from_last_discussion"><span class="tocnumber">2.1</span> <span class="toctext">Follow up from last discussion</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Domains.2FRanges"><span class="tocnumber">2.2</span> <span class="toctext">Domains/Ranges</span></a>
+<ul>
+<li class="toclevel-3 tocsection-12"><a href="#sioc:Role"><span class="tocnumber">2.2.1</span> <span class="toctext">sioc:Role</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="#Related_Ontologies"><span class="tocnumber">3</span> <span class="toctext">Related Ontologies</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="#Dublin_Core"><span class="tocnumber">3.1</span> <span class="toctext">Dublin Core</span></a>
+<ul>
+<li class="toclevel-3 tocsection-15"><a href="#sioc:topic"><span class="tocnumber">3.1.1</span> <span class="toctext">sioc:topic</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="#others"><span class="tocnumber">3.1.2</span> <span class="toctext">others</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-17"><a href="#FOAF"><span class="tocnumber">3.2</span> <span class="toctext">FOAF</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#MOAT"><span class="tocnumber">3.3</span> <span class="toctext">MOAT</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href="#Translations"><span class="tocnumber">4</span> <span class="toctext">Translations</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href="#Other_issues"><span class="tocnumber">5</span> <span class="toctext">Other issues</span></a>
+<ul>
+<li class="toclevel-2 tocsection-21"><a href="#Best_practices_publishing_SIOC"><span class="tocnumber">5.1</span> <span class="toctext">Best practices publishing SIOC</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="General_issues"> General issues </span></h2>
+<h3> <span class="mw-headline" id="Specification"> Specification </span></h3>
+<ul><li> there is a new version of SpecGen: <a href="http://forge.morfeo-project.org/wiki_en/index.php/SpecGen" class="external text" rel="nofollow">SpecGen5</a>
+</li><li> consider to merge it with Uldis' version
+</li><li> some new features to improve the specification, mainly its accessibility
+</li></ul>
+<h3> <span class="mw-headline" id="Namespaces"> Namespaces </span></h3>
+<ul><li> there are many namespaces that are not used
+</li><li> probably when we moved some classes/properties to types module
+</li><li> review and clean it
+</li></ul>
+<h3> <span class="mw-headline" id="Publishing"> Publishing </span></h3>
+<h4> <span class="mw-headline" id="mod_rewrite_approach"> mod_rewrite approach </span></h4>
+<ul><li> using <a href="http://httpd.apache.org/docs/2.0/mod/mod_rewrite.html" class="external text" rel="nofollow">mod_rewrite</a> Apache module
+</li><li> W3C document: <a href="http://www.w3.org/TR/swbp-vocab-pub/" class="external text" rel="nofollow">Best Practices Recipes for Publishing RDF Vocabularies</a>
+</li><li> we need to use <a href="http://www.w3.org/TR/swbp-vocab-pub/#recipe3" class="external text" rel="nofollow">recipe3</a>
+</li><li> now we only serve <tt>application/rdf+xml</tt>
+</li><li> but must be something like:
+<ul><li> request over <a href="http://rdfs.org/sioc/ns#Forum" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#Forum</a>, Accept: <tt>application/rdf+xml</tt>
+<ol><li> GET /sioc/ns
+</li><li> 303<br />Location: /sioc/ns.rdf
+</li><li> GET /sioc/ns.rdf
+</li><li> 200<br />Content-type: <tt>application/rdf+xml</tt>
+</li></ol>
+</li><li> request over <a href="http://rdfs.org/sioc/ns#Forum" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#Forum</a>, Accept: <tt>text/html</tt>
+<ol><li> GET /sioc/ns
+</li><li> 303<br />Location: /sioc/spec/
+</li><li> GET /sioc/spec/
+</li><li> 200<br />Content-type: <tt>text/html</tt>
+</li></ol>
+</li></ul>
+</li><li> be careful how to implement content negotiation, recipes are not perfect
+</li><li> <a href="http://vapour.sourceforge.net/" class="external text" rel="nofollow">Vapour</a> could help to debug it (<a href="http://idi.fundacionctic.org/vapour?vocabUri=http%3A%2F%2Frdfs.org%2Fsioc%2Fns%23&amp;classUri=&amp;autodetectClassUri=1&amp;propertyUri=&amp;autodetectPropertyUri=1&amp;htmlVersions=1" class="external text" rel="nofollow">view actual report</a>)
+</li></ul>
+<h4> <span class="mw-headline" id="mod_mime_approach"> mod_mime approach </span></h4>
+<ul><li> Richard also suggest that we could use <a href="http://httpd.apache.org/docs/2.0/mod/mod_mime.html" class="external text" rel="nofollow">mod_mime</a> Apache module
+</li><li> we have more information <a href="http://wiki.sioc-project.org/index.php/LinkedDataChecklist#Fun_with_content_negotiation" title="LinkedDataChecklist">here</a>
+</li></ul>
+<h3> <span class="mw-headline" id="Versioning"> Versioning </span></h3>
+<ul><li> it could be good maintain published old versions of the ontology/specification
+</li><li> like W3C does: this version and last version
+</li><li> Vit Novacek is working on <a href="http://www.w3.org/2006/07/SWD/Vocab/principles-20080204" class="external text" rel="nofollow">a document</a> about that
+</li><li> also use some annotation properties, such as <tt>dct:issued</tt>, <tt>dct:modified</tt>, <tt>vs:term_status</tt> or <tt>skos:changeNote</tt>
+</li></ul>
+<h3> <span class="mw-headline" id="Authors"> Authors </span></h3>
+<p>The authors are missing in the ontology. We can use <tt>dc:creator</tt> in this way:
+</p>
+<pre>http://rdfs.org/sioc/ns# rdf:type owl:Ontology&nbsp;;
+  dc:creator "John Breslin"&nbsp;;
+  dc:creator "Uldis Bojars"&nbsp;;
+  dc:contributor "..." .
+</pre>
+<h2> <span class="mw-headline" id="Ontology"> Ontology </span></h2>
+<ul><li> <strike>allow a broader use of some properties such as sioc:note, sioc:content, sioc:sibling and sioc:num_replies by extending them to sioc:Item (they are currently restricted to sioc:Post) see <a href="http://tuukka.iki.fi/tmp/sioc-2008-02-29.html#10:42:56" class="external free" rel="nofollow">http://tuukka.iki.fi/tmp/sioc-2008-02-29.html#10:42:56</a></strike>
+</li><li> <strike>also drop the domain of sioc:has_administrator and the range of sioc:administrator_of as they are currently set to sioc:Site but e.g. Yuki needs them also for sioc:Forum</strike>
+</li></ul>
+<h3> <span class="mw-headline" id="Follow_up_from_last_discussion"> Follow up from last discussion </span></h3>
+<ul><li> Need for earliest_item property linking Container and Item.
+</li><li> "OWL-ify" SIOC
+</li><li> Give recommendations on argumentative discussion terms to use from SALT / IBIS / TDL.
+</li><li> Need for "embeds_knowledge" property to link WikiArticle to a named graph with relevant triples extracted.
+</li><li> Add properties for Post / Item "status" (private, draft, public, etc.) and for User password
+</li><li> Look at description for next_by_date as a "given Container" may vary under different circumstances (is it a Thread or a Forum?).
+</li></ul>
+<h3> <span class="mw-headline" id="Domains.2FRanges"> Domains/Ranges </span></h3>
+<h4> <span class="mw-headline" id="sioc:Role"> sioc:Role </span></h4>
+<p>We need to discuss how to use this class / make it more useful - maybe define a set of right in sioc types?
+</p>
+<h2> <span class="mw-headline" id="Related_Ontologies"> Related Ontologies </span></h2>
+<p>Probaly we need to update classes/properties that use external ontologies. And there is also <a href="http://rdfs.org/sioc/related/" class="external text" rel="nofollow">a document</a> that we need to review and updated.
+</p>
+<h3> <span class="mw-headline" id="Dublin_Core"> Dublin Core </span></h3>
+<p><strike>After the <a href="http://dublincore.org/news/2008/#dcmi-news-20080114-01" class="external text" rel="nofollow">major updated of last January</a>, it's important to review the relation between SIOC and DC. In summary, all the RDF stuff has been moved to <a href="http://dublincore.org/documents/2008/01/14/dcmi-terms/" class="external text" rel="nofollow">dct</a>, with <a href="http://dublincore.org/documents/2008/01/14/domain-range/" class="external text" rel="nofollow">formal domain/ranges of properties</a>.</strike>
+</p>
+<h4> <span class="mw-headline" id="sioc:topic"> sioc:topic </span></h4>
+<ul><li> now (v1.27) we have: <tt>#topic rdfs:subPropertyOf dc:subject</tt>
+</li><li> but with new version of DC must be: <tt>#topic rdfs:subPropertyOf dct:subject</tt>
+</li><li> or: <tt>#topic rdfs:subPropertyOf skos:subject</tt>
+</li><li> or probably the union of <tt>dct:subject</tt> and <tt>skos:subject</tt>
+</li><li> or deprecate it such we did with <tt>sioc:title</tt> and others
+</li></ul>
+<h4> <span class="mw-headline" id="others"> others </span></h4>
+<p>The status of <tt>dct:created</tt>, <tt>dct:modified</tt>, <tt>dct:hasPart</tt> and <tt>dct:isPartOf</tt> didn't change.
+</p>
+<h3> <span class="mw-headline" id="FOAF"> FOAF </span></h3>
+<p>Nothing important has changed. Probably it could be nice to update and improve the example.
+</p>
+<h3> <span class="mw-headline" id="MOAT"> MOAT </span></h3>
+<ul><li> What is the relation between <a href="http://moat-project.org/" class="external text" rel="nofollow">MOAT</a> and our class Tag (<tt>sioct:Tag</tt>)?
+</li></ul>
+<h2> <span class="mw-headline" id="Translations"> Translations </span></h2>
+<p>We want to translate the ontology (<tt>rdfs:label</tt> and <tt>rdfs:comment</tt>, probably only in the core) into another languages (Spanish, German, French, Italian, etc.) to make it more accessible.
+</p><p>The idea is include the new triples in the same file:
+</p>
+<ul><li> split the ontology by languages is not consider a good practice
+</li><li> there isn't any problem while we maintain the ontology size under 1MB
+</li><li> if it grows more, we will need to split it by terms (classes and property)
+</li></ul>
+<h2> <span class="mw-headline" id="Other_issues"> Other issues </span></h2>
+<h3> <span class="mw-headline" id="Best_practices_publishing_SIOC"> Best practices publishing SIOC </span></h3>
+<ul><li> with this update will appear many interesting things
+</li><li> take all the ideas for this future document
+</li><li> such as:
+<ul><li> <tt>dct:created</tt>/<tt>dct:modified</tt> issue
+</li><li> RDFa section
+</li><li> <i>...</i>
+</li></ul>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 92/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1500-1!1!0!!en!2!edit=0 and timestamp 20160530174314 -->

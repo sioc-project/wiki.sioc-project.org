@@ -1,0 +1,32 @@
+<p>This page describes different options how to express information about different revisions of the same post in ["SIOC"]. 
+</p><p>You are very welcome to discuss pros/cons and add more suggestions.
+</p>
+<hr />
+<p>Present solution:
+</p>
+<pre> sioc:Post has properties sioc:previous_version,&nbsp;:next_version for linking versions and sioc:has_modifier (inverse =&nbsp;:modifier_of) for indicating who performed the changes.
+</pre>
+<hr />
+<h2> <span class="mw-headline" id="Option_1:_previous_.2F_next_version"> Option 1: previous_ / next_version </span></h2>
+<p>If previous / next are transitive properties, and using created_at and has_creator /has_modifier for each versionned Post, I think we can get all relevant information about versions of the data. Yet, a version_comment attribute could be added to sioc:Post, so that each post may have a short description about its revision (eg: "initial version", "typo..." as we can do in some wikis, or in CVS). - AlexandrePassant
+</p>
+<h2> <span class="mw-headline" id="Option_2:_versioning_via_events"> Option 2: versioning via events </span></h2>
+<p>Define events for post creation/modification/deletion (sioc:CreationEvent, ...). Let these events point to sioc:Post (part concept of post as a whole) and have properties describing the change. 
+</p><p>This is similar to the wikis model - each event could describe 'diffs' between versions.
+</p><p>Related - Figure <a href="http://rdfs.org/2005/11/sioc-user_account.jpg" class="external text" rel="nofollow">sioc-user_account.jpg</a>
+</p>
+<h2> <span class="mw-headline" id="Option_3:_new_version_class"> Option 3: new version class </span></h2>
+<p>Define sioc:Version or sioc:Revision objects that contain information about a particular revision. Have a property that described parent-child relationships between sioc:Posts and sioc:Revisions.
+</p><p>Modification: combine with option #2 - have events act as a link between revisions and parent post concept.
+</p><p>Pros: more precise model  <a href="http://wiki.sioc-project.org/index.php?title=BR&amp;action=edit&amp;redlink=1" class="new" title="BR (page does not exist)">BR</a>
+Cons: add complexity
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 11/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1439-1!1!0!!en!2!edit=0 and timestamp 20160530174330 -->

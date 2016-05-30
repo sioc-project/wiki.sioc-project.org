@@ -1,0 +1,66 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Here_and_Now:_Most_Interesting_about_the_Social_Semantic_Web"><span class="tocnumber">1</span> <span class="toctext">Here and Now: Most Interesting about the Social Semantic Web</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Lightning_talk_volunteers"><span class="tocnumber">1.1</span> <span class="toctext">Lightning talk volunteers</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Suggested_topics"><span class="tocnumber">1.2</span> <span class="toctext">Suggested topics</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="#SSW_applications_like_semantic_microblogging.2C_and_real-time_search_of_its_structure_and_content"><span class="tocnumber">1.2.1</span> <span class="toctext">SSW applications like semantic microblogging, and real-time search of its structure and content</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="#Opportunities_of_and_challenges_associated_with_Interdisciplinary_research"><span class="tocnumber">1.2.2</span> <span class="toctext">Opportunities of and challenges associated with Interdisciplinary research</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#Confluence_of_the_People-content-network.2C_Social_Web_and_other_activities_on_the_Web.2C_Evaluation_of_Social_Data"><span class="tocnumber">1.2.3</span> <span class="toctext">Confluence of the People-content-network, Social Web and other activities on the Web, Evaluation of Social Data</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#Re-building_popular_Social_Web_apps_using_SemWeb_technologies"><span class="tocnumber">1.2.4</span> <span class="toctext">Re-building popular Social Web apps using SemWeb technologies</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="Here_and_Now:_Most_Interesting_about_the_Social_Semantic_Web"> Here and Now: Most Interesting about the Social Semantic Web </span></h1>
+<p>Discussion panel at <a href="http://wiki.sioc-project.org/index.php/SDOW2009" title="SDOW2009">SDoW 2009</a>.
+</p>
+<h2> <span class="mw-headline" id="Lightning_talk_volunteers"> Lightning talk volunteers </span></h2>
+<p>Please add your topic and name here.
+</p>
+<ul><li> Callimachus: Easy Creation of Semantic Web Applications / David Wood <i>Moved to afternoon slot</i>
+</li><li> Topic / name
+</li></ul>
+<h2> <span class="mw-headline" id="Suggested_topics"> Suggested topics </span></h2>
+<p>Please add your name to your suggested topic.  It would be interesting to hear about topics that you feel are important, interesting, and perhaps have not received the attention they deserve (if any!).
+</p>
+<h3> <span class="mw-headline" id="SSW_applications_like_semantic_microblogging.2C_and_real-time_search_of_its_structure_and_content"> SSW applications like semantic microblogging, and real-time search of its structure and content </span></h3>
+<p>Suggested by John Breslin.  We have emerging semantic microblogging platforms or platforms with semantic functionality like StatusNet formerly Laconica), smesher and SMOB.  There are also emerging ways for defining microdata in Twitter and also the above platforms (microturtle, microsyntax, Star Priority, etc.).  How can real-time search benefit from this work?  For example, traditional search has worked mainly on the fact that page rank gives a good indicator of importance.  In microblogging, this can't be computed in the same way.  Important updates may be deduced as coming from people who (1) have many followers, (2) have been retweeted more, (3) use metadata in their posts, or none of these...  But what can semantics offer to microblogging both in terms of structure and content, for example, conversation streams and embedded metadata respectively.
+</p>
+<h3> <span class="mw-headline" id="Opportunities_of_and_challenges_associated_with_Interdisciplinary_research"> Opportunities of and challenges associated with Interdisciplinary research </span></h3>
+<p>(eg Social Scientists and Computer Scientists; Bioogists and Computer Scientists) preferably with concrete examples - Amit Sheth
+</p>
+<h3> <span class="mw-headline" id="Confluence_of_the_People-content-network.2C_Social_Web_and_other_activities_on_the_Web.2C_Evaluation_of_Social_Data"> Confluence of the People-content-network, Social Web and other activities on the Web, Evaluation of Social Data </span></h3>
+<p>1. We are seeing efforts in adding more meaning to 'people' (integrating profiles), to 'content'(semantic annotation) and to the 'network' (meaning of a link between entities in the network) ...
+What are the interests/opportunities in the confluence of the three? As an example, re-evaluating how we understand the Influentials theory or information propagation in a network by taking properties of the content/poster as well.
+</p><p>2. How can Social Web affect how we engage in other online activities? Using our online connections the way we would our offline connections.
+</p><p>3. Evaluation of systems that use Social Data (not limiting to privacy implications). 
+Definitions of Precision and Recall are hard to measure without hand labeled data, which is the biggest roadblock. In some cases the definitions might need to incorporate the notion of 'semantic relatedness' as opposed to strict binary related or not measures.
+</p><p>Sitting outside the black box (e.g. targeted advertising platforms on the Web) it is quite hard  to evaluate the true effect of results of research efforts. Maybe the community needs to come together to actively publish data in a collective manner.
+</p><p>Meena Nagarajan
+</p>
+<h3> <span class="mw-headline" id="Re-building_popular_Social_Web_apps_using_SemWeb_technologies"> Re-building popular Social Web apps using SemWeb technologies </span></h3>
+<p>Matthias Quasthoff: besides the potential of creating really novel applications, it seems to be important to understand how we would re-build (or represent) existing Social Web services using RDF &amp; Co.
+</p><p>E.g. Facebook status "John is attending SWESE" could be represented either
+</p>
+<pre>ex:john ex:status "is attending SWESE"
+</pre>
+<p>or
+</p>
+<pre>ex:john sioc:creator ex:status1. ex:status1 a sioc:MicroblogPost; dc:date "..."; ...
+</pre>
+<p>First solution would be way easier to handle and query, but required publishing Named Graphs or similar to track status history. I'd like to encourage a discussion on the mismatch of (according to popularity) "human-friendly" data models presented by commercial Social Web applications, and existing ontology engineering efforts, which often do not feel natural (see also desire for private vs. business FOAF representation vs. person-centric semantics of FOAF)
+</p><p>Maybe this amounts to question whether temporal aspects (as are required by most Social Web apps?) should be part of specific RDF vocabularies (SIOC, FOAF etc.), or whether a more generic approach such as using RDF streams or Named Graphs annotated with time information should be encouraged.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 26/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1635-1!1!0!!en!2!edit=0 and timestamp 20160530174802 -->

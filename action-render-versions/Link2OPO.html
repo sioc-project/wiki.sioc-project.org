@@ -1,0 +1,58 @@
+<p><br />
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Feature:_Adding_Online_Presence_Information_to_sioc:Item"><span class="tocnumber">1</span> <span class="toctext">Feature: Adding Online Presence Information to sioc:Item</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Feature_description"><span class="tocnumber">1.1</span> <span class="toctext">Feature description</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="#Motivation"><span class="tocnumber">1.1.1</span> <span class="toctext">Motivation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-4"><a href="#Further_Discussion"><span class="tocnumber">1.2</span> <span class="toctext">Further Discussion</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Proposed_by"><span class="tocnumber">1.3</span> <span class="toctext">Proposed by</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="Feature:_Adding_Online_Presence_Information_to_sioc:Item"> Feature: Adding Online Presence Information to sioc:Item </span></h1>
+<p><i>Here is an idea for connecting SIOC with the <a href="http://www.milanstankovic.org/opo/" class="external text" rel="nofollow">| Online Presence Ontology</a> . In brief the Online Presence Ontology (OPO) allows representing the nature of somebody’s presence online in a certain moment. By nature of presence we mean all the elements published on Social Web sites, that allow us to perceive his/her presence, like: status messages, online statuses (Busy, Available, etc.), but also some actions that reveal the context of presence (e.g., listening to music, working on a project, reading something).</i>
+</p>
+<h2> <span class="mw-headline" id="Feature_description"> Feature description </span></h2>
+<p>What I am suggesting here is to connect sioc:Item to the opo:OnlinePresence and thus provide a possibility to determine what was the nature of a user’s presence in the time of publishing the content represented by sioc:Item. For instance we could have a property called sioc:presenceInfo like
+</p>
+<pre>
+&lt;owl:ObjectProperty
+	rdf:about=&quot;http://rdfs.org/sioc/ns#presenceInfo&quot;&gt;
+	&lt;rdfs:label xml:lang=&quot;en&quot;&gt; presenceInfo &lt;/rdfs:label&gt;
+	&lt;rdfs:comment xml:lang=&quot;en&quot;&gt;
+the OnlinePresence at the time of publishing the sioc:Item
+	&lt;/rdfs:comment&gt;
+	&lt;rdfs:domain rdf:resource=&quot;http://rdfs.org/sioc/ns#Item&quot; /&gt;
+	&lt;rdfs:range rdf:resource=&quot;http://ggg.milanstankovic.org/opo/ns#OnlinePresence&quot; /&gt;
+	&lt;rdfs:isDefinedBy rdf:resource=&quot;http://rdfs.org/sioc/ns#&quot; /&gt;
+&lt;/owl:ObjectProperty&gt;
+</pre>
+<h3> <span class="mw-headline" id="Motivation">Motivation</span></h3>
+<p>The motivation is derived from Actions in OPO. Connecting the SIOC content with elements of a user’s context at the time of publishing the content might be useful in many situations. Let’s take an example of a person working on a certain project. The connection between ontology concepts is shown on the picture.
+</p><p><a href="http://wiki.sioc-project.org/index.php/File:Sioc2opo.JPG" class="image"><img alt="Sioc2opo.JPG" src="/images_sioc/0/05/Sioc2opo.JPG" width="342" height="276" /></a>
+</p><p>In this way you might query all the blog posts you created while working on a certain project. Similarly you could query for all the blog posts someone created while reading a certain material (with the assumption that they might be influenced by the material being read). In general this connection should connect the content with the context in which it was created through the notion of Online Presence.
+</p><p>For more information about Actions that can be used to describe elements of user’s context in OPO ontology you might refer to <a href="http://www.milanstankovic.org/opo/ontology-new.html" class="external free" rel="nofollow">http://www.milanstankovic.org/opo/ontology-new.html</a> . However we are working to extend the specification so that it can support more types of lifestreaming events (watching movies, being with someone, etc.)
+</p>
+<h2> <span class="mw-headline" id="Further_Discussion"> Further Discussion </span></h2>
+<p>I talked with Uldis about this, and he suggested having flattened properties in addition to the presenceInfo property to bypass the indirection introduced by the OnlinePresence concept (although this indirection provides certain flexibility and is good for the possibility of appearance of new actions/elements of context). For the WorkingOnProject case the flattened property would look like shown on the picture:
+</p><p><a href="http://wiki.sioc-project.org/index.php/File:Sioc2opo1.JPG" class="image"><img alt="Sioc2opo1.JPG" src="/images_sioc/b/b4/Sioc2opo1.JPG" width="342" height="236" /></a>
+</p><p><br />
+</p>
+<h2> <span class="mw-headline" id="Proposed_by"> Proposed by </span></h2>
+<p><a href="http://wiki.sioc-project.org/index.php?title=Milstan&amp;action=edit&amp;redlink=1" class="new" title="Milstan (page does not exist)">milstan</a> - <a href="http://milstan.net" class="external free" rel="nofollow">http://milstan.net</a>
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 28/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1618-1!1!0!!en!2!edit=0 and timestamp 20160530174747 -->

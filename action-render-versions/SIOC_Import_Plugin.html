@@ -1,0 +1,103 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#WordPress_SIOC_Import_Plugin"><span class="tocnumber">1</span> <span class="toctext">WordPress SIOC Import Plugin</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Installation"><span class="tocnumber">1.1</span> <span class="toctext">Installation</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#How_does_it_work.3F"><span class="tocnumber">1.2</span> <span class="toctext">How does it work?</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Where_to_get_SIOC_data.3F"><span class="tocnumber">1.3</span> <span class="toctext">Where to get SIOC data?</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#Example_data_to_test_the_importer"><span class="tocnumber">1.3.1</span> <span class="toctext">Example data to test the importer</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#Exporting_your_own_data_as_SIOC"><span class="tocnumber">1.3.2</span> <span class="toctext">Exporting your own data as SIOC</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="#Compatibility_and_Related_Software"><span class="tocnumber">1.4</span> <span class="toctext">Compatibility and Related Software</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Advanced_Applications"><span class="tocnumber">1.5</span> <span class="toctext">Advanced Applications</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#SVN_access"><span class="tocnumber">1.6</span> <span class="toctext">SVN access</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#ToDos"><span class="tocnumber">2</span> <span class="toctext">ToDos</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="WordPress_SIOC_Import_Plugin"> WordPress SIOC Import Plugin </span></h1>
+<p>This plugin enables you to create blog posts in Wordpress by taking SIOC data from other weblogs (but also other sources like mailing lists, CMS, etc. are possible). 
+It demonstrates that you don't have to be a developer to benefit from the web of RDF data - any blog user can have use for it.
+</p>
+<h2> <span class="mw-headline" id="Installation"> Installation </span></h2>
+<p><a href="http://sparql.captsolo.net/2008/05/sioc_import_plugin.zip" class="external free" rel="nofollow">http://sparql.captsolo.net/2008/05/sioc_import_plugin.zip</a>
+</p>
+<ol><li> Download <a href="http://sparql.captsolo.net/2008/05/sioc_import_plugin.zip" class="external text" rel="nofollow">sioc_import_plugin.zip</a>, place it into the WordPress plugins directory: WORDPRESS_ROOT/wp-content/plugins/ 
+</li><li> Unzip the archive - a new directory 'sioc_php_import' should appear in the plugins directory
+</li><li> Choose "Plugins" tab in the WordPress admin interface, find a plugin called "SIOC Import Plugin" and hit "Activate" to enable it.
+</li></ol>
+<p><i>This is a simple beta application (use at your own risk). </i>
+</p>
+<h2> <span class="mw-headline" id="How_does_it_work.3F"> How does it work? </span></h2>
+<p>SIOC import plugin for WordPress takes a URL with some SIOC RDF data and imports its content (sioc:Post(s) in this case) into a WordPress weblog.
+</p><p><a href="http://wiki.sioc-project.org/index.php/File:Sioc-wordpress-import.png" class="image"><img alt="Sioc-wordpress-import.png" src="/images_sioc/f/f0/Sioc-wordpress-import.png" width="594" height="247" /></a>
+</p><p>On the administrator's panel go to Options - SIOC Import.
+Enter the URL of the SIOC data of an individual blog post and press "Process URL". The plugin will parse data and create posts. It will display some RDF/XML followed by "Post created. &lt;Edit link&gt;" if a post was successfully created. New posts will be published on the blog with the current date/time. If there are comments to this post they will be imported, too.
+</p>
+<h2> <span class="mw-headline" id="Where_to_get_SIOC_data.3F"> Where to get SIOC data? </span></h2>
+<h3> <span class="mw-headline" id="Example_data_to_test_the_importer"> Example data to test the importer </span></h3>
+<p>Copy these URLs to import data into your Wordpress blog:
+</p>
+<ul><li> Example blog post with comments from <a href="http://torrez.us/index.php?sioc_type=post&amp;sioc_id=562" class="external text" rel="nofollow">torrez.us</a> (RDF/XML created by Wordpress SIOC Exporter)
+</li><li> A post in RDFa from <a href="http://www.w3.org/2007/08/pyRdfa/extract?uri=http://www.wikier.org/blog/the-heilmeier-catechism#post" class="external text" rel="nofollow">wikier.org</a> and <a href="http://www.w3.org/2007/08/pyRdfa/extract?uri=http://www.wikier.org/blog/talk-in-deri#post" class="external text" rel="nofollow">another one</a> with an image (from Textpattern blog engine).
+</li></ul>
+<h3> <span class="mw-headline" id="Exporting_your_own_data_as_SIOC"> Exporting your own data as SIOC </span></h3>
+<p>SIOC data can be generated from a number of different blog and social media sites (e.g., from your weblog) using SIOC plugins:
+</p>
+<ul><li> <a href="http://sioc-project.org/wordpress" class="external text" rel="nofollow">WordPress SIOC Export plugin</a>
+</li><li> <a href="http://sioc-project.org/drupal" class="external text" rel="nofollow">Drupal SIOC module</a>
+</li><li> <a href="http://sioc-project.org/mailinglists" class="external text" rel="nofollow">SWAML - SIOC exporter for mailing lists</a>
+</li><li> [<a href="http://wiki.sioc-project.org/index.php/Implementations#Exporters" class="external text" rel="nofollow">... look here for more exporter plugins ...</a>]
+</li></ul>
+<p>Anyone can generate SIOC data which act as a "computer-readable" mirror of your blog and CMS posts. 
+</p><p>Also look at the existing <a href="http://esw.w3.org/topic/SIOC/EnabledSites" class="external text" rel="nofollow">SIOC-enabled sites</a>. If you install a SIOC plugin feel free to add your site to the list.
+</p>
+<h2> <span class="mw-headline" id="Compatibility_and_Related_Software"> Compatibility and Related Software </span></h2>
+<p>Developed on WordPress 1.5. Please report how it works with WordPress 2.0+.
+</p><p>Tools this software uses:
+</p>
+<ul><li> <a href="http://www4.wiwiss.fu-berlin.de/bizer/rdfapi/" class="external text" rel="nofollow">RAP - RDF API for PHP</a> 
+</li></ul>
+<p>Feedback: captsolo at gmail
+</p>
+<h2> <span class="mw-headline" id="Advanced_Applications"> Advanced Applications </span></h2>
+<p>You have seen that other community sites (e.g., a weblog) can reuse SIOC data. Based on this knowledge advanced uses and applications can be created and interesting questions can be explored:
+</p>
+<ul><li> generic way to migrate b/w blogging platforms
+</li><li> transfer a mailing list to a weblog
+</li><li> keep different blogs in synch (or perhaps a blog and a wiki?)
+</li><li> try to match categories b/w the source blog and the blog where data are being imported 
+</li><li> ... add more ideas here ...
+</li></ul>
+<h2> <span class="mw-headline" id="SVN_access"> SVN access </span></h2>
+<p>The experimental, more advanced version 0.2 using RAP:
+</p>
+<pre>svn co <a href="http://sw.deri.org/svn/uldis/2008/04/sioc_php_import_experimental" class="external free" rel="nofollow">http://sw.deri.org/svn/uldis/2008/04/sioc_php_import_experimental</a>
+</pre>
+<p>The previous version 0.1 using ARC:
+</p>
+<pre>svn co <a href="http://sw.deri.org/svn/uldis/2007/05/sioc_php_import/" class="external free" rel="nofollow">http://sw.deri.org/svn/uldis/2007/05/sioc_php_import/</a>
+</pre>
+<p><br />
+</p>
+<h1> <span class="mw-headline" id="ToDos"> ToDos </span></h1>
+<ul><li> import categories
+</li></ul>
+<p>Ideas: 
+</p>
+<ul><li> an imported post could be somehow marked as a sioc:sibling of the original post
+</li><li> probably we shouldn't import trackbacks to old posts that are listed as comment for a imported post
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 42/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1450-1!1!0!!en!2!edit=0 and timestamp 20160530174322 -->

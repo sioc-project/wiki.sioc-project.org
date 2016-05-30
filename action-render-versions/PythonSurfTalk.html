@@ -1,0 +1,210 @@
+<p><a href="http://www.europython.eu/talks/cfp/" class="external free" rel="nofollow">http://www.europython.eu/talks/cfp/</a>
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Structure_.2F_Outline"><span class="tocnumber">1</span> <span class="toctext">Structure / Outline</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Introduction"><span class="tocnumber">1.1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#The_product_-_SURF"><span class="tocnumber">1.2</span> <span class="toctext">The product - SURF</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Advanced_stuff_.28if_time_permits.29"><span class="tocnumber">1.3</span> <span class="toctext">Advanced stuff (if time permits)</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Conclusion"><span class="tocnumber">1.4</span> <span class="toctext">Conclusion</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Notes"><span class="tocnumber">1.5</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#CFP_Requirements"><span class="tocnumber">2</span> <span class="toctext">CFP Requirements</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Summary_of_proposed_presentation"><span class="tocnumber">2.1</span> <span class="toctext">Summary of proposed presentation</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="#Uldis_intro_.2B_Cosmin.27s_description_of_SURF"><span class="tocnumber">2.1.1</span> <span class="toctext">Uldis intro + Cosmin's description of SURF</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#scrapbook_.28text_that_is_cut_out_for_now.29"><span class="tocnumber">2.1.2</span> <span class="toctext">scrapbook (text that is cut out for now)</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#Benjamins_version"><span class="tocnumber">2.1.3</span> <span class="toctext">Benjamins version</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="#Alexandres_version"><span class="tocnumber">2.1.4</span> <span class="toctext">Alexandres version</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-13"><a href="#Presentation_outline"><span class="tocnumber">2.2</span> <span class="toctext">Presentation outline</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Intended_audience_.28non-programmers.2C_beginning_programmers.2C_advanced_users.2C_CPython_developers.2C_etc..29"><span class="tocnumber">2.3</span> <span class="toctext">Intended audience (non-programmers, beginning programmers, advanced users, CPython developers, etc.)</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Bios"><span class="tocnumber">2.4</span> <span class="toctext">Bios</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="Structure_.2F_Outline"> Structure / Outline </span></h2>
+<h3> <span class="mw-headline" id="Introduction"> Introduction </span></h3>
+<p>(an into to DERI and ourselves)
+</p><p>There is all this interesting data out there: FOAF, SIOC, DBPedia, GeoNames, ...
+</p><p>Cool things can be done in exploring this information, especially when combining data from multiple sources. We will show you how.
+</p><p>SPARQL - similar to SQL (or to what SQL is for databases) - works the same regardless of what tools you use (can demo a simple / non-programmatic web SPARQL query form just to show the principle).
+</p><p>Examples of some cool SPARQL queries
+</p>
+<h3> <span class="mw-headline" id="The_product_-_SURF"> The product - SURF </span></h3>
+<p>SPARQL is cool, but you do not need to go to this level of detail (unless you want it).
+</p><p>Same as ORM hides from programmers the complexity of relational databases, tools like SURF hide the intricacies of RDF and SPARQL. You don't need to worry about them - it's MAGIC&nbsp;:D
+</p><p>Introduction to SURF.
+</p><p>Inspired by ActiveRDF for Ruby...
+</p><p>Installation, usage, examples
+</p><p>(we probably need to show people how to collect some data in the datastore. otherwise they will not have data to play with. what we can do is provide some example datasets and simple utilities that allow them to load it into a datastore. they can always load more data by supplying URLs to utility code or doing WGET and then loading resulting RDF)
+</p><p><br />
+</p>
+<hr />
+<p><b>IGNORE THIS FOR NOW</b>
+SPARQL is cool, but you do not need to go to this level of detail (unless you want it).
+</p><p>Same as ORM hides from programmers the complexity of relational databases, tools like SURF hide the intricacies of RDF and SPARQL. You don't need to worry about them - it's MAGIC&nbsp;:D
+</p><p>Introduction to SURF.
+</p><p>SuRF is inspired by the work conducted in ActiveRDF for Ruby. Trying to follow similar concepts of closing the gap between RDF data and the Object Oriented paradigm for python programmers. SuRF allows one to navigate the structured data exposed on the web from various RDF producers. For example the Python Cheese shop exposes DOAP data describing python packages, or a certain person exposes their FOAF profile on their personal web page. SuRF is designed to give access to all this data by encapsulating it into a Resource class, which the programmer can manipulate at will. 
+Installation:
+SuRF is packaged as a standard egg file, so it can be installed just by calling easy_install
+Architecture and usage:
+Due to the nature of data access methods developed for the semantic web (query languages such as SPARQL, or access protocols such as the Sesame HTTP api), SuRF is built around a Store class which facilitates access to the data through installed plugins. The Store exposes a reader plugin and a writer plugin, some data stores are read-only such as the Semantic Wikipedia - DBPEDIA, it exposes it's data through a SPARQL (readonly) endpoint, while others offer read-write access to the data e.g.: any Sesame based store, AllegroGraph or Virtuoso.
+By default SuRF comes prepackaged with plugins that support reading from SPARQL endpoints, reading and writing from Sesame2 HTTP and also from Sesame2 API (used by the AllegroGraph RDF data-store).
+Creating and registering plugins is an easy process and is based on the metaclass concept.
+Let's create a plugin FooReader that reads a Foo data source which exposes RDF through a query interface of some sort.
+</p><p>from surf.store.plugins import RDFReader, UnsupportedResultType
+</p><p>class FooReader(RDFReader):
+	__type__ = 'foo-reader'	# this must be a unique plugin key as registered in the metaclass
+	....
+	# implement methods from RDFReader to provide functionality
+</p><p>to register the plugin with the Store, one needs only to import the FooReader class before using it, doing so the Metaclass RDFReader uses registers the FooReader type automatically as a plugin.
+</p><p>import FooReader # registers the plugin with SuRF
+</p><p>Using SuRF
+to get access to SuRF resources all you need to do is to import surf like this
+</p><p>from surf import *
+</p><p>create a Store object [TO BE CONTINUED]
+</p><p>Installation, usage, examples
+</p><p>(we probably need to show people how to collect some data in the datastore. otherwise they will not have data to play with. what we can do is provide some example datasets and simple utilities that allow them to load it into a datastore. they can always load more data by supplying URLs to utility code or doing WGET and then loading resulting RDF) 
+<b>END IGNORE THIS</b>
+</p>
+<h3> <span class="mw-headline" id="Advanced_stuff_.28if_time_permits.29"> Advanced stuff (if time permits) </span></h3>
+<p>Here we can cover advanced topics (e.g., publishing of linked data, ...)
+</p>
+<h3> <span class="mw-headline" id="Conclusion"> Conclusion </span></h3>
+<p>Interested in feedback, developers, ...
+</p>
+<h3> <span class="mw-headline" id="Notes"> Notes </span></h3>
+<p>(if redland command line tools are installed, can mention that "rapper" is useful for debugging to check if RDF data is valid - but goes into the level of complexity we may as well want to skip)
+</p>
+<h2> <span class="mw-headline" id="CFP_Requirements"> CFP Requirements </span></h2>
+<ul><li> Author name(s)
+</li></ul>
+<p>Cosmin Basca
+</p>
+<ul><li> Contact Information
+</li></ul>
+<p>we know where Cosmin lives
+</p>
+<ul><li> Preferred timeslot (30 minutes, 45 minutes, 60 minutes)
+</li></ul>
+<p>45 minutes
+</p>
+<ul><li> Title of proposed presentation
+</li></ul>
+<p>Tapping into the Web of Data with Python and SuRF
+</p>
+<ul><li> one line summary 
+</li></ul>
+<p>Learn how to use structured data on the Web, avoid screen scrapping and access data in a unified way
+</p>
+<h3> <span class="mw-headline" id="Summary_of_proposed_presentation"> Summary of proposed presentation </span></h3>
+<h4> <span class="mw-headline" id="Uldis_intro_.2B_Cosmin.27s_description_of_SURF"> Uldis intro + Cosmin's description of SURF </span></h4>
+<p><i>Ever since the dawn of mankind&nbsp;:D </i>
+</p><p>There are vast amounts of data available on the Web, made available by the community Linked Open Data project and many online community sites (using data formats such as FOAF, SIOC and DOAP).  Similarly as the Web already allows documents to link to each other, linked data refers to linked, machine-readable data sets on the Web. 
+</p><p>The Open Linked Data project is a community effort to make existing, well-known data sets like Wikipedia, Geonames or Musicbrainz available as RDF data on the Web and ready for reuse. Developers get a unified interface to data from many sources instead of one API for each site.
+</p><p>In order to take advantage of this, there is a need for easy-to-use tools that allow developers to work with this data without knowing the specifics of RDF, SPARQL or other related Semantic Web technologies.
+</p><p>In this talk, we will outline the SuRF library, that provides Python developers a way to build Semantic Web applications using RDF data in an easy way. We will show how it can be used to provide advanced browsing interfaces and mash-ups services on the top of existing data, and how it can be efficiently combined with other frameworks such as Pylons for Web-based applications.
+</p><p>SuRF is an open-source "Object-RDF Mapper", similar to object-relational mappers (e.g., SQLAlchemy). One can access SuRF objects and use their properties through a virtual API generated on the fly by reflecting the underlying RDF data. SuRF is built around a plugin architecture with built-in support for the most common Semantic Web data access protocols and API's.
+</p><p>Talk outline: (1) Introduction; (2) Architecture of SuRF; (3) Usage of SuRF; (4) Advanced applications (e.g. integration with Pylons)
+</p><p>Note to organisers: SURF will be available to public with open source (BSD-type) license at the end of April 2009. This proposal offers the first public demo of this library.
+</p>
+<h4> <span class="mw-headline" id="scrapbook_.28text_that_is_cut_out_for_now.29"> scrapbook (text that is cut out for now) </span></h4>
+<p>(e.g., SPARQL is read-only, while the Sesame protocol also supports writing). 
+</p><p>Extending the plugin base is a simple matter of just extending the RDFReader or RDFWriter class and importing it into the project, the underlying metaclass based plugin repository will automatically register it into SuRF's session object.
+</p><p>By default SuRF supports the SPARQL protocol, the Sesame2 HTTP protocol with the AllegroGraph extension and the Franz's AllegroGraph python replication of the Sesame2 API in Python.
+</p>
+<pre>is <i>the analogue of ORM for RDF data. Thus, people can use SURF to browse and query linked RDF data just using regular Python object access.</i>
+</pre>
+<p>"Object-RDF Mapper" similar to object-relational mappers (such as SQLAlchemy). It was inspired by ActiveRDF, a Ruby-on-Rails library for
+</p>
+<h4> <span class="mw-headline" id="Benjamins_version"> Benjamins version </span></h4>
+<p>As the Web has recently turned 20 years old, recent advances in the research community have focused on putting structured data on the Web, called "Linked Data". The Web already allows documents to link to each other in a decentralised manner, without any central point of control. In a similar way, Linked Data refers to structured and machine-readable data sets using the RDF standard, which contains links to other data sets. The Open Linked Data project is a community effort to make existing, well-known data sets like Wikipedia, Geonames or Musikbrainz available. 
+In this talk we will explain how Linked Data gives developers a unified interface to data from many sources, and how to use this interface and the resulting data in Python. We will discuss the standards and the architecture behind Linked Data, demonstrate how to use our tool SURF to access RDF, and give examples using data from Wikipedia and social networking sites.
+</p>
+<h4> <span class="mw-headline" id="Alexandres_version"> Alexandres version </span></h4>
+<p>As the Web recently went 20 years old, recent advances in the research community focused on the Semantic Web, i.e. an extension of the current Web enabling global interoperability between applications, while keeping intact the distributed architecture of the Web.
+More recently, thanks to the Linking Open Data community project, lots of data have been provided in RDF (the representation format for Semantic Web data), freely available to reuse for querying and mash-up purposes.
+Yet, there is still a need for easy tool for developers so that they can take advantage of this data without having to learn the underlying principles and related Semantic Web technologies.
+In this talk, we will outline the SURF framework, that provides Python developers a way to build Semantic Web applications using RDF data in a easy way.
+We will show how it can be used to provide advanced browsing interfaces and mash-ups services on the top of existing data, and how it can be efficiently combined with other frameworks such as Jango for Web-based applications.
+</p>
+<h3> <span class="mw-headline" id="Presentation_outline"> Presentation outline </span></h3>
+<p>Benjamin, extra short outline:
+</p><p>Overview of the Linked Data idea:
+</p>
+<ul><li> one API for every site versus having a unified API based on a common data format
+</li><li> Linked Data uses the new standard RDF on top of good old HTTP and URLs
+</li><li> the Open Linked Data community implements the 4 simple Linked Data principles 
+</li></ul>
+<p>Using Linked Data with Python and SURF:
+</p>
+<ul><li> SURF provides object oriented access on top of redlands RDF storage
+</li><li> show how to install everything
+</li></ul>
+<p>Examples and demonstrations:
+</p>
+<ul><li> Do very complex queries or combine data from multiple sites
+</li><li> Many different flavours of data are available, like Wikipedia or social networking sites
+</li></ul>
+<p><br />
+Benjamin version 1, still to long:
+</p><p>Overview of the Linked Data idea:
+</p>
+<ul><li> the web currently has a multitude of standards and APIs for data
+</li><li> Linked Data is a unified approach to publishing and accessing data on the web
+</li><li> Linked Data reuses the existing architecture of the Web: HTTP and URIs
+</li><li> new standard: RDF specifies how to structure the data 
+</li><li> explain Linked Data principles
+</li><li> show how the Open Linked Data community effort implements them
+</li></ul>
+<p>Using Linked Data with Python and SURF:
+</p>
+<ul><li> Introduce python tools for using RDF: redland and SURF
+</li><li> explain the different parts: redland as the local RDF store, SURF as the ORM
+</li><li> explain installation
+</li></ul>
+<p>Examples using different flavours of data:
+</p>
+<ul><li> give a generic example of accessing RDF properties
+</li><li> complex query from one data source: Wikipedia
+</li><li> complex query combining two data sources: wikipedia and geonames
+</li><li> compare to screen scrapping
+</li><li> example with SIOC and FOAF
+</li><li> compare to using one API for each site having social profiles to just getting one foaf file from every site and using one interface
+</li></ul>
+<p><br />
+Alexandres version:
+- The Semantic Web
+- The LOD initiative
+- Limits of current Python APIs for SW / LOD
+- Surf
+- Application examples
+- Integrating SURF in existing applications
+</p><p><br />
+</p>
+<h3> <span class="mw-headline" id="Intended_audience_.28non-programmers.2C_beginning_programmers.2C_advanced_users.2C_CPython_developers.2C_etc..29"> Intended audience (non-programmers, beginning programmers, advanced users, CPython developers, etc.) </span></h3>
+<p>Session lengths include time for audience questions, and session switching. You should budget at least five minutes for questions and five minutes for changeover; for example, a 30-minute talk will be 20 minutes of presentation, 5 minutes of questions, and allow 5 minutes for delegates to switch sessions.
+</p><p>Submit form: <a href="http://www.europython.eu/talks/submit" class="external free" rel="nofollow">http://www.europython.eu/talks/submit</a>
+</p>
+<h3> <span class="mw-headline" id="Bios"> Bios </span></h3>
+<p><b>Cosmin</b>
+Cosmin is a PhD student with Digital Enterprise Research Institute in Galway. He is doing research in the field of Semantic Web and likes to use Python in his work.
+</p><p>picture: <a href="http://www.semantic-conference.com/uploads/images/bios/1204.jpg" class="external free" rel="nofollow">http://www.semantic-conference.com/uploads/images/bios/1204.jpg</a>
+</p><p><b>Uldis</b>
+</p><p><b>Benjamin</b>
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 59/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1610-1!1!0!!en!2!edit=0 and timestamp 20160530174754 -->

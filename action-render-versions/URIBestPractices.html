@@ -1,0 +1,54 @@
+<p>To be discussed on a meeting...
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Viewpoints"><span class="tocnumber">1</span> <span class="toctext">Viewpoints</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#URIs_for_concepts"><span class="tocnumber">2</span> <span class="toctext">URIs for concepts</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Questions_to_answer_first"><span class="tocnumber">3</span> <span class="toctext">Questions to answer first</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Slicing_issues"><span class="tocnumber">4</span> <span class="toctext">Slicing issues</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="Viewpoints"> Viewpoints </span></h2>
+<ul><li> Distinction between URIs for HTML documents and URIs for SIOC concepts
+</li><li> How to keep exporters simple
+</li><li> Linked Data browsing and tools
+</li><li> Constructing URIs
+</li></ul>
+<h2> <span class="mw-headline" id="URIs_for_concepts"> URIs for concepts </span></h2>
+<ol><li> Something we model as a <i>document</i> has the same URI as the HTML web site has.
+</li><li> SIOC concepts that anyone wants to distinguish from the HTML pages needs other URIs.
+</li></ol>
+<p>How do we decide whether we model something as a document or not in practice?
+</p><p>Ways to mint "other URIs":
+</p>
+<ol><li> Add a fragment id #something and do content negotiation
+</li><li> Redirect to the HTML document and do content negotiation
+</li><li> Redirect to the RDF document
+</li></ol>
+<h2> <span class="mw-headline" id="Questions_to_answer_first"> Questions to answer first </span></h2>
+<ol><li> Are 303 redirects an option or is this for some reason impossible (framework limitations etc)
+</li><li> Which SIOC entities can be equated with existing documents on the online site and which not?
+</li></ol>
+<h2> <span class="mw-headline" id="Slicing_issues"> Slicing issues </span></h2>
+<p>Slicing here means how to divide the RDF triples into directories and files. That is, in addition to knowing what we want to say (the set of triples), we need to decide which triples we write in which RDF documents, and what URIs to use for those documents.
+</p>
+<ul><li> Not all web sites build the URIs in the same way.
+</li><li> Some slicing is difficult for some exporters.
+</li><li> Linked Data: related slices need links between them
+</li><li> Slicing mostly determines how URIs can or cannot be constructed
+</li><li> Paging - need for special vocabulary?
+<ul><li> <a href="http://tools.ietf.org/html/rfc5005" class="external free" rel="nofollow">http://tools.ietf.org/html/rfc5005</a>
+</li><li> Keeping up to date as a feed reader or an inter-site sync
+</li><li> Accessing archives meaningfully
+</li></ul>
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 15/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1479-1!1!0!!en!2!edit=0 and timestamp 20160530174328 -->

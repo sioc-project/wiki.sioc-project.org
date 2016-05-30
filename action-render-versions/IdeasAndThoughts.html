@@ -1,0 +1,106 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#SIOC_Ideas_and_Thoughts"><span class="tocnumber">1</span> <span class="toctext">SIOC Ideas and Thoughts</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Goal"><span class="tocnumber">1.1</span> <span class="toctext">Goal</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Scope"><span class="tocnumber">1.2</span> <span class="toctext">Scope</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Existing_Related_Work"><span class="tocnumber">1.3</span> <span class="toctext">Existing Related Work</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Solving_Problems_in_Current_Technologies"><span class="tocnumber">1.4</span> <span class="toctext">Solving Problems in Current Technologies</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Problems_.2F_Questions"><span class="tocnumber">1.5</span> <span class="toctext">Problems / Questions</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="#P1"><span class="tocnumber">1.5.1</span> <span class="toctext">P1</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-8"><a href="#Solutions"><span class="tocnumber">1.6</span> <span class="toctext">Solutions</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="#S1_-_Potential_Solutions_for_Problem_P1"><span class="tocnumber">1.6.1</span> <span class="toctext">S1 - Potential Solutions for Problem P1</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="#Challenges"><span class="tocnumber">1.7</span> <span class="toctext">Challenges</span></a>
+<ul>
+<li class="toclevel-3 tocsection-11"><a href="#C1_-_Sites_in_Different_Languages"><span class="tocnumber">1.7.1</span> <span class="toctext">C1 - Sites in Different Languages</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="SIOC_Ideas_and_Thoughts"> SIOC Ideas and Thoughts </span></h1>
+<p>This is a page for ideas, thoughts and discussion about <a href="http://wiki.sioc-project.org/index.php?title=SIOC&amp;action=edit&amp;redlink=1" class="new" title="SIOC (page does not exist)">SIOC</a>.
+</p>
+<h2> <span class="mw-headline" id="Goal"> Goal </span></h2>
+<p>What is our main goal?
+</p>
+<pre>1. To interconnect communities on the Internet.
+2. To facilitate finding related information, by searching in one site, the SIOC ontology and interface will allow one to locate related and relevant information in other, SIOC "friendly" sites (see problem P1 below).
+</pre>
+<h2> <span class="mw-headline" id="Scope"> Scope </span></h2>
+<p>Scope of SIOC includes:
+</p>
+<pre>1. An ontology and system architecture for facilitating finding related information on interconnected community sites.
+2. Community sites including forums, blogs and other discussion primitives.
+</pre>
+<p>Scope does not currently include:
+</p>
+<pre>1. Dumping out or exporting _all_ of a community site's configuration information.
+2. Describing user permission information.
+</pre>
+<p>All the information in the ontology should be relevant to the main goal, identifying related pieces of information.
+</p>
+<h2> <span class="mw-headline" id="Existing_Related_Work"> Existing Related Work </span></h2>
+<pre>* Threaded Description Language (TDL)
+* Google
+* RSS
+* Trackbacks
+* ["SKOS"]
+* <a href="http://coolheads.com/SRNPUBS/Emnekart2006/" class="external text" rel="nofollow">Subject Maps</a>
+* <a href="http://compendiuminstitute.org/" class="external text" rel="nofollow">Dialog Maps</a>
+</pre>
+<h2> <span class="mw-headline" id="Solving_Problems_in_Current_Technologies"> Solving Problems in Current Technologies </span></h2>
+<p>...
+</p>
+<h2> <span class="mw-headline" id="Problems_.2F_Questions"> Problems / Questions </span></h2>
+<h3> <span class="mw-headline" id="P1"> P1 </span></h3>
+<p>If we assume that many sites (including thousands of blog sites) have adopted SIOC, how will that help us to find the relevant information?  This boils down to: how will it scale?
+</p><p>If we want thousands of sites to adopt SIOC and use it, how will that look in the real world?  Connecting a couple of sites is not a problem: you can query them and sort the information.  But with each new site added, the load increases exponentially.  This does not scale well at all.
+</p><p>With each site added we have two problems arising:
+</p>
+<pre>1. More sites to query: takes more time and more resources.  Furthermore, it works the other way round as well: if you are being queried by (n-1) sites at once, you might go down.
+2. More potential relevant results: information overload.  How do you determine the most relevant results and how do you do that in real time?
+</pre>
+<p>We need to look at a SIOC enabled system from the overall SIOC architecture point of view: how will the whole interconnected system of communities work.  (Currently we are concentrating on how will a single system interact with others).
+</p><p>Issues of scaling Semantic Web P2P systems are discussed in the paper about <a href="http://www.hyperl.org/files/15-RDFGROWth_workshopISWC2004.pdf" class="external text" rel="nofollow">RDFGrowth</a>.
+</p>
+<h2> <span class="mw-headline" id="Solutions"> Solutions </span></h2>
+<h3> <span class="mw-headline" id="S1_-_Potential_Solutions_for_Problem_P1"> S1 - Potential Solutions for Problem P1 </span></h3>
+<p><b>S1-1 - Limit the Number of Sites to Query</b>
+</p><p>We can limit the number of sites to query (the five best sites), but then we will discard many more blogs/forums, one of which might be the ultimate site containing very valuable information on the topic.  (Googling would be better than relying on SIOC in this case.)
+</p><p>This can work, but we have to limit the scope of community sites that SIOC promises to interconnect, and (Uldis says) we are just deferring the scaling problem: we have not solved it.
+</p><p><b>S1-2 - Change the Moment When to Query</b>
+</p>
+<pre>1. Query at article creation time
+2. Re-query at regular intervals
+3. Query dynamically (most load on all systems)
+</pre>
+<h2> <span class="mw-headline" id="Challenges"> Challenges </span></h2>
+<h3> <span class="mw-headline" id="C1_-_Sites_in_Different_Languages"> C1 - Sites in Different Languages </span></h3>
+<p><b>Interconnecting Sites in Different Languages</b>
+</p><p>This is more interesting than connecting English sites, because information in other languages may have some details which has not passed through the "language barrier".  But how can it be done?
+</p>
+<pre>* Force community sites to use one language (and then interconnect them).
+ * Will work, but the site probably will not be popular!
+* Connect using a common categorisation.
+ * Should work to reflect the related posts, but what use will that be to the reader?
+</pre>
+<p>Still, a user (seeking information) should be able to set his/her settings to display or hide related links in other languages.
+</p><p>In fact, meta information (language, relevance strength index) should be kept along with the related link, to allow users to tailor the related information he/she wants to see by language and by the relevance / kind of the link.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 42/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1427-1!1!0!!en!2!edit=0 and timestamp 20160530174303 -->

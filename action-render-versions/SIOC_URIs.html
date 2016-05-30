@@ -1,0 +1,78 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#URIs_to_use_for_various_SIOC_concepts"><span class="tocnumber">1</span> <span class="toctext">URIs to use for various SIOC concepts</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#For_information_resources"><span class="tocnumber">1.1</span> <span class="toctext">For information resources</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="#With_content_negotiation"><span class="tocnumber">1.1.1</span> <span class="toctext">With content negotiation</span></a></li>
+<li class="toclevel-3 tocsection-4"><a href="#Without_content_negotiation"><span class="tocnumber">1.1.2</span> <span class="toctext">Without content negotiation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-5"><a href="#URIs_for_non-information-resources"><span class="tocnumber">1.2</span> <span class="toctext">URIs for non-information-resources</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Border_cases"><span class="tocnumber">1.3</span> <span class="toctext">Border cases</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Paging"><span class="tocnumber">1.4</span> <span class="toctext">Paging</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="URIs_to_use_for_various_SIOC_concepts"> URIs to use for various SIOC concepts </span></h1>
+<h2> <span class="mw-headline" id="For_information_resources"> For information resources </span></h2>
+<h3> <span class="mw-headline" id="With_content_negotiation"> With content negotiation </span></h3>
+<p>Content negotiate the post and its RDF description at the same URI
+</p><p><b>URI for a sioc:Post</b> 
+</p>
+<pre>http://example.com/post
+</pre>
+<p>Which serves either
+http://example.com/post.html
+or
+http://example.com/post.rdf
+</p><p><br />
+</p>
+<h3> <span class="mw-headline" id="Without_content_negotiation"> Without content negotiation </span></h3>
+<p>Use HTML version as URI and include autodiscovery link to its RDF description
+</p><p><b>URI for a sioc:Post</b>
+</p>
+<pre>http://example.com/post.html
+</pre>
+<p>Which contains an autodiscovery link to
+http://example.com/post.rdf
+</p><p><br />
+</p>
+<h2> <span class="mw-headline" id="URIs_for_non-information-resources"> URIs for non-information-resources </span></h2>
+<p>Use URI of the RDF document and append #something
+</p><p><b>URI for a foaf:Person</b>
+</p>
+<pre>http://example.com/john.rdf#person
+</pre>
+<p>Have the html page http://example.com/john.html contain an autodiscovery link to
+http://example.com/john.rdf and describe http://example.com/john.rdf#person there.
+</p><p>E. g. Include the following triples in the john.rdf page:
+</p>
+<pre>&lt;http://example.com/john.rdf&gt; foaf:primaryTopic &lt;http://example.com/john.rdf#person&gt;.
+&lt;http://example.com/john.rdf#person&gt; rdfs:seeAlso &lt;http://example.com/john.html&gt; .
+</pre>
+<h2> <span class="mw-headline" id="Border_cases"> Border cases </span></h2>
+<p>Discussion whether some resources are information resources.
+</p><p>Is a sioc:User the same as its account profile page?
+Is it a foaf:Document or a foaf:Agent?
+</p><p><br /> 
+</p>
+<h2> <span class="mw-headline" id="Paging"> Paging </span></h2>
+<p>Blogs and forums list their content
+broken down in several smaller pages.
+Their RDF pages should mirror that.
+</p><p>Use rdfs:seeAlso links to point to the next and previous RDF document page.
+</p><p>Discussion whether a new paging term like sioc:nextPage
+(subclass of rdfs:seeAlso)
+might be useful for some tools.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 143/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1556-1!1!0!!en!2!edit=0 and timestamp 20160530174758 -->

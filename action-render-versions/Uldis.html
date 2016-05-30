@@ -1,0 +1,54 @@
+<p>Windows XP
+</p><p><a href="http://wiki.activerdf.org/GettingStartedGuide" class="external free" rel="nofollow">http://wiki.activerdf.org/GettingStartedGuide</a>
+</p><p>1. Installing Ruby
+</p>
+<pre>* don't use CygWin - install Ruby binaries instead
+* link to Ruby downloads is broken (from the getting started guide)
+</pre>
+<p>2. Installing RubyGems
+</p>
+<pre>* download rubygems
+* open the archive (can use gunzip + tar from <a href="http://unxutils.sourceforge.net/" class="external free" rel="nofollow">http://unxutils.sourceforge.net/</a>)
+* execute “ruby setup.rb”
+</pre>
+<p>3. Install SQLite (if not installed)
+</p>
+<pre>* <a href="http://www.sqlite.org/download.html" class="external free" rel="nofollow">http://www.sqlite.org/download.html</a>
+</pre>
+<p>4. Install ActiveRDF gems
+</p><p>4.1. gem install sqlite3-ruby
+</p>
+<pre>* I got stuck unable to test if SQLite for Ruby is working. The problem was to try the test in the directory where SQLite's DLL module was (it should be accessible in the PATH instead). Changing to another directory and trying the test again helped.
+</pre>
+<p>4.2. gem install rails --include-dependencies -y
+</p><p>4.3. gem install activerdf --include-dependencies 
+</p><p>4.4. gem install activerdf_rdflite --include-dependencies -y
+5. Testing 
+</p><p>5. Test the install
+</p><p>5.1. Testing activerdf_rdflite
+</p><p>C:\Documents and Settings\Administrator&gt;ruby activerdf_example_rdflite.rb | less
+c:/ruby/lib/ruby/1.8/date/format.rb:1054: superclass mismatch for class DateTime (TypeError)
+</p>
+<pre>       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+       from c:/ruby/lib/ruby/1.8/parsedate.rb:22
+       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+       from c:/ruby/lib/ruby/1.8/time.rb:43
+       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+        ... 19 levels...
+       from c:/ruby/lib/ruby/gems/1.8/gems/activerdf-1.6.9/lib/active_rdf.rb:68
+       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:32:in `gem_original_require'
+       from c:/ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:32:in `require'
+       from activerdf_example_rdflite.rb:2
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 1/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1538-1!1!0!!en!2!edit=0 and timestamp 20160530174324 -->

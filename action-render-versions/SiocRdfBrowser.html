@@ -1,0 +1,81 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#About"><span class="tocnumber">1</span> <span class="toctext">About</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#To_Do_List"><span class="tocnumber">2</span> <span class="toctext">To Do List</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#For_next_release"><span class="tocnumber">2.1</span> <span class="toctext">For next release</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Done"><span class="tocnumber">2.2</span> <span class="toctext">Done</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="About"> About </span></h2>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="http://wiki.sioc-project.org/index.php/File:Online_browser-700.png" class="image"><img alt="" src="/images_sioc/thumb/7/71/Online_browser-700.png/180px-Online_browser-700.png" width="180" height="148" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://wiki.sioc-project.org/index.php/File:Online_browser-700.png" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 4: Example post displayed in the SIOC browser <a href="http://sw.deri.org/svn/sw/2005/08/sioc/media/browsers/online_browser-700.png" class="external autonumber" rel="nofollow">[1]</a></div></div></div>
+<p><br /> 
+The SIOC RDF browser is an on-the-fly or live browser, which offers a simple and effective way to explore community information available in SIOC. It gives a user-friendly look at the internal structure of the data without requiring the viewers to dive into a more complex RDF/XML syntax. 
+</p><p>The on-the-fly SIOC browser takes a URL of a SIOC data source, e.g., from a SIOC plugin to the blog engine, and presents viewers with a web page showing a hierarchy of the concepts and links contained within it. For a blog post, this information would include all that is important to know: title, author, date, content, topic categories and tags, and information about replies (comments and trackbacks) to that post.
+</p><p>Some of the links in SIOC data, called rdfs:seeAlso links, point to additional machine readable information (in RDF and SIOC). A browser can follow these links and display this SIOC information in the same user-friendly way. 
+</p><p>An sample post as seen in the SIOC browser is shown in Figure 4.
+</p>
+<h2> <span class="mw-headline" id="To_Do_List"> To Do List </span></h2>
+<p>Ideas:
+</p>
+<pre>* if &gt;1 property links to the same resource, display those property names together, e.g. joined by "|".
+* could take namespace(s) from the RDF/XML instead (but won't work for non-XML RDF serialisations)
+* please add a few good representative example URIs to the frontpage to make it easier to test the browser for first time visitors.
+</pre>
+<p>Improvements:
+</p>
+<pre>* filter out list of restricted IP addresses
+** may check who is requesting the info (source IP address)
+* fix UTF-8 bug in <a href="http://sparql.captsolo.net/browser/browser.py?url=http%3A//weltweit24m%E4rz.de/doap.rdf" class="external free" rel="nofollow">http://sparql.captsolo.net/browser/browser.py?url=http%3A//weltweit24m%E4rz.de/doap.rdf</a>
+* why is there this message when W3C validator says it is valid?! - see <a href="http://sparql.captsolo.net/browser/browser.py?url=http%3A//www.informatik.uni-leipzig.de/%7Eauer/foaf.rdf" class="external free" rel="nofollow">http://sparql.captsolo.net/browser/browser.py?url=http%3A//www.informatik.uni-leipzig.de/%7Eauer/foaf.rdf</a>
+* add new namespaces to SIOC Browser as well (doap, dc, dcterms, ...) - can take namespaces from the RDF file
+* improve the look of <a href="http://rdfs.org/blog/index.php?sioc_type=comment&amp;sioc_id=2" class="external free" rel="nofollow">http://rdfs.org/blog/index.php?sioc_type=comment&amp;sioc_id=2</a> in SIOC browser
+* Allow browsing of pages other than SIOC profiles
+* Put seeAlso links at the same place than the original posts URL
+* Show creator infos instead of blank node, eg: <a href="http://sparql.captsolo.net/browser/browser.py?url=http%253A%252F%252Fjohnbreslin.com%252Fblog%252Findex.php%253Fsioc_type%253Dcomment%2526sioc_id%253D89559" class="external free" rel="nofollow">http://sparql.captsolo.net/browser/browser.py?url=http%253A%252F%252Fjohnbreslin.com%252Fblog%252Findex.php%253Fsioc_type%253Dcomment%2526sioc_id%253D89559</a>
+* link the browser page from rdfs.org menu: <a href="http://rdfs.org/sioc/browser/" class="external free" rel="nofollow">http://rdfs.org/sioc/browser/</a>
+* improve CSS stylesheet
+* fix error-handling when retrieving URLs
+* improve the speed of SIOC browser
+  * caching (with an option to disable caching)
+  * mod_python or FastCGI
+* move 'Validate RDF' to a page footer
+* report errors in RSS feed / log file / database
+</pre>
+<p>ToDo:
+</p>
+<pre>* improve the look of error message pages (structured HTML + CSS)
+* add "important announcements" line to SIOC browser
+</pre>
+<p>Bugs:
+</p>
+<pre>* remove ':' from the property name in case if the namespace was not count in the ns_list 
+* fix error-handling when retrieving URLs
+</pre>
+<h3> <span class="mw-headline" id="For_next_release"> For next release </span></h3>
+<pre>* do content negotiation (send accept headers)
+* add handling of HTML pages 
+  * add control flow for case when there is HTML page, not RDF data
+  * show auto-discovered RDF/XML links
+  * show extracted RDFa links
+  * offer option to visit the page
+
+</pre>
+<h3> <span class="mw-headline" id="Done"> Done </span></h3>
+<pre>* Fix encoding problem in Uldis python browser
+* Fixed problem when parameter missing
+* Output default screen / URL input form (when URL parameter not supplied)
+* Add CSS
+* add control flow for case when there is invalid RDF/XML
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 20/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1494-1!1!0!!en!2!edit=0 and timestamp 20160530174324 -->

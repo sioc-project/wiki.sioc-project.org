@@ -1,0 +1,179 @@
+<p>This page serves as an overview over existing applications that use or implement SIOC. 
+</p><p><b>Check against recent updates listed at <a href="http://www.johnbreslin.com/blog/2007/05/17/state-of-the-sioc-o-sphere-4/" class="external text" rel="nofollow">State of the SIOC-o-sphere (#4)</a>.  Possibly add SIOC for phpBB, IKHarvester, Tom Morris' Twitter2RDF, Fishtank, Tuukka Hastrup's IRC2RDF, BAETLE, etc.</b>
+</p><p><i>Note for wiki editors: Many subsections of this page use <a href="http://en.wikipedia.org/wiki/Wikipedia:Transclusion" class="external text" rel="nofollow">transclusion</a> to display short teasers of the applications' actual wiki pages.</i>
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Data_Sources"><span class="tocnumber">1</span> <span class="toctext">Data Sources</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#SPARQL_Endpoints"><span class="tocnumber">1.1</span> <span class="toctext">SPARQL Endpoints</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="#OpenLink_Data_Spaces_.28ODS.29_Endpoints"><span class="tocnumber">1.1.1</span> <span class="toctext">OpenLink Data Spaces (ODS) Endpoints</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-4"><a href="#Exporters"><span class="tocnumber">1.2</span> <span class="toctext">Exporters</span></a>
+<ul>
+<li class="toclevel-3 tocsection-5"><a href="#WordPress"><span class="tocnumber">1.2.1</span> <span class="toctext">WordPress</span></a></li>
+<li class="toclevel-3 tocsection-6"><a href="#DotClear"><span class="tocnumber">1.2.2</span> <span class="toctext">DotClear</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#Drupal"><span class="tocnumber">1.2.3</span> <span class="toctext">Drupal</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#b2evolution"><span class="tocnumber">1.2.4</span> <span class="toctext">b2evolution</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#Talk_Digger"><span class="tocnumber">1.2.5</span> <span class="toctext">Talk Digger</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#SWAML"><span class="tocnumber">1.2.6</span> <span class="toctext">SWAML</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#OpenLink_Data_Spaces_.28ODS.29"><span class="tocnumber">1.2.7</span> <span class="toctext">OpenLink Data Spaces (ODS)</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="#vBulletin"><span class="tocnumber">1.2.8</span> <span class="toctext">vBulletin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="#APIs"><span class="tocnumber">2</span> <span class="toctext">APIs</span></a>
+<ul>
+<li class="toclevel-2 tocsection-14"><a href="#PHP"><span class="tocnumber">2.1</span> <span class="toctext">PHP</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Java"><span class="tocnumber">2.2</span> <span class="toctext">Java</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#Perl"><span class="tocnumber">2.3</span> <span class="toctext">Perl</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="#Data_Consumers"><span class="tocnumber">3</span> <span class="toctext">Data Consumers</span></a>
+<ul>
+<li class="toclevel-2 tocsection-18"><a href="#Crawlers"><span class="tocnumber">3.1</span> <span class="toctext">Crawlers</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#Browsers_-_Overview"><span class="tocnumber">3.2</span> <span class="toctext">Browsers - Overview</span></a>
+<ul>
+<li class="toclevel-3 tocsection-20"><a href="#SIOC_Browser"><span class="tocnumber">3.2.1</span> <span class="toctext">SIOC Browser</span></a></li>
+<li class="toclevel-3 tocsection-21"><a href="#Buxon"><span class="tocnumber">3.2.2</span> <span class="toctext">Buxon</span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="#SIOC_Explorer"><span class="tocnumber">3.2.3</span> <span class="toctext">SIOC Explorer</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="#Siocwave"><span class="tocnumber">3.2.4</span> <span class="toctext">Siocwave</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-24"><a href="#Importers"><span class="tocnumber">3.3</span> <span class="toctext">Importers</span></a>
+<ul>
+<li class="toclevel-3 tocsection-25"><a href="#Wordpress_Importer"><span class="tocnumber">3.3.1</span> <span class="toctext">Wordpress Importer</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-26"><a href="#Utilities"><span class="tocnumber">4</span> <span class="toctext">Utilities</span></a>
+<ul>
+<li class="toclevel-2 tocsection-27"><a href="#Semantic_Radar"><span class="tocnumber">4.1</span> <span class="toctext">Semantic Radar</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="#Ping_the_Semantic_Web"><span class="tocnumber">4.2</span> <span class="toctext">Ping the Semantic Web</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="Data_Sources"> Data Sources </span></h1>
+<h2> <span class="mw-headline" id="SPARQL_Endpoints"> SPARQL Endpoints </span></h2>
+<p><i>These are solutions that expose SIOC Data via SPARQL Endpoints.</i>
+</p>
+<h3> <span class="mw-headline" id="OpenLink_Data_Spaces_.28ODS.29_Endpoints"> OpenLink Data Spaces (ODS) Endpoints </span></h3>
+<p><a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsIndex/" class="external text" rel="nofollow">ODS</a> SPARQL endpoints provide access to SIOC instance data from a range of ODS-Application instances 
+</p><p>The Live <a href="http://demo.openlinksw.com/sparql/" class="external text" rel="nofollow">ODS Demo Server</a> and <a href="http://myopenlink.net:8890/sparql/" class="external text" rel="nofollow">MyOpenLink.net (Alpha) Service</a> are examples of ODS instances that expose SIOC instance data to SPARQL Query Service clients.
+</p><p><a href="http://wiki.sioc-project.org/index.php/OpenLink_Data_Spaces" title="OpenLink Data Spaces">Read more... </a>
+</p>
+<h2> <span class="mw-headline" id="Exporters"> Exporters </span></h2>
+<p><i>These are solutions that export plain old RDF graphs of SIOC Data.</i>
+</p><p>SIOC plugins export the information about the content and structure of blog and forum sites in a machine readable form. Here we list all the existing SIOC export plugins and tools.
+</p><p>Such plugins or exporters can be developed for any blog engine that you want to export the information from. Plugins can be built on their own or can use a <a href="http://wiki.sioc-project.org/index.php/Implementations#APIs" title="Implementations"> SIOC Export API</a>, the latter being the recommended approach.
+</p><p>Most of the exporters implement a SIOC auto-discovery mechanism which allows us to identify webpages that contain SIOC metadata using automated tools such as the <a href="http://wiki.sioc-project.org/index.php/Implementations#Semantic_Radar" title="Implementations">Semantic Radar plugin for Firefox</a> . 
+</p>
+<h3> <span class="mw-headline" id="WordPress"> WordPress </span></h3>
+<p>We have created a <a href="http://sioc-project.org/wordpress" class="external text" rel="nofollow">SIOC export plugin for WordPress</a> - one of the most popular blogging tools. It makes use of existing WordPress PHP functions to access the information from the underlying relational database and generate SIOC metadata in RDF for each concept instance.
+</p><p><a href="http://wiki.sioc-project.org/index.php/Wordpress_Exporter" title="Wordpress Exporter">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="DotClear"> DotClear </span></h3>
+<p>DotClear is a blogging platform, that is widely used in the French blogosphere and written in PHP.  Using the PHP API, a <a href="http://sioc-project.org/dotclear" class="external text" rel="nofollow">SIOC exporter was written</a> and packaged as a plugin so that users can install it from their software backend. The exporter creates data for users, posts, comments and trackbacks.
+</p><p><a href="http://wiki.sioc-project.org/index.php/DotClear_Exporter" title="DotClear Exporter">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="Drupal"> Drupal </span></h3>
+<p>This plugin for Drupal can be used to export SIOC data from <a href="http://sioc-project.org/drupal" class="external text" rel="nofollow">Drupal blogs and forums</a>. As Drupal can be used as a multi-user blogging platform, the plugin will export all blogs and all users account, so that each post can be clearly identified by its users.  This plugin is currently used in anime.ie, a community website with 120 users.
+</p><p><a href="http://wiki.sioc-project.org/index.php/Drupal_Exporter" title="Drupal Exporter">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="b2evolution"> b2evolution </span></h3>
+<p>b2evolution is a multi-blog platform that evolved from the same roots as WordPress - from b2/cafelog. A <a href="http://sw.deri.org/svn/sw/2005/08/sioc/b2evolution/" class="external text" rel="nofollow">SIOC exporter for b2evolution</a>, built upon the SIOC API for PHP, is now available.
+</p><p><br />
+<a href="http://wiki.sioc-project.org/index.php/B2evolution_Exporter" title="B2evolution Exporter">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="Talk_Digger"> Talk Digger </span></h3>
+<p><a href="http://www.talkdigger.com/" class="external text" rel="nofollow">Talk Digger</a> is a web service that help people to find, follow and enter conversations of the Web. Basically it is a service that tell to people who is linking to a specific web page. Users can create a personal profile, explicit their interests, make new friends, track conversations, leave comments in conversations, etc.
+</p><p><a href="http://wiki.sioc-project.org/index.php/Talk_Digger" title="Talk Digger">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="SWAML"> SWAML </span></h3>
+<p><a href="http://swaml.berlios.de/#swaml" class="external text" rel="nofollow">SWAML</a> is a mail list exporter. SWAML reads a collection of email messages stored in a mailbox (from a mailing list compatible with RFC4155) and generates a RDF description.
+</p><p><a href="http://wiki.sioc-project.org/index.php/SWAML" title="SWAML">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="OpenLink_Data_Spaces_.28ODS.29"> OpenLink Data Spaces (ODS) </span></h3>
+<p><a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsIndex/" class="external text" rel="nofollow">OpenLink Data Spaces</a> is a Distributed Collaborative Application Suite built atop the OpenLink <a href="http://virtuoso.openlinksw.com/wiki/main/" class="external text" rel="nofollow">Virtuoso Universal Server</a> platform. 
+</p><p>It exposes SIOC instance data in the form of Real and Virtual RDF Graphs for the following applications realms: <a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsBlog" class="external text" rel="nofollow">Weblog</a>, <a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsWiki" class="external text" rel="nofollow">Wiki</a>, <a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsFeedManager" class="external text" rel="nofollow">Feed Aggregation</a>, <a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsBoomarkManager" class="external text" rel="nofollow">Shared Bookmarks</a>, <a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsGallery" class="external text" rel="nofollow">Photo Gallery</a>, <a href="http://virtuoso.openlinksw.com/wiki/main/Main/ODSSIOCRef#Discussion%20/%20Conversation%20Data%20Space" class="external text" rel="nofollow">Disucssion Forums</a>, and <a href="http://virtuoso.openlinksw.com/wiki/main/Main/OdsBriefcase" class="external text" rel="nofollow">WebDAV based File</a> Servers. 
+</p><p><br />
+<a href="http://wiki.sioc-project.org/index.php/OpenLink_Data_Spaces" title="OpenLink Data Spaces">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="vBulletin"> vBulletin </span></h3>
+<p>Exports SIOC and FOAF data from vBulletin discussion forums.
+</p><p><a href="http://wiki.sioc-project.org/index.php/VBSIOC" title="VBSIOC">Read more... </a>
+</p>
+<h1> <span class="mw-headline" id="APIs"> APIs </span></h1>
+<p>We aim to overcome a "chicken-and-egg" problem (no applications without data, and no data without applications) by making it easy to generate and use SIOC data.
+Most blog and forum engines already have RSS export functionality and the majority of them are based on open source software or can be extended by using plugins, it is straightforward to modify existing export functions or create plugins to generate metadata conforming to the SIOC ontology. 
+</p><p>A SIOC Export API makes the development of such SIOC plugins and exporters as easy as possible as developers don't have to change their plugin as the SIOC format evolves - all the changes are made once, at the API level. In either case, the exporter or plugin uses the internal logic (functions, classes, etc.) of the blog engine or else direct database access to get information about the weblog, and then uses the SIOC API or custom code to produce SIOC export data.
+</p><p>At the moment PHP and Perl APIs are available. There is a need for SIOC export APIs in other languages, such as Ruby On Rails (as used in the Typo blog engine).
+</p>
+<h2> <span class="mw-headline" id="PHP"> PHP </span></h2>
+<p>The PHP Export API provides an easy way for developers to create SIOC exporters, as it maps SIOC Classes to PHP objects, with simple functions to export the created data.
+In this way it enables developers to create SIOC export tools without the need to get into technical details about how information is represented in RDF/XML – they are operating at the level of SIOC concepts instead. Thus, developers only have to deal with extracting content from their weblog databases and then passing it to the API that will render SIOC data.
+</p><p>When using the API for your exporter, you won't have to deal with SIOC specs or RDF formatting, and you could easily update your exporter to the latest version of SIOC specifications by simply updating the API file in your exporter.
+The SIOC PHP API is already being used by SIOC export plugins for the export plugins for <a href="http://wiki.sioc-project.org/index.php/DotClear_Exporter" title="DotClear Exporter">DotClear</a>, <a href="http://wiki.sioc-project.org/index.php/B2evolution_Exporter" title="B2evolution Exporter">b2evolution</a> and <a href="http://wiki.sioc-project.org/index.php/VBSIOC" title="VBSIOC">vBulletin</a>.
+</p><p><a href="http://wiki.sioc-project.org/index.php/PHPExportAPI" title="PHPExportAPI">Read more... </a>
+</p>
+<h2> <span class="mw-headline" id="Java"> Java </span></h2>
+<p>A <a href="http://www.theoretiker.org/~max/semweb4j.org/site/sioc-api/project-info.html" class="external text" rel="nofollow">SIOC API for Java</a> has been created, based on <a href="http://ontoware.org/page.php" class="external text" rel="nofollow">semweb4j</a>. For each object in the SIOC ontology, this API generates classes with links between the objects realised as Java properties.
+</p>
+<h2> <span class="mw-headline" id="Perl"> Perl </span></h2>
+<p>Version 1.0 of a SIOC API for Perl has been released on CPAN. The CPAN page for the SIOC API is 
+<a href="http://search.cpan.org/%7Egeewiz/SIOC-v1.0.0/" class="external text" rel="nofollow">here</a>. A description of
+the project itself is available <a href="http://sioc.socialware.at" class="external text" rel="nofollow">here</a> in German.
+</p>
+<h1> <span class="mw-headline" id="Data_Consumers"> Data Consumers </span></h1>
+<h2> <span class="mw-headline" id="Crawlers"> Crawlers </span></h2>
+<h2> <span class="mw-headline" id="Browsers_-_Overview"> Browsers - Overview </span></h2>
+<p>Since people can quite easily create SIOC data from their weblog using the described exporters or the API introduced in the previous chapter, we will now consider different ways to query and view this data.
+</p><p><a href="http://sioc-project.org/browser" class="external text" rel="nofollow">SIOC browser</a> allow people to browse and receive additional information from SIOC data sources or data stores. Browsers can work in two modes - on-the-fly mode and crawler mode - or can use a combination of both. The former displays the SIOC data received from a community site (thus providing a uniform interface to all SIOC-enabled sites) while the latter stores SIOC data in a repository, allowing one to make more complicated queries via the use of <a href="http://www.w3.org/TR/rdf-sparql-query" class="external text" rel="nofollow">SPARQL</a>, the leading Semantic Web query language.
+</p><p>SIOC data can also be displayed in a graphical format – as a timeline of content posts or as a graphical network of relations between sites, posts and topics. These graphical interfaces offer another user-friendly way to view SIOC data and the crawler mode browser may be extended to provide both a text and graphical view of the same information. Moreover, as SIOC offers an open data format using a formal description in RDF, everyone can create their own tools as appropriate to their needs. Thus, the browsers provided here are an example of what can be done with SIOC, and give a nice overview of its different capabilities.
+</p>
+<h3> <span class="mw-headline" id="SIOC_Browser"> SIOC Browser </span></h3>
+<p>The SIOC RDF browser is an on-the-fly or live browser, which offers a simple and effective way to explore community information available in SIOC. It gives a user-friendly look at the internal structure of the data without requiring the viewers to dive into a more complex RDF/XML syntax. 
+</p><p><a href="http://wiki.sioc-project.org/index.php/SiocRdfBrowser" title="SiocRdfBrowser">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="Buxon"> Buxon </span></h3>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="http://wiki.sioc-project.org/index.php/File:Buxon_02.png" class="image"><img alt="" src="/images_sioc/thumb/f/ff/Buxon_02.png/180px-Buxon_02.png" width="180" height="126" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://wiki.sioc-project.org/index.php/File:Buxon_02.png" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 5: Buxon used to read SIOC-Dev archives<a href="http://swaml.berlios.de/images/screenshots/buxon_02.png" class="external autonumber" rel="nofollow">[1]</a></div></div></div>
+<p>On <a href="http://swaml.berlios.de/" class="external text" rel="nofollow">SWAML</a> 0.0.3 was released a sioc:Forum browser called <a href="http://swaml.berlios.de/#buxon" class="external text" rel="nofollow">Buxon</a> (now it is an independent package ). 
+</p><p>Written in PyGTK, it reads a sioc:Forum RDF files and show it as a tree by threads, a screenshot can be seen in Figure 5.
+</p>
+<h3> <span class="mw-headline" id="SIOC_Explorer"> SIOC Explorer </span></h3>
+<p><a href="https://launchpad.net/sioc-ex" class="external text" rel="nofollow">SIOC explorer</a> is a web application similar to a feed-reader: it allows people to subscribe to SIOC feeds and read their content. Because SIOC data is very rich, people can filter the content based on e.g. authors, topics, creation date, or any other properties.
+</p><p><a href="http://wiki.sioc-project.org/index.php/SiocExplorer" title="SiocExplorer">Read more... </a>
+</p>
+<h3> <span class="mw-headline" id="Siocwave"> Siocwave </span></h3>
+<p><b>Siocwave</b> (<a href="http://code.google.com/p/siocwave/" class="external text" rel="nofollow">at Google Code</a>) is a SIOC browser similar to <a href="http://wiki.sioc-project.org/index.php?title=Buxon&amp;action=edit&amp;redlink=1" class="new" title="Buxon (page does not exist)">Buxon</a>. It tries to be flexible about retrieving linked SIOC data from the Web, and is thus capable of “seeing” more SIOC sites than Buxon. It is a desktop tool based on Python, wxWidgets and RDFLib.
+</p>
+<h2> <span class="mw-headline" id="Importers"> Importers </span></h2>
+<h3> <span class="mw-headline" id="Wordpress_Importer"> Wordpress Importer</span></h3>
+<p>This plugin enables you to create blog posts in Wordpress by taking SIOC data from other weblogs (but also other sources like mailing lists, CMS, etc. are possible). 
+It demonstrates that you don't have to be a developer to benefit from the web of RDF data - any blog user can have use for it.
+</p><p><a href="http://wiki.sioc-project.org/index.php/SIOC_Import_Plugin" title="SIOC Import Plugin">Read more... </a>
+</p>
+<h1> <span class="mw-headline" id="Utilities"> Utilities </span></h1>
+<h2> <span class="mw-headline" id="Semantic_Radar"> Semantic Radar </span></h2>
+<p><a href="http://sioc-project.org/firefox" class="external text" rel="nofollow">Semantic Radar</a> is a semantic metadata detector for Mozilla Firefox. It detects the presence of SIOC, FOAF and DOAP as well as generic RDF and RDFa data in a webpage, and displays icons in the browser's status bar when one of these data formats is found. By clicking on an icon the user can browse the RDF data in an online semantic browser.
+</p><p><a href="http://wiki.sioc-project.org/index.php/SemanticRadar" title="SemanticRadar">Read more... </a>
+</p>
+<h2> <span class="mw-headline" id="Ping_the_Semantic_Web"> Ping the Semantic Web </span></h2>
+<p><a href="http://pingthesemanticweb.com" class="external text" rel="nofollow">PingTheSemanticWeb.com</a> is a web service archiving the location of recently created/updated RDF documents on the Web. If one of those documents is updated, its author can notify the service that the document has been updated by pinging it with the URL of the document. 
+</p><p>PingtheSemanticWeb.com is used by crawlers or other types of software agents to know when and where the latest updated RDF documents can be found. So they request a list of recently updated documents as a starting location to crawl the Semantic Web.
+</p><p>You can use the URL of an HTML or RDF document when pinging PingtheSemanticWeb.com web service. If the service finds that the URL points to an HTML document, it will check if it can find a link to a RDF document. If it finds one, it will follow the link and check the RDF document to see if SIOC, DOAP and/or FOAF elements are defined in the document. If the service found that the RDF document has SIOC, DOAP and/or FOAF elements, it will archive the ping and make it available to crawlers in the export files. Otherwise it will archive it in the general RDF pings list.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 171/1000000
+Post-expand include size: 5688/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1428-1!1!0!!en!2!edit=0 and timestamp 20160530174305 -->

@@ -1,0 +1,279 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#What_the_data_looks_like"><span class="tocnumber">1</span> <span class="toctext">What the data looks like</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Top-down_links_between_the_documents"><span class="tocnumber">1.1</span> <span class="toctext">Top-down links between the documents</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#File_format"><span class="tocnumber">1.2</span> <span class="toctext">File format</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#URIs"><span class="tocnumber">1.3</span> <span class="toctext">URIs</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#foaf:Document"><span class="tocnumber">1.4</span> <span class="toctext">foaf:Document</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#sioc:Site"><span class="tocnumber">1.5</span> <span class="toctext">sioc:Site</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#sioc:Forum"><span class="tocnumber">1.6</span> <span class="toctext">sioc:Forum</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#sioc:Thread"><span class="tocnumber">1.7</span> <span class="toctext">sioc:Thread</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#sioc:Post"><span class="tocnumber">1.8</span> <span class="toctext">sioc:Post</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#sioc:User"><span class="tocnumber">1.9</span> <span class="toctext">sioc:User</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#foaf:Person"><span class="tocnumber">1.10</span> <span class="toctext">foaf:Person</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Known_problems"><span class="tocnumber">2</span> <span class="toctext">Known problems</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#Error_reports_by_users"><span class="tocnumber">2.1</span> <span class="toctext">Error reports by users</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="#More_information"><span class="tocnumber">3</span> <span class="toctext">More information</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="What_the_data_looks_like"> What the data looks like </span></h2>
+<h3> <span class="mw-headline" id="Top-down_links_between_the_documents"> Top-down links between the documents </span></h3>
+<p>In order to "navigate" the complete content you have to start at 
+the top-level <b>sioc:Site</b> document. It links to each and every <b>sioc:Forum</b> and <b>sioc:User</b>. 
+Note that the Site document is paged, so page 1 points to the first 20 forums, 20 users and to page 2, which in turn contains users and forums 21-40 and so on.
+</p><p>A <b>sioc:User</b> document contains a link to a FOAF file with information about the <b>foaf:Person</b> that owns the user account.
+</p><p><b>sioc:Forum</b>s link to the <b>sioc:Thread</b>s they contain, which in turn link to each individual <b>sioc:Post</b> published in these threads.
+</p><p><a href="http://wiki.sioc-project.org/index.php/File:Boards_ie_sioc_structure.jpg" class="image" title="Structure of content"><img alt="Structure of content" src="/images_sioc/thumb/b/bd/Boards_ie_sioc_structure.jpg/500px-Boards_ie_sioc_structure.jpg" width="500" height="336" /></a>
+</p>
+<h3> <span class="mw-headline" id="File_format"> File format </span></h3>
+<p>All files use RDF/XML data format. It is a representation of RDF graph data in XML syntax. 
+</p>
+<ul><li> FAQ: <a href="http://www.w3.org/2001/sw/SW-FAQ#whrdf|" class="external text" rel="nofollow">"What is RDF?"</a>
+</li></ul>
+<p>Participants can choose any tools for processing this information. Be aware that there is a number of widely available RDF tools for most programming languages:
+</p>
+<ul><li> <a href="http://www.w3.org/2001/sw/SW-FAQ#tools|" class="external text" rel="nofollow">"Where do I find tools for Semantic Web development?"</a>
+</li></ul>
+<h3> <span class="mw-headline" id="URIs"> URIs </span></h3>
+<p>URIs are used to identify resources. We differentiate between: 
+</p>
+<ol><li> URIs for HTML pages 
+</li><li> URIs pointing to their corresponding RDF/XML page (using rdfs:seeAlso)
+</li><li> URIs for SIOC concepts
+</li></ol>
+<p>1. This is the ususal URL where the vBulletin forums, threads, posts and user profile pages can be retrieved, e. g.
+</p>
+<pre><a href="http://boards.ie/vbulletin/forumdisplay.php?f=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=1</a>
+<a href="http://boards.ie/vbulletin/showpost.php?p=54636504" class="external free" rel="nofollow">http://boards.ie/vbulletin/showpost.php?p=54636504</a>
+<a href="http://boards.ie/vbulletin/member.php?u=31714" class="external free" rel="nofollow">http://boards.ie/vbulletin/member.php?u=31714</a>
+</pre>
+<p>When there are &lt;sioc:link&gt; and &lt;sioc:links_to&gt; properties in the data, they always point to HTML pages.
+</p><p>2. The URIs for RDF/XML are constructed by appending <i>sioc.php?</i> followed by the type of the SIOC concept (site, forum, thread, post and user), the vBulletin ID of the object and optionally a paging parameter. To get e. g. the RDF data for thread #190769 we would append the following to the base URL http://boards.ie/vbulletin/:
+</p>
+<pre>sioc.php?sioc_type=thread&amp;sioc_id=190769&amp;page=2
+</pre>
+<p>For the FOAF files the structure of the URI looks a bit different, it just uses foaf.php?u=<i>userid</i>
+This gives us URIs like that for the first pages of the RDF/XML documents:
+</p>
+<pre><a href="http://boards.ie/vbulletin/sioc.php?sioc_type=site" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=site</a>  (no id appended as there is only one site)
+<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=1</a>
+<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=thread&amp;sioc_id=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=thread&amp;sioc_id=1</a>
+<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=1</a>
+<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=1</a>
+<a href="http://boards.ie/vbulletin/foaf.php?u=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=1</a>
+</pre>
+<p>The &lt;rdfs:seeAlso&gt; property is used to point to URIs like these 
+</p><p>3. The unique identifiers for the SIOC concepts themselves are the same as the HTML pages displaying them for sioc:Site sioc:Forum sioc:Thread and sioc:Post.
+sioc:User and foaf:Person are exceptions as they are not considered information resources. Their URIs are constructed by appending #user to the URI of the HTML user profile page or #person to the RDF/XML URI of the FOAF file:
+</p>
+<pre><a href="http://boards.ie/vbulletin/foaf.php?u=3289#person" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=3289#person</a>
+<a href="http://boards.ie/vbulletin/member.php?u=3289#user" class="external free" rel="nofollow">http://boards.ie/vbulletin/member.php?u=3289#user</a>
+</pre>
+<h3> <span class="mw-headline" id="foaf:Document"> foaf:Document </span></h3>
+<p>Each page is a foaf:Document. Its "primary topic" is always a SIOC concept (site, forum, etc.) which is also described in further detail in the same document. 
+</p><p>If we take a look at the top-level document <a href="http://boards.ie/vbulletin/sioc.php?sioc_type=site" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=site</a> we see a section &lt;foaf:Document&gt; as shown in the example below.
+Besides information about the title and description of this document, it tells us that it has the &lt;foaf:primaryTopic&gt; <a href="http://boards.ie/vbulletin/" class="external free" rel="nofollow">http://boards.ie/vbulletin/</a>, which is the URI for the sioc:Site itself.
+</p>
+<pre>&lt;foaf:Document rdf:about=""&gt;
+	&lt;dc:title&gt;SIOC profile for "boards.ie"&lt;/dc:title&gt;
+	&lt;dc:description&gt;A SIOC profile describes the structure and contents of a community site (e.g., weblog) in a machine processable form. For more information refer to the &lt;a href=&quot;<a href="http://rdfs.org/sioc&amp;quot" class="external free" rel="nofollow">http://rdfs.org/sioc&amp;quot</a>;&gt;SIOC project page&lt;/a&gt;&lt;/dc:description&gt;
+	&lt;<b>foaf:primaryTopic</b> rdf:resource="<a href="http://boards.ie/vbulletin/" class="external free" rel="nofollow">http://boards.ie/vbulletin/</a>"/&gt;
+	&lt;admin:generatorAgent rdf:resource="<a href="http://wiki.sioc-project.org/index.php/PHPExportAPI?version=1.01" class="external free" rel="nofollow">http://wiki.sioc-project.org/index.php/PHPExportAPI?version=1.01</a>"/&gt;
+	&lt;admin:generatorAgent rdf:resource="<a href="http://sw.deri.org/svn/sw/2005/08/sioc/vbulletin/" class="external free" rel="nofollow">http://sw.deri.org/svn/sw/2005/08/sioc/vbulletin/</a>"/&gt;
+&lt;/foaf:Document&gt;
+</pre>
+<p><br />
+</p>
+<h3> <span class="mw-headline" id="sioc:Site"> sioc:Site </span></h3>
+<p>In continuation of the example from above, we now look at the section of the same document that actually describes the sioc:Site.
+</p><p>It lists links to each (public) forum of the site using &lt;sioc:host_of&gt;, the example below shows that the site has a forum with the URI <a href="http://boards.ie/vbulletin/forumdisplay.php?f=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=1</a> . It also has a usergroup that lists every registered user via &lt;sioc:has_member&gt;.
+</p>
+<pre>&lt;sioc:Site rdf:about="<a href="http://boards.ie/vbulletin/" class="external free" rel="nofollow">http://boards.ie/vbulletin/</a>"&gt;
+	&lt;<b>sioc:host_of</b> rdf:resource="<a href="http://boards.ie/vbulletin/forumdisplay.php?f=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=1</a>"/&gt;
+	&lt;sioc:host_of rdf:resource="<a href="http://boards.ie/vbulletin/forumdisplay.php?f=2" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=2</a>"/&gt;
+	[... many more forums ...]
+	&lt;sioc:has_Usergroup rdf:resource="<a href="http://boards.ie/vbulletin/memberlist.php#usergroup" class="external free" rel="nofollow">http://boards.ie/vbulletin/memberlist.php#usergroup</a>"/&gt;
+&lt;/sioc:Site&gt;
+
+&lt;sioc:Usergroup rdf:about="<a href="http://boards.ie/vbulletin/memberlist.php#usergroup" class="external free" rel="nofollow">http://boards.ie/vbulletin/memberlist.php#usergroup</a>"&gt;
+	&lt;<b>sioc:has_member</b>&gt;
+		&lt;sioc:User rdf:about="<a href="http://boards.ie/vbulletin/member.php?u=1#user" class="external free" rel="nofollow">http://boards.ie/vbulletin/member.php?u=1#user</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=1" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=1</a>"/&gt;
+		&lt;/sioc:User&gt;
+	&lt;/sioc:has_member&gt;
+	[... many more users ...]
+&lt;/sioc:Usergroup&gt;
+</pre>
+<p>The data for sioc:Site is paged, each page displays 20 users and 20 fourms. A rdfs:seeAlso is used to point to the URI for the next page:
+</p>
+<pre>&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=site&amp;page=2" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=site&amp;page=2</a>"/&gt;
+</pre>
+<h3> <span class="mw-headline" id="sioc:Forum"> sioc:Forum </span></h3>
+<p>Each discussion forum is a generic sioc:Forum. But in the case of our vBulletin board it is also an instance of the more specific type sioct:MessageBoard.
+</p><p>On a forum's page you can see which threads it contains and links to those threads. This is expressed by using &lt;sioc:parent_of&gt;.  In the example below you can see that this forum contains threads #190394 and #190769.
+If there are more than 20 threads the forum's data will be paged (again using rdfs:seeAlso).
+</p><p>You can also see if this forum is a sub-forum of another one, by looking for &lt;sioc:has_parent&gt;. In our example you can see that it is in fact a subforum of forum #177.
+</p>
+<pre>&lt;sioct:MessageBoard rdf:about="<a href="http://boards.ie/vbulletin/forumdisplay.php?f=475" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=475</a>"&gt;
+	&lt;rdf:type rdf:resource="<a href="http://rdfs.org/sioc/ns#Forum" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#Forum</a>" /&gt;
+	&lt;sioc:link rdf:resource="<a href="http://boards.ie/vbulletin/forumdisplay.php?f=475" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=475</a>"/&gt;
+	&lt;dc:title&gt;Galway City&lt;/dc:title&gt;
+	&lt;dc:description&gt;Fast growing city in the west.&lt;/dc:description&gt;
+	<b>&lt;sioc:has_parent&gt;</b>
+		&lt;sioc:Forum rdf:about="<a href="http://boards.ie/vbulletin/forumdisplay.php?f=177" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=177</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=177" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=177</a>"/&gt;
+		&lt;/sioc:Forum&gt;
+	&lt;/sioc:has_parent&gt;
+	<b>&lt;sioc:parent_of&gt;</b>
+		&lt;sioc:Thread rdf:about="<a href="http://boards.ie/vbulletin/showthread.php?t=190394" class="external free" rel="nofollow">http://boards.ie/vbulletin/showthread.php?t=190394</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=thread&amp;sioc_id=190394" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=thread&amp;sioc_id=190394</a>"/&gt;
+		&lt;/sioc:Thread&gt;
+	&lt;/sioc:parent_of&gt;
+	&lt;sioc:parent_of&gt;
+		&lt;sioc:Thread rdf:about="<a href="http://boards.ie/vbulletin/showthread.php?t=190769" class="external free" rel="nofollow">http://boards.ie/vbulletin/showthread.php?t=190769</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=thread&amp;sioc_id=190769" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=thread&amp;sioc_id=190769</a>"/&gt;
+		&lt;/sioc:Thread&gt;
+	&lt;/sioc:parent_of&gt;
+	[... many more threads ...]
+       &lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=475&amp;page=2" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=475&amp;page=2</a>"/&gt;
+&lt;/sioct:MessageBoard&gt;
+</pre>
+<h3> <span class="mw-headline" id="sioc:Thread"> sioc:Thread </span></h3>
+<p>The data for a thread shows which posts it contains via &lt;sioc:container_of&gt;. It can be paged when there are more than 20 posts in total. You can see the forum which contains this thread by looking for &lt;sioc:has_parent&gt;       
+</p>
+<pre>&lt;sioc:Thread rdf:about="<a href="http://boards.ie/vbulletin/showthread.php?t=2055195633" class="external free" rel="nofollow">http://boards.ie/vbulletin/showthread.php?t=2055195633</a>"&gt;
+	&lt;sioc:link rdf:resource="<a href="http://boards.ie/vbulletin/showthread.php?t=2055195633" class="external free" rel="nofollow">http://boards.ie/vbulletin/showthread.php?t=2055195633</a>"/&gt;
+	&lt;sioc:num_views&gt;1079&lt;/sioc:num_views&gt;
+	&lt;dc:title&gt;Weekly Soccer game (kick about)&lt;/dc:title&gt;
+	&lt;dcterms:created&gt;2007-12-05T13:03:03Z&lt;/dcterms:created&gt;
+	&lt;sioc:has_parent&gt;
+		&lt;sioc:Forum rdf:about="<a href="http://boards.ie/vbulletin/forumdisplay.php?f=475" class="external free" rel="nofollow">http://boards.ie/vbulletin/forumdisplay.php?f=475</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=475" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=475</a>"/&gt;
+		&lt;/sioc:Forum&gt;
+	&lt;/sioc:has_parent&gt;
+	&lt;sioc:container_of&gt;
+		&lt;sioc:Post rdf:about="<a href="http://boards.ie/vbulletin/showpost.php?p=54582327" class="external free" rel="nofollow">http://boards.ie/vbulletin/showpost.php?p=54582327</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=54582327" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=54582327</a>"/&gt;
+			&lt;sioc:next_by_date rdf:resource="<a href="http://boards.ie/vbulletin/showpost.php?p=54589700" class="external free" rel="nofollow">http://boards.ie/vbulletin/showpost.php?p=54589700</a>"/&gt;
+		&lt;/sioc:Post&gt;
+	&lt;/sioc:container_of&gt;
+&lt;/sioc:Thread&gt;
+</pre>
+<h3> <span class="mw-headline" id="sioc:Post"> sioc:Post </span></h3>
+<p>Each post in a thread is a generic sioc:Post. But similar with sioc:Forum/sioct:MessageBoard
+each sioc:Post is at the same time a sioct:BoardPost.
+</p><p>A post has a creator and it has a link to the creator's user account profile page and another link to a FOAF file. It also has creation date and time denoted with dcterms:created.
+</p><p>A post can have links to posts that it replies to. <br />
+You can see that &lt;sioc:reply_of&gt; is used to declare the example post as a reply of another post with the URI <i>http://boards.ie/vbulletin/showpost.php?p=54636434 </i>
+This information was derived from the fact that post #54636434 was quoted in the content of our example post. As mulit-quotes are possible, some post are replys to more than one other posts.<br />
+Some posts are don't contain quotes, but still can be replys to others, as there is information about the reply structure in the database, but this is not 100% accurate, because it is impossible to find out what the author of a post actually wanted to replying to.
+</p><p>If a post's content contains a link to any http or ftp resource, it should be listed as a &lt;sioc:links_to&gt;, which can be seen in the example (note that we didn't find all links, due to an imperfect regex used to extract links from the content). 
+</p>
+<pre>&lt;sioct:BoardPost rdf:about="<a href="http://boards.ie/vbulletin/showpost.php?p=54636504" class="external free" rel="nofollow">http://boards.ie/vbulletin/showpost.php?p=54636504</a>"&gt;
+	&lt;rdf:type rdf:resource="<a href="http://rdfs.org/sioc/ns#Post" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#Post</a>" /&gt;
+	&lt;sioc:has_creator&gt;
+		&lt;sioc:User rdf:about="<a href="http://boards.ie/vbulletin/member.php?u=29810#user" class="external free" rel="nofollow">http://boards.ie/vbulletin/member.php?u=29810#user</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=29810" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=29810</a>"/&gt;
+		&lt;/sioc:User&gt;
+	&lt;/sioc:has_creator&gt;
+	&lt;foaf:maker&gt;
+		&lt;foaf:Person rdf:about="<a href="http://boards.ie/vbulletin/foaf.php?u=29810#person" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=29810#person</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/foaf.php?u=29810" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=29810</a>"/&gt;
+		&lt;/foaf:Person&gt;
+	&lt;/foaf:maker&gt;
+	&lt;dcterms:created&gt;2007-12-12T13:03:03Z&lt;/dcterms:created&gt;
+	&lt;sioc:content&gt;where is drom?It's where Salthill Devon (<a href="http://www.salthilldevon.ie/" class="external free" rel="nofollow">http://www.salthilldevon.ie/</a>) play.&lt;/sioc:content&gt;
+	&lt;content:encoded&gt;&lt;![CDATA[[QUOTE=JIZZLORD;54636434]where is drom?[/QUOTE]It's where [URL="<a href="http://www.salthilldevon.ie/" class="external free" rel="nofollow">http://www.salthilldevon.ie/</a>"]Salthill Devon[/URL] play.]]&gt;&lt;/content:encoded&gt;
+	&lt;<b>sioc:links_to</b> rdfs:label="Salthill Devon" rdf:resource="<a href="http://www.salthilldevon.ie/" class="external free" rel="nofollow">http://www.salthilldevon.ie/</a>"/&gt;
+	&lt;<b>sioc:reply_of</b>&gt;
+		&lt;sioc:Post rdf:about="<a href="http://boards.ie/vbulletin/showpost.php?p=54636434" class="external free" rel="nofollow">http://boards.ie/vbulletin/showpost.php?p=54636434</a>"&gt;
+			&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=54636434" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=post&amp;sioc_id=54636434</a>"/&gt;
+		&lt;/sioc:Post&gt;
+	&lt;/sioc:reply_of&gt;
+&lt;/sioct:BoardPost&gt;
+</pre>
+<p>If the post contains an image, there will be a link to it like in the following excerpt of another post: 
+</p>
+<pre>&lt;sioct:BoardPost rdf:about="<a href="http://boards.ie/vbulletin/showpost.php?p=54742177" class="external free" rel="nofollow">http://boards.ie/vbulletin/showpost.php?p=54742177</a>"&gt;
+	&lt;dcterms:hasPart&gt;
+		&lt;dcmitype:Image rdf:about="<a href="http://a1259.g.akamai.net/f/1259/5586/5d/images.art.com/images/-/Good-Clown--C10101183.jpeg" class="external free" rel="nofollow">http://a1259.g.akamai.net/f/1259/5586/5d/images.art.com/images/-/Good-Clown--C10101183.jpeg</a>"/&gt;
+	&lt;/dcterms:hasPart&gt;
+&lt;/sioct:BoardPost&gt;
+</pre>
+<h3> <span class="mw-headline" id="sioc:User"> sioc:User </span></h3>
+<p>When it comes to sioc:User and foaf:Person there is an important distinction to make:
+A foaf:Person holds an online account. This online account is the sioc:User. So in our sense a user is not a person, but only an account that belongs to a person (and this person can have several user accounts on differnt sites.)
+A person uses her sioc:User account to create posts, so the triples denoting authorship are of the form sioc:User sioc:creator_of sioc:Post
+</p><p>Each sioc:User account links to the FOAF profile (=foaf.php?u=<i>userid</i>) of the user.
+</p><p>The sioc:Role just displays a name for different roles like "Registered User", "Moderator", "Banned User", "Administrator".
+</p>
+<pre>&lt;foaf:Person rdf:about="<a href="http://boards.ie/vbulletin/foaf.php?u=3289#person" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=3289#person</a>"&gt;
+	&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/foaf.php?u=3289" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=3289</a>"/&gt;
+	&lt;foaf:holdsAccount&gt;
+		&lt;sioc:User rdf:about="<a href="http://boards.ie/vbulletin/member.php?u=3289#user" class="external free" rel="nofollow">http://boards.ie/vbulletin/member.php?u=3289#user</a>"&gt;
+			&lt;sioc:name&gt;mike65&lt;/sioc:name&gt;
+			&lt;sioc:has_function&gt;
+				&lt;sioc:Role&gt;
+					&lt;sioc:name&gt;Moderator&lt;/sioc:name&gt;
+				&lt;/sioc:Role&gt;
+			&lt;/sioc:has_function&gt;
+		&lt;/sioc:User&gt;
+	&lt;/foaf:holdsAccount&gt;
+&lt;/foaf:Person&gt;
+</pre>
+<h3> <span class="mw-headline" id="foaf:Person"> foaf:Person </span></h3>
+<p>The documents for foaf:Person are a bit different than the rest - they lack the &lt;foaf:Document&gt; section described in the section "General Structure" above (this is because a <a href="http://wiki.sioc-project.org/index.php/VBFOAF" title="VBFOAF">different exporter</a> produced these files, but it should be updated in the future to generate the same output as for the SIOC RDF documents)
+Also the FOAF file URIs have a different structure http://boards.ie/vbulletin/foaf.php?u=''userid'' and the URI for the person itself has a #person appended.
+</p><p>The example shows that a person hold an online account, which is a sioc:User.
+</p><p>A person can have marked others as "buddies" in his vBulletin profile, those are displayed using &lt;foaf:knows&gt;.
+</p>
+<pre>&lt;foaf:Person rdf:about="<a href="http://boards.ie/vbulletin/foaf.php?u=3289#person" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=3289#person</a>"&gt;
+	&lt;foaf:name&gt;mike65&lt;/foaf:name&gt;
+	&lt;foaf:nick&gt;mike65&lt;/foaf:nick&gt;
+	&lt;foaf:depiction rdf:resource="<a href="http://boards.ie/vbulletin/images/avatars/Looney_Tunes_-_Sylvester.gif" class="external free" rel="nofollow">http://boards.ie/vbulletin/images/avatars/Looney_Tunes_-_Sylvester.gif</a>"/&gt;
+	&lt;foaf:knows&gt;
+	 	&lt;foaf:Person rdf:about="<a href="http://boards.ie/vbulletin/foaf.php?u=1854#person" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=1854#person</a>"&gt;
+		 	&lt;foaf:nick&gt;dahamsta&lt;/foaf:nick&gt;
+		 	&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/foaf.php?u=1854" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=1854</a>"/&gt;
+	 	&lt;/foaf:Person&gt;
+ 	&lt;/foaf:knows&gt;
+ 	&lt;foaf:knows&gt;
+	 	&lt;foaf:Person rdf:about="<a href="http://boards.ie/vbulletin/foaf.php?u=4051#person" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=4051#person</a>"&gt;
+		 	&lt;foaf:nick&gt;Tristrame&lt;/foaf:nick&gt;
+		 	&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/foaf.php?u=4051" class="external free" rel="nofollow">http://boards.ie/vbulletin/foaf.php?u=4051</a>"/&gt;
+	 	&lt;/foaf:Person&gt;
+ 	&lt;/foaf:knows&gt;
+ 	&lt;foaf:holdsAccount&gt;
+	 	&lt;foaf:OnlineAccount rdf:about="<a href="http://boards.ie/vbulletin/member.php?u=3289#user" class="external free" rel="nofollow">http://boards.ie/vbulletin/member.php?u=3289#user</a>"&gt;
+		 	&lt;foaf:accountName&gt;mike65&lt;/foaf:accountName&gt;
+		 	&lt;foaf:accountServiceHomepage rdf:resource="<a href="http://boards.ie/vbulletin/" class="external free" rel="nofollow">http://boards.ie/vbulletin/</a>" /&gt; 
+		 	&lt;rdfs:seeAlso rdf:resource="<a href="http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=3289" class="external free" rel="nofollow">http://boards.ie/vbulletin/sioc.php?sioc_type=user&amp;sioc_id=3289</a>" /&gt;
+	 	&lt;/foaf:OnlineAccount&gt;
+ 	&lt;/foaf:holdsAccount&gt;
+&lt;/foaf:Person&gt;
+</pre>
+<h2> <span class="mw-headline" id="Known_problems"> Known problems </span></h2>
+<p>Some of the posts (and possibly a few titles of threads) contain special or control characters, that result in their containing documents being invalid XML. Of the 9 million documents this should affect maybe around one or two thousand documents.
+</p><p><br />
+</p>
+<h3> <span class="mw-headline" id="Error_reports_by_users"> Error reports by users </span></h3>
+<p>Please describe problems with the data <a href="http://wiki.sioc-project.org/index.php/Data/Boards.ie/Error_reports" title="Data/Boards.ie/Error reports">here</a> .
+</p>
+<h2> <span class="mw-headline" id="More_information"> More information </span></h2>
+<p>If you have questions about this competition please <a href="http://wiki.sioc-project.org/index.php/Contact" title="Contact">contact us for more information</a>.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 81/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1554-1!1!0!!en!2!edit=0 and timestamp 20160530174740 -->

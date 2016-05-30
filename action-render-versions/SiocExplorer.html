@@ -1,0 +1,100 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#About"><span class="tocnumber">1</span> <span class="toctext">About</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Experience.2C_notes.2C_suggestions"><span class="tocnumber">2.1</span> <span class="toctext">Experience, notes, suggestions</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="#Thomas"><span class="tocnumber">2.1.1</span> <span class="toctext">Thomas</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Using_SIOC_Explorer"><span class="tocnumber">3</span> <span class="toctext">Using SIOC Explorer</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Experience.2C_notes.2C_suggestions_2"><span class="tocnumber">3.1</span> <span class="toctext">Experience, notes, suggestions</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="About"> About </span></h2>
+<p><a href="https://launchpad.net/sioc-ex" class="external text" rel="nofollow">SIOC explorer</a> is a web application similar to a feed-reader: it allows people to subscribe to SIOC feeds and read their content. Because SIOC data is very rich, people can filter the content based on e.g. authors, topics, creation date, or any other properties.
+</p>
+<h2> <span class="mw-headline" id="Installation"> Installation </span></h2>
+<p><a href="http://wiki.activerdf.org/GettingStartedGuide" class="external free" rel="nofollow">http://wiki.activerdf.org/GettingStartedGuide</a>
+</p>
+<h3> <span class="mw-headline" id="Experience.2C_notes.2C_suggestions"> Experience, notes, suggestions </span></h3>
+<p>Please record your experience, notes and suggestions for the installation and usage guide. Were there any additional steps or problems? Add your name and a description of the environment (OS, ...) that you were installing in.
+</p>
+<h4> <span class="mw-headline" id="Thomas"> Thomas </span></h4>
+<p>Installing it following 'Getting Started Guide' for Windows
+</p><p><b>Cygwin</b>
+</p>
+<ul><li>The guide says: "Select the packages: gcc-core, gcc-c++, ..." but I didn't find gcc-c++ only gcc-g++ - is this the package that is meant?
+</li></ul>
+<p><b>Ruby and Rubygems</b>
+</p>
+<ul><li> error when executing <i>./configure &amp;&amp; make &amp;&amp; make install</i> in Cygwin:
+</li></ul>
+<pre>./missing/strftime.c: In function `strftime':
+./missing/strftime.c:193: error: 'timezone' redeclared as different kind of symbol
+/usr/include/cygwin/time.h:33: error: previous declaration of 'timezone' was here
+make: *** [strftime.o] Error 1
+</pre>
+<ul><li> I continued with Ruby One-Click Installer - successful installation, but is it configured as needed?
+</li></ul>
+<ul><li> minor: link in "download the newest ruby-x.y.z.tgz from the official ruby downloads" is faulty.
+</li></ul>
+<p><b>Sparql Adapter</b>
+</p>
+<ul><li> how do I set PATH for cygwin shell? Using 
+</li></ul>
+<pre>$ gem install activerdf_sparql    
+</pre>
+<p>results in:
+</p>
+<pre>c:\ruby\bin\ruby.exe: No such file or directory -- /cygdrive/c/ruby/bin/gem (LoadError)
+</pre>
+<ul><li> so I used 
+</li></ul>
+<pre>$ ../bin/gem install activerdf_sparql
+</pre>
+<p>which resulted in an error: 
+</p>
+<pre> Updating metadata for 13 gems from http://gems.rubyforge.org
+.............
+complete
+Building native extensions.  This could take a while...
+ERROR:  Error installing activerdf_sparql:
+        ERROR: Failed to build gem native extension.
+
+c:/ruby/bin/ruby.exe extconf.rb install activerdf_sparql
+creating Makefile
+
+nmake
+'nmake' is not recognized as an internal or external command,
+operable program or batch file.
+
+
+Gem files will remain installed in c:/ruby/lib/ruby/gems/1.8/gems/json-1.1.2 for
+ inspection.
+Results logged to c:/ruby/lib/ruby/gems/1.8/gems/json-1.1.2/ext/json/ext/parser/
+gem_make.out
+</pre>
+<ul><li> I downloaded nmake from Microsoft - cygwin didn't use it. But on normal Windows command line nmake was used, but another error came up:
+</li></ul>
+<pre>'cl' is not recognized as an internal or external command,
+</pre>
+<h2> <span class="mw-headline" id="Using_SIOC_Explorer"> Using SIOC Explorer </span></h2>
+<h3> <span class="mw-headline" id="Experience.2C_notes.2C_suggestions_2"> Experience, notes, suggestions </span></h3>
+<p>Please record your experience, notes and suggestions for the usage guide.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 35/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1491-1!1!0!!en!2!edit=0 and timestamp 20160530174324 -->

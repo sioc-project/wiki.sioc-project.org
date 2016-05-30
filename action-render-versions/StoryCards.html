@@ -1,0 +1,76 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Unscheduled_story_cards"><span class="tocnumber">1</span> <span class="toctext">Unscheduled story cards</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Minimally_useful_version_.28v0.001.29"><span class="tocnumber">2</span> <span class="toctext">Minimally useful version (v0.001)</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#SFSW_2008_Paper_version_.28v0.01.29"><span class="tocnumber">3</span> <span class="toctext">SFSW 2008 Paper version (v0.01)</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#First_release_.28v0.1.29"><span class="tocnumber">4</span> <span class="toctext">First release (v0.1)</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#After_v0.1"><span class="tocnumber">5</span> <span class="toctext">After v0.1</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="Unscheduled_story_cards"> Unscheduled story cards </span></h2>
+<p>Proposed stories that have not yet been discussed/scheduled go here.
+</p>
+<h2> <span class="mw-headline" id="Minimally_useful_version_.28v0.001.29"> Minimally useful version (v0.001) </span></h2>
+<dl><dt> <strike>Site admins can create and delete vocabularies&nbsp;:
+</dt></dl>
+<dl><dt> Homepage shows a list of all hosted vocabularies&nbsp;</dt><dd>
+</dd></dl>
+<dl><dt> Authenticated users can create, edit and delete classes and properties&nbsp;</dt><dd>
+</dd></dl>
+<dl><dt> Vocabulary page shows a simple list of all classes and properties&nbsp;</dt><dd>
+</dd></dl>
+<dl><dt> A login form allows users to authenticate (scor Thu night)&nbsp;</dt><dd> The login link or form should be quite hidden, as it cannot be used by 99% of visitors.
+</dd></dl>
+<dl><dt> Vocabulary page shows metadata (scor Thu night)&nbsp;</dt><dd> Title, last update, authors, abstract/description. These can be edited by authenticated users via text fields, except for the users which are selected from a list of Drupal users.
+</dd></dl>
+<dl><dt> Vocabulary page shows label and title of classes and properties (scor Thu night)&nbsp;</dt><dd> English only. Label and title can be entered and edited by authenticated users in text fields.</strike>
+</dd></dl>
+<dl><dt> <strike>RDFS version of the metadata and each term</strike>&nbsp;</dt><dd> There's one RDFS document for each vocabulary. Initially, this RDFS document can be available under a separate URI. The RDFS uses the <a href="http://wiki.sioc-project.org/index.php/Neologism/URIScheme" title="Neologism/URIScheme">URI Scheme</a> for class, property and vocabulary URIs.
+</dd></dl>
+<h2> <span class="mw-headline" id="SFSW_2008_Paper_version_.28v0.01.29"> SFSW 2008 Paper version (v0.01) </span></h2>
+<dl><dt> <strike>Vocabulary Overview diagram on vocabulary page</strike>&nbsp;</dt><dd> As embedded non-interactive Flash
+</dd></dl>
+<dl><dt> Editing the Vocabulary Overview diagram&nbsp;</dt><dd> Authenticated users only
+</dd></dl>
+<dl><dt> <strike>Vocabulary page shows sub- and superproperties, domain, range and inverseOf for properties</strike>&nbsp;</dt><dd> These can be edited by selecting from dropdowns. No external terms supported at this point.
+</dd></dl>
+<dl><dt> <strike>Vocabulary page shows sub- and superclasses for classes</strike>&nbsp;</dt><dd> These can be edited by selecting from dropdowns. No external terms supported at this point. Multiple inheritance!
+</dd></dl>
+<dl><dt> <strike>Content negotiation</strike>&nbsp;</dt><dd> RDFS, XML and HTML are available at the same URI with content negotiation.
+</dd></dl>
+<dl><dt> Support for external classes and properties&nbsp;</dt><dd> Can be used wherever we reference another class or property. Initially, external terms are specified simply by entering their URI.
+</dd></dl>
+<dl><dt> <strike>Free content section on vocabulary pages</strike>&nbsp;</dt><dd> Can be edited by authenticated users. Does not show up in the RDFS output.
+</dd></dl>
+<dl><dt> <strike>Navigation block/menu on vocabulary page</strike>&nbsp;</dt><dd> To quickly jump to a specific term.
+</dd></dl>
+<h2> <span class="mw-headline" id="First_release_.28v0.1.29"> First release (v0.1) </span></h2>
+<dl><dt> Drupal features that are not required for maintaining a vocabulary are hidden or disabled.
+</dt></dl>
+<dl><dt> Permissions and user roles&nbsp;</dt><dd> Site admins can create users and vocabularies. Neologists can edit a vocabulary (this is a per-vocabulary setting). Only site administrators can edit roles and permissions.
+</dd></dl>
+<h2> <span class="mw-headline" id="After_v0.1"> After v0.1 </span></h2>
+<dl><dt> Classes in the Vocabulary Overview diagram are clickable&nbsp;</dt><dd> Click jumps to specific term on the vocbulary page
+</dd></dl>
+<dl><dt> Vocabulary Overview as image file&nbsp;</dt><dd> instead of Flash
+</dd></dl>
+<dl><dt> Load external vocabularies&nbsp;</dt><dd> Authenticated users can load external vocabularies by entering an RDFS file's URI or uploading a file. Terms from the vocabulary become available wherever a class or property needs to be specified.
+</dd></dl>
+<dl><dt> Support for owl</dt><dd>disjointWith&nbsp;: Allows selection of classes
+</dd></dl>
+<dl><dt> Friendly versioning&nbsp;</dt><dd> 
+</dd></dl>
+<dl><dt> 404 Report&nbsp;</dt><dd> List of terms that have been accessed via HTTP GET, but are not actually defined. Ordered by number of requests, and most recent requests.
+</dd></dl>
+<dl><dt> Import from RDFS file&nbsp;</dt><dd> Authenticated users can import existing vocabularies by entering an RDFS file's URI or uploading a file. This is for migrating existing vocabularies to hosting on Neologism.
+</dd></dl>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 18/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1531-1!1!0!!en!2!edit=0 and timestamp 20160530174310 -->

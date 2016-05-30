@@ -1,0 +1,35 @@
+<p><br />
+</p>
+<pre>http://example.com/neologism/bowling# a owl:Ontology&nbsp;;
+  dc:title "Bowling Vocabulary"@en&nbsp;;
+  dc:date "2008-03-08"&nbsp;;
+  dc:creator http://example.com/neologism/users#scor .
+ 
+http://example.com/neologism/bowling#Bowler a rdfs:Class&nbsp;;
+  rdfs:isDefinedBy http://example.com/neologism/bowling#&nbsp;;
+  rdfs:label "Bowler"@en&nbsp;;
+  rdfs:comment "Bowling player"@en&nbsp;;
+  rdfs:subClassOf http://xmlns.com/foaf/0.1/Person&nbsp;;
+  owl:disjointWith http://example.com/neologism/bowling#Match.
+
+http://example.com/neologism/bowling#Match a rdfs:Class&nbsp;;
+  rdfs:isDefinedBy http://example.com/neologism/bowling#&nbsp;;
+  rdfs:label "Match"@en&nbsp;;
+  rdfs:comment "Bowling match"@en .
+
+http://example.com/neologism/bowling#plays a rdfs:Property&nbsp;;
+  rdfs:isDefinedBy http://example.com/neologism/bowling#&nbsp;;
+  rdfs:label "plays"@en&nbsp;;
+  rdfs:comment "a bowler plays a match"@en&nbsp;;
+  rdfs:domain http://example.com/neologism/bowling#Bowler&nbsp;;
+  rdfs:range http://example.com/neologism/bowling#Match .
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 37/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1536-1!1!0!!en!2!edit=0 and timestamp 20160530174308 -->

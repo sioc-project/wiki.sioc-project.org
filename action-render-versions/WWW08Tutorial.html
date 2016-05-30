@@ -1,0 +1,98 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#WWW08_Tutorial.2C_April_21.2C_Beijing"><span class="tocnumber">1</span> <span class="toctext">WWW08 Tutorial, April 21, Beijing</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Abstract"><span class="tocnumber">1.1</span> <span class="toctext">Abstract</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Presenters"><span class="tocnumber">1.2</span> <span class="toctext">Presenters</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Slides"><span class="tocnumber">1.3</span> <span class="toctext">Slides</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#SPARQL_Queries"><span class="tocnumber">1.4</span> <span class="toctext">SPARQL Queries</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#Example_query_.231"><span class="tocnumber">1.4.1</span> <span class="toctext">Example query #1</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#Example_query_.232"><span class="tocnumber">1.4.2</span> <span class="toctext">Example query #2</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#Example_query_.233"><span class="tocnumber">1.4.3</span> <span class="toctext">Example query #3</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="WWW08_Tutorial.2C_April_21.2C_Beijing"> WWW08 Tutorial, April 21, Beijing </span></h1>
+<p>This wiki page serves as a reference for material regarding the tutorial TP3 about "Interlinking Online Communities and Enriching Social Software with the Semantic Web" given in Beijing for the 17th Intl WWW Conference
+</p><p><a href="http://www2008.org/program/program-tutorials-TP3.html" class="external free" rel="nofollow">http://www2008.org/program/program-tutorials-TP3.html</a>
+</p>
+<h2> <span class="mw-headline" id="Abstract"> Abstract </span></h2>
+<p>This tutorial will give an overview of current research issues and solutions for using Semantic Web technologies in order to enrich social software and to interlink online communities. We will discuss current standardisation activities as well as research prototypes, focusing on the work of the Semantically-Interlinked Online Communities (SIOC) project. This initiative recently produced the W3C Member Submission for the SIOC Ontology, which describes a standard way to represent rich data from online community sites and Web 2.0 tools in an interoperable form using RDF.
+</p><p>On a larger extent, we will cover additional topics such as search and browsing based on community metadata, large-scale data integration in decentralised communities, and linking social media contributions to the social graph. We will also focus on implementations of tools that work with SIOC data, providing the audience with the know-how to build such systems using open-source APIs and frameworks. We will also discuss how the technologies described in this tutorial can be applied to enterprise scenarios, and we will detail some commercial applications that are now using SIOC.
+</p><p>Finally, we will describe how a network of interlinked communities powered by semantic social software can lead towards the creation of Social Semantic Information Spaces.
+</p>
+<h2> <span class="mw-headline" id="Presenters"> Presenters </span></h2>
+<p>Uldis Bojars, DERI-Galway (Ireland), <a href="http://captsolo.net" class="external free" rel="nofollow">http://captsolo.net</a>
+John Breslin, DERI-Galway (Ireland), <a href="http://johnbreslin.com" class="external free" rel="nofollow">http://johnbreslin.com</a>
+Alexandre Passant, EDF R&amp;D and LaLIC - Paris Sorbonne (France), <a href="http://apassant.net" class="external free" rel="nofollow">http://apassant.net</a>
+</p>
+<h2> <span class="mw-headline" id="Slides"> Slides </span></h2>
+<p>The slides will be available after the tutorial
+</p>
+<h2> <span class="mw-headline" id="SPARQL_Queries"> SPARQL Queries </span></h2>
+<p>In the tutorial we refer to some SPARQL queries examples
+An endpoint was specifically set-up for this tutorial at , containing SIOC data from boards.ie
+</p><p><a href="http://swse.deri.org/boards/yars2/" class="external free" rel="nofollow">http://swse.deri.org/boards/yars2/</a>
+</p><p>Here are some sample queries that you can run on the endpoint to see how to retrieve SIOC data.
+</p><p><br />
+</p>
+<h3> <span class="mw-headline" id="Example_query_.231"> Example query #1 </span></h3>
+<p>Find all (post, title, author URI) tuples, 200 answers, unordered
+</p>
+<pre>PREFIX sioc:   &lt;<a href="http://rdfs.org/sioc/ns#" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#</a>&gt;
+PREFIX rdf: &lt;<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" class="external free" rel="nofollow">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>&gt;
+PREFIX dc: &lt;<a href="http://purl.org/dc/elements/1.1/" class="external free" rel="nofollow">http://purl.org/dc/elements/1.1/</a>&gt;
+SELECT&nbsp;?post&nbsp;?title&nbsp;?author
+WHERE {
+&nbsp;?post rdf:type sioc:Post&nbsp;;
+  dc:title&nbsp;?title&nbsp;;
+  sioc:has_creator&nbsp;?author .
+} LIMIT 20
+</pre>
+<p><a href="http://swse.deri.org/boards/yars2/query?query=+PREFIX+sioc%3A+++%3Chttp%3A%2F%2Frdfs.org%2Fsioc%2Fns%23%3E%0D%0A+PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0A+PREFIX+dc%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%3E%0D%0A+SELECT+%3Fpost+%3Ftitle+%3Fauthor%0D%0A+WHERE+%7B%0D%0A++%3Fpost+rdf%3Atype+sioc%3APost+%3B%0D%0A+++dc%3Atitle+%3Ftitle+%3B%0D%0A+++sioc%3Ahas_creator+%3Fauthor+.%0D%0A+%7D+LIMIT+20&amp;accept=text%2Fhtml" class="external free" rel="nofollow">http://swse.deri.org/boards/yars2/query?query=+PREFIX+sioc%3A+++%3Chttp%3A%2F%2Frdfs.org%2Fsioc%2Fns%23%3E%0D%0A+PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0A+PREFIX+dc%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%3E%0D%0A+SELECT+%3Fpost+%3Ftitle+%3Fauthor%0D%0A+WHERE+%7B%0D%0A++%3Fpost+rdf%3Atype+sioc%3APost+%3B%0D%0A+++dc%3Atitle+%3Ftitle+%3B%0D%0A+++sioc%3Ahas_creator+%3Fauthor+.%0D%0A+%7D+LIMIT+20&amp;accept=text%2Fhtml</a>
+</p>
+<h3> <span class="mw-headline" id="Example_query_.232"> Example query #2 </span></h3>
+<p>Find all (post, title, author name, date) tuples, 20 answers, most recents
+</p>
+<pre>PREFIX sioc:   &lt;<a href="http://rdfs.org/sioc/ns#" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#</a>&gt;
+PREFIX rdf: &lt;<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" class="external free" rel="nofollow">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>&gt;
+PREFIX dc: &lt;<a href="http://purl.org/dc/elements/1.1/" class="external free" rel="nofollow">http://purl.org/dc/elements/1.1/</a>&gt;
+PREFIX dcterms: &lt;<a href="http://purl.org/dc/terms/" class="external free" rel="nofollow">http://purl.org/dc/terms/</a>&gt; 
+SELECT&nbsp;?post&nbsp;?title&nbsp;?author&nbsp;?created
+WHERE {
+&nbsp;?post rdf:type sioc:Post&nbsp;;
+  dc:title&nbsp;?title&nbsp;;
+  dcterms:created&nbsp;?created&nbsp;;
+  sioc:has_creator&nbsp;?author .
+} ORDER BY DESC(?created) LIMIT 20
+</pre>
+<p><br />
+<a href="http://swse.deri.org/boards/yars2/query?query=PREFIX+sioc%3A+++%3Chttp%3A%2F%2Frdfs.org%2Fsioc%2Fns%23%3E%0D%0A+PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0A+PREFIX+dc%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%3E%0D%0A+PREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0A+SELECT+%3Fpost+%3Ftitle+%3Fauthor+%3Fcreated%0D%0A+WHERE+%7B%0D%0A++%3Fpost+rdf%3Atype+sioc%3APost+%3B%0D%0A+++dc%3Atitle+%3Ftitle+%3B%0D%0A+++dcterms%3Acreated+%3Fcreated+%3B%0D%0A+++sioc%3Ahas_creator+%3Fauthor+.%0D%0A+%7D+ORDER+BY+DESC%28%3Fcreated%29+LIMIT+20%0D%0A&amp;accept=text%2Fhtml" class="external free" rel="nofollow">http://swse.deri.org/boards/yars2/query?query=PREFIX+sioc%3A+++%3Chttp%3A%2F%2Frdfs.org%2Fsioc%2Fns%23%3E%0D%0A+PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0A+PREFIX+dc%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%3E%0D%0A+PREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E+%0D%0A+SELECT+%3Fpost+%3Ftitle+%3Fauthor+%3Fcreated%0D%0A+WHERE+%7B%0D%0A++%3Fpost+rdf%3Atype+sioc%3APost+%3B%0D%0A+++dc%3Atitle+%3Ftitle+%3B%0D%0A+++dcterms%3Acreated+%3Fcreated+%3B%0D%0A+++sioc%3Ahas_creator+%3Fauthor+.%0D%0A+%7D+ORDER+BY+DESC%28%3Fcreated%29+LIMIT+20%0D%0A&amp;accept=text%2Fhtml</a>
+</p>
+<h3> <span class="mw-headline" id="Example_query_.233"> Example query #3 </span></h3>
+<p>Find the content of the latest created post
+</p>
+<pre>PREFIX sioc:   &lt;<a href="http://rdfs.org/sioc/ns#" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#</a>&gt;
+PREFIX rdf: &lt;<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" class="external free" rel="nofollow">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>&gt;
+PREFIX dc: &lt;<a href="http://purl.org/dc/elements/1.1/" class="external free" rel="nofollow">http://purl.org/dc/elements/1.1/</a>&gt;
+PREFIX dcterms: &lt;<a href="http://purl.org/dc/terms/" class="external free" rel="nofollow">http://purl.org/dc/terms/</a>&gt; 
+SELECT&nbsp;?content
+WHERE {
+&nbsp;?post rdf:type sioc:Post&nbsp;;
+  dcterms:created&nbsp;?created&nbsp;;
+  sioc:content&nbsp;?content .
+} ORDER BY DESC(?created) LIMIT 1
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 30/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1555-1!1!0!!en!2!edit=0 and timestamp 20160530174331 -->

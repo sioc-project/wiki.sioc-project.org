@@ -1,0 +1,142 @@
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#SIOC_ToDo"><span class="tocnumber">1</span> <span class="toctext">SIOC ToDo</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#SIOC_Ontology"><span class="tocnumber">1.1</span> <span class="toctext">SIOC Ontology</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="#RDFS.2FOWL_Vocabulary_Documentation_Generator"><span class="tocnumber">1.1.1</span> <span class="toctext">RDFS/OWL Vocabulary Documentation Generator</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-4"><a href="#Crawler"><span class="tocnumber">1.2</span> <span class="toctext">Crawler</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#SIOC_Browser"><span class="tocnumber">1.3</span> <span class="toctext">SIOC Browser</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#SIOC_.2F_semiBlog_integration"><span class="tocnumber">1.4</span> <span class="toctext">SIOC / semiBlog integration</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#SIOC_Sites"><span class="tocnumber">1.5</span> <span class="toctext">SIOC Sites</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#rdfs.org.2Fsioc_website"><span class="tocnumber">1.6</span> <span class="toctext">rdfs.org/sioc website</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Generic_ideas"><span class="tocnumber">1.7</span> <span class="toctext">Generic ideas</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="SIOC_ToDo"> SIOC ToDo </span></h1>
+<p>'<b>This pages is going to be deleted and its content moved to sub-pages'</b>
+</p><p>Things to be done with SIOC 
+</p><p>To discuss features, bugs and improvements please visit the <a href="http://groups.google.com/group/sioc-dev" class="external text" rel="nofollow">SIOC-Dev mailing list</a>. You can subscribe to it by sending an e-mail to sioc-dev-subscribe "at" googlegroups.com
+</p>
+<h2> <span class="mw-headline" id="SIOC_Ontology"> SIOC Ontology </span></h2>
+<p>See: <a href="http://rdfs.org/sioc/spec/" class="external text" rel="nofollow">SIOC Specification</a>
+</p><p>/OntologyUpdates
+</p><p>Improvements:
+</p>
+<pre>* Add documentation for SIOC Types and SIOC Services modules
+</pre>
+<pre>* TODO: add a chapter "SIOC and FOAF" and "SIOC and AtomOWL" and "SIOC and SKOS" 20060826/goern
+* TODO: remove RDF basics from "Why does SIOC use RDF?" and point to RDF primer 20060826/goern
+* remove the properties that describe a Person rather than an account from SIOC and move them to FOAF
+</pre>
+<p>Issues:
+</p>
+<pre>* remove revisor_of/has_revisor/next_version/previous_version (so we can have the three possible cases as options in future).
+</pre>
+<p><i>Evolution and Extension of SIOC</i> What is the process for changes? Link to Arch Descission document?
+</p><p><i>SIOC Modules</i> talks about future changes... why?
+</p><p>Usage:
+</p>
+<pre>* describe the interaction of SIOC and SKOS
+* mention SIOC is not "content management" related but "community structure describing"
+</pre>
+<p><a href="http://wiki.sioc-project.org/index.php?title=Anchor(specgen)&amp;action=edit&amp;redlink=1" class="new" title="Anchor(specgen) (page does not exist)">Anchor(specgen)</a>
+</p>
+<h3> <span class="mw-headline" id="RDFS.2FOWL_Vocabulary_Documentation_Generator"> RDFS/OWL Vocabulary Documentation Generator </span></h3>
+<p><a href="http://sw.deri.org/svn/sw/2005/08/sioc/ontology/spec/" class="external text" rel="nofollow">SpecGen4</a> - A script to generate SIOC specification.
+</p><p>Bugs:
+</p>
+<pre>* remove properties that are deprecated
+* ...
+</pre>
+<p>Improvements:
+</p>
+<pre>* resolve namespaces other than SIOC (FOAF, RDFS, Dublin Core)
+* figure how to describe links to outside ontologies and show them here
+* show all other OWL information (which was not added yet)
+</pre>
+<p>Done: 
+</p>
+<pre>* show OWL information: [Datatype|Object]Properties, Inverse, InverseFunctional, ...,
+</pre>
+<p><a href="http://wiki.sioc-project.org/index.php?title=Anchor(sioc_api)&amp;action=edit&amp;redlink=1" class="new" title="Anchor(sioc api) (page does not exist)">Anchor(sioc_api)</a>
+</p><p><br />
+</p>
+<h2> <span class="mw-headline" id="Crawler"> Crawler </span></h2>
+<p>See: <a href="http://sw.deri.org/svn/sw/2005/08/sioc/crawler/" class="external text" rel="nofollow">RDF Crawler</a> (in SVN)
+</p><p>Improvements:
+</p>
+<pre>* limit crawling in depth
+* add blacklist (regexps or domain masks)
+</pre>
+<p>Done:
+</p>
+<pre>* limit crawling in depth in terms of hops from host to host
+* report crawler user agent in HTTP requests
+* incremental crawling - see <a href="http://groups.google.com/group/sioc-dev/browse_frm/thread/63a52ebf091e4f8b/#" class="external text" rel="nofollow">"SIOC - Incremental crawling"</a>
+* crawling report is saved in RDF
+* exclude comments/replies (optional)
+* ignore comments in links startup file - lines starting with #
+* limit to the same hostname
+* indicate baseUrl when parsing an RDF/XML file - to assign correct URIs for nodeIDs
+* report time and number of triples crawled (AlexPassant)
+</pre>
+<p><a href="http://wiki.sioc-project.org/index.php?title=Anchor(detector)&amp;action=edit&amp;redlink=1" class="new" title="Anchor(detector) (page does not exist)">Anchor(detector)</a>
+</p><p><br />
+</p>
+<h2> <span class="mw-headline" id="SIOC_Browser"> SIOC Browser </span></h2>
+<p>Home page: <a href="http://rdfs.org/sioc/browser/" class="external text" rel="nofollow">SIOC Browser</a>
+</p><p>ToDo List: <a href="http://wiki.sioc-project.org/index.php/SiocRdfBrowser" title="SiocRdfBrowser">SiocRdfBrowser</a>
+</p>
+<h2> <span class="mw-headline" id="SIOC_.2F_semiBlog_integration"> SIOC / semiBlog integration </span></h2>
+<pre>* semiBlog produces html links to rdf-documents which contain:
+ * a graph describing the whole post
+ * one document for each topic/subject/... of the post, repeating the metadata about just one topic
+* the SIOC browser currently picks this up and makes triples (Post, seeAlso, DocumentURL) from it
+* instead it would be nice to produce the following triples:
+ * one triple (Post, seeAlso, whole_post_doc_URL)
+ * n triples (Post, topic, (_x, seeAlso, individual_doc_URL) )
+</pre>
+<p><br />
+</p>
+<h2> <span class="mw-headline" id="SIOC_Sites"> SIOC Sites </span></h2>
+<p>rdfs.org / test.rdfs.org blog:
+</p>
+<pre>* done: added link to SIOC from the page header and a human visible link to SIOC data from the blog sidebar
+</pre>
+<p>sparql / browser site:
+</p>
+<pre>* fix mod_rewrite statements
+  * fix <a href="http://sparql.captsolo.net/sioc/" class="external free" rel="nofollow">http://sparql.captsolo.net/sioc/</a> to work w/o slash
+* improve sample SIOC queries
+
+* create a home page for sparql endpoint
+* create a main HTML page served by apache
+</pre>
+<h2> <span class="mw-headline" id="rdfs.org.2Fsioc_website"> rdfs.org/sioc website </span></h2>
+<p><a href="http://rdfs.org/sioc/architecture" class="external free" rel="nofollow">http://rdfs.org/sioc/architecture</a> needs to be updated to reflect Semantic Radar 20060826/goern
+</p><p>Done:
+</p>
+<pre>* add helper text to <a href="http://sioc-project.org/firefox" class="external text" rel="nofollow">Semantic Radar page</a> in order to notify the user if an extension was not installed
+</pre>
+<h2> <span class="mw-headline" id="Generic_ideas"> Generic ideas </span></h2>
+<pre>* Look at <a href="http://snipsnap.org/space/start" class="external text" rel="nofollow">SnipSnap Wiki</a> - they are exporting RDF. they might find SIOC useful.
+* CMS exporters
+  * Mambo
+  * Type3
+* Blog exporters
+  * Movable Type
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 34/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1436-1!1!0!!en!2!edit=0 and timestamp 20160530174328 -->

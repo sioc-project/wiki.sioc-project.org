@@ -1,0 +1,77 @@
+<p>Paper for "3rd Workshop on Scripting for the Semantic Web"
+June 6 or 7, 2007, Innsbruck, Austria @ ESWC07
+<a href="http://www.semanticscripting.org/SFSW2007/" class="external free" rel="nofollow">http://www.semanticscripting.org/SFSW2007/</a>
+</p><p>Final result: 
+</p>
+<pre> <a href="http://sw.deri.org/svn/sw/2007/03/sfsw-scripting-architecture/sfsw%202007%20paper.pdf" class="external free" rel="nofollow">http://sw.deri.org/svn/sw/2007/03/sfsw-scripting-architecture/sfsw%202007%20paper.pdf</a>
+</pre>
+<p>Idea: Write a paper that demonstrates how the "SemRadar + PTSW + Doapstore" chain allow users to find decentralized semantic web documents in a simple way (no need to know what RDF or SW is about to use 
+search interface) and in a collaborate way (using SemRadar)
+</p><p><br />
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Abstract"><span class="tocnumber">1</span> <span class="toctext">Abstract</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Introduction"><span class="tocnumber">2</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#PTSW"><span class="tocnumber">3</span> <span class="toctext">PTSW</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#SemRadar"><span class="tocnumber">4</span> <span class="toctext">SemRadar</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Doapstore"><span class="tocnumber">5</span> <span class="toctext">Doapstore</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="Abstract"> Abstract </span></h2>
+<p>This paper introduces an architecture involving small scripting applications that interact each other around the Ping The Semantic Web service in order to allow users to fetch and query decentralized DOAP documents.
+</p>
+<h2> <span class="mw-headline" id="Introduction"> Introduction </span></h2>
+<ul><li> Decentralized documents
+</li><li> No simple way to find foaf, doap, or cc documents
+</li><li> Need for tools that centralize and query
+</li><li> ... but: why creating a big framework while small "pipes" can do the job&nbsp;!
+</li></ul>
+<p>As the Semantic Web meme spreads on the Internet, more and more RDF data in available on the Web.
+People create FOAF profile, bloggers use exporters to make their posts available in RDF - whether is it RSS or SIOC - open-source developers use DOAP to describe their projects, etc.
+Yet, since all these documents are decentralized, fetching and querying the right documents is not so easy for users.
+</p><p>Moreover, one key feature for the Semantic Web to work is that users will not have to learn RDF or SPARQL to publish or query data, as they do not need anymore to learn HTML or SQL to publish dynamic content thanks to wikis or blogs.
+</p><p>In this paper, we will describe how, rather than creating a unique framework, a set of independant scripts can help to fetch and query decentralized data on the Semantic Web, without any knowledge of Semantic Web languages from the user point of view, and also by involving an architecture of participation to retrieve data.
+</p>
+<h2> <span class="mw-headline" id="PTSW"> PTSW </span></h2>
+<ul><li> In / Out
+</li><li> The ping system
+</li><li> Classifying documents
+</li><li> ... A central point to be used for SW applications
+</li></ul>
+<h2> <span class="mw-headline" id="SemRadar"> SemRadar </span></h2>
+<ul><li> Use your browser to discover SW documents
+</li><li> To browse them in a friendly way (browsing interfaces)
+</li><li> ... and share them to the world by pinging ptsw&nbsp;!
+</li></ul>
+<h2> <span class="mw-headline" id="Doapstore"> Doapstore </span></h2>
+<p>Taking the participative architecture of discovering Semantic Web documents thanks to Semantic Radar into account, the goal of doap:store is to provide an easy-to-use service in order to allow users find DOAP projects available on the Web.
+</p><p>While many people publish DOAP data about their project (either manually, or because their projects are registered on platofms that automatically publish this kind of data), it exposes the same problem of any Semantic Web data available on the Web using a particular vocabulary: its decentralized aspect make it difficult to find.
+</p><p>Since PTSW offer different kind of exports, the idea of doap:store is to provide a kind of user-friendly frontend to all this RDF data, offering basic search fonctionnalities, tagcloud, related-projects browser to users, without any technical barriers. 
+</p><p>A python cron script is running each hour to fetch PTSW XML eport of DOAP documents and retrieve them to put  in its database.
+The system is running with 3store, on a Debian Box.
+The whole code is written in PHP, and actually is less than 500 lines of code.
+</p><p><br />
+doap:store displays latest retrieved projects from PTSW on its homepage.
+// TODO: retrieved or updated projects&nbsp;??
+</p><p>In order to retrieve documents, a simple search interface allows to find projects by name, language, description, or hostname.
+Actually, the search query is provided by a single SPARQL query, with optional parameters that are added regarding the query type (eg: querying by name, by hostname ...)
+</p><p>Then, a result page lists all available projects, and user can browse them. Here, a simple SPARQL query (the second of the system, since it includes only 2 main queries, with optional parameters), will render the project description.
+A link to the original is also available. 
+// TODO: autodiscovery linking to the original DOAP file 
+</p><p>// SPARQL query example
+</p>
+<ul><li> DOAP documents, where to find them
+</li><li> Doapstore, a DOAP repository
+</li><li> ... simple interfaces, tags ... and hidden SPARQL&nbsp;!
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 19/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1441-1!1!0!!en!2!edit=0 and timestamp 20160530174322 -->

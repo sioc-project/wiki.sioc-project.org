@@ -1,0 +1,24 @@
+<p>Exports SIOC and FOAF data from vBulletin discussion forums. Inculdes a plugin that allows users to choose in vBulletin's "user control panel" whether they also want to export the SHA1 of their e-mail address (and other inverse functional properties) or their network of friends.
+</p><p>Download the VBulletin part from our svn repository <a href="http://sw.deri.org/svn/sw/2005/08/sioc/vbulletin/" class="external text" rel="nofollow">here</a> (where you also can find the complementary <a href="http://wiki.sioc-project.org/index.php/VBFOAF" title="VBFOAF">VBFOAF</a>) and the SIOC export API (sioc_inc.php) from <a href="http://sw.deri.org/svn/sw/2005/08/sioc/phpapi/" class="external text" rel="nofollow">here</a>.
+</p><p>Installation:
+</p>
+<ol><li> drop this sioc.php, foaf.php and sioc_inc.php into the root directory of the vBulletin installation
+</li><li> drop bitfield_siocexporter.xml into includes/xml
+</li><li> install product-siocexporter 1.0.xml from admincp (Plugins / Products - Manage Products - Add Product)
+</li></ol>
+<p>Usage:
+</p>
+<ul><li> access data by calling .../sioc.php?sioc_type=...&amp;sioc_id=...
+</li><li> sioc_type = one of ['site', 'forum', 'thread', 'post', 'user']
+</li><li> sioc_id = id of the forum, thread, post or user
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 1/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1481-1!1!0!!en!2!edit=0 and timestamp 20160530174806 -->

@@ -1,0 +1,147 @@
+<p>Third <a href="http://wiki.sioc-project.org/index.php/BrainStorming" title="BrainStorming">BrainStorming</a> sessions, following the <a href="http://wiki.sioc-project.org/index.php/BrainStorming/2008-01-29" title="BrainStorming/2008-01-29">session in January</a> .
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#SIOC_Brainstorming_Session_on_April_09th.2C_2008"><span class="tocnumber">1</span> <span class="toctext">SIOC Brainstorming Session on April 09th, 2008</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Attendees"><span class="tocnumber">1.1</span> <span class="toctext">Attendees</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="#Miscellaneous"><span class="tocnumber">2</span> <span class="toctext">Miscellaneous</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Importing_SIOC_data"><span class="tocnumber">3</span> <span class="toctext">Importing SIOC data</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Importing_vs._aggregating"><span class="tocnumber">3.1</span> <span class="toctext">Importing vs. aggregating</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Further_developement_for_importers"><span class="tocnumber">3.2</span> <span class="toctext">Further developement for importers</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Data_Portability"><span class="tocnumber">4</span> <span class="toctext">Data Portability</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#BSCW.2C_synchronization_and_authentication"><span class="tocnumber">5</span> <span class="toctext">BSCW, synchronization and authentication</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="#Authentication"><span class="tocnumber">5.1</span> <span class="toctext">Authentication</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Chat_logging_and_necessary_semantics"><span class="tocnumber">6</span> <span class="toctext">Chat logging and necessary semantics</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#OWL_1.1"><span class="tocnumber">7</span> <span class="toctext">OWL 1.1</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#Other_mentioned_topics"><span class="tocnumber">8</span> <span class="toctext">Other mentioned topics</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Next_meetings"><span class="tocnumber">9</span> <span class="toctext">Next meetings</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h2> <span class="mw-headline" id="SIOC_Brainstorming_Session_on_April_09th.2C_2008"> SIOC Brainstorming Session on April 09th, 2008 </span></h2>
+<h3> <span class="mw-headline" id="Attendees"> Attendees </span></h3>
+<ul><li> Uldis Bojars
+</li><li> Dan Brickley
+</li><li> John Breslin
+</li><li> Stéphane Corlosquet
+</li><li> Richard Cyganiak
+</li><li> Sergio Fernández
+</li><li> Tuukka Hastrup
+</li><li> Hak Lae Kim
+</li><li> Deirdre Lee
+</li><li> Maria Papathanasiou
+</li><li> Daniel Parming
+</li><li> Axel Polleres
+</li><li> Danh Le Phuoc
+</li><li> Thomas Schandl
+</li></ul>
+<p><br />
+</p>
+<h2> <span class="mw-headline" id="Miscellaneous"> Miscellaneous </span></h2>
+<p>Axel wants to revive the Expert Finder Initiative - do a bit more than is done in foaf and sioc towards combining different vocabs to model expertise and extract expertise from SIOC or FOAF data - from connections between people. 
+</p><p>Axel has some technical interest in exporters. Some of his group's work might be helpful: they have some extensions of SPARQL and  combinations of SPARQL with XQuery (<a href="http://polleres.net/xsparql" class="external text" rel="nofollow">XSPARQL</a>) that could be useful to write wrappers. 
+If someone writes wrappers which use XSLT and SPARQL then you might want to have a look at <a href="http://polleres.net/xsparql" class="external text" rel="nofollow">XSPARQL</a>.
+</p><p>He also discussed with Dan some rule extensions of RDF (which sparql uses as rules) to model implicit data - that could also be of interest to the SIOC project.
+</p><p>John gave an overview of recent activities in regards to data portability <a href="http://www.johnbreslin.com/blog/2008/04/11/dataportability-lunch-meetup-in-london-opensocial-hackathon/" class="external autonumber" rel="nofollow">[1]</a>, <a href="http://www.johnbreslin.com/blog/2008/04/01/kingsley-remixes-my-dataportability-slides-as-data-accessibility-and-me-introducing-sioc-foaf-and-the-linked-data-web/" class="external autonumber" rel="nofollow">[2]</a> and the SIOC-o-sphere <a href="http://www.johnbreslin.com/blog/2008/04/05/tales-from-the-sioc-o-sphere-7/" class="external autonumber" rel="nofollow">[3]</a>.
+</p>
+<h2> <span class="mw-headline" id="Importing_SIOC_data"> Importing SIOC data </span></h2>
+<p>Tuukka demonstrated the improved <a href="http://wiki.sioc-project.org/index.php/SIOC_Import_Plugin" title="SIOC Import Plugin">SIOC Wordpress Importer</a>, which now also imports comments to a post and uses RAP instead of ARC.
+</p>
+<h3> <span class="mw-headline" id="Importing_vs._aggregating"> Importing vs. aggregating </span></h3>
+<p>Richard doesn't really see a big picture use case for importers. He thinks SIOC is more useful when you think in terms of aggregation instead of importing data and has doubts that copying data from one source to the other will be needed very often. Maybe making a reference to where the data resides is more useful. Keep the data at its original place and just fetch it dynamically, so you see the data it in your system as if it was native (it is only an implementation issue why many applications actually cache the data). 
+Richard: "Maybe it would be useful to have something like this: I add a sioc subscription to my blog and whaterver post are on that other sioc source shows up seamlessly in my blog - I don't care if it is cached or fetched dynamically, it just should shows up on my blog"
+</p><p>Danh says this is also what the Joomla users he works with want: they are not ready to export their data - but they are willing to have a hot link to their stuff from other sites. They want their data ready for mashup, but they don't want to lose control.
+</p><p>Richard: could you do a import similar to Wordpress SIOC Importer also with the Atom publishing protocol? Because that is widely supported, it could be used to make importers with less effort.
+Sergio: you don't get everything, it is harder to get the comments or other parts of the data (categories...)<br />
+-&gt; we don't know if you can get all of this published with the atom protocol
+</p>
+<h3> <span class="mw-headline" id="Further_developement_for_importers"> Further developement for importers </span></h3>
+<p>Where can we go from here with our importer? 
+</p><p>Uldis: One of the next things we can do is: take a topic or category hierachy from the original post and re-create them for this target post - or in fact we shouldn't only be thinking in terms of post, there are other kinds of objects, we could even just export SKOS categories and automatically create a category tree on another blog. Maybe we don't even need to import it - but just get the category hierachy from the source blog and display a user interface that says: "this is the category hierachy, highlight topics which you want to get more detailed information about posts". And then create a blog post with a list of all topics in the semantic web category like the other post.<br />
+-&gt; We should just make richer and better use of all this metadata we are generating.
+</p><p>Another interesting direction: trying to import SIOC data into an existing CMS - which is probably a primary use case for data portability. <br />
+Danbri: blog comments get lost. Use SIOC of create a life stream(?) archive. 
+SIOC is dangerously close to the RSS and Atom space that it is very hard to justify outside of our community exactly how it differs. long term archive is probably the story why it is worthwhile.
+<br />Richard prefers this phrasing for the use of SIOC to copy content as "long term archiving of everything you've ever produced on the web". So you have your data in a secure place in case another service goes down. 
+</p><p>To some extent that is the mashup/aggregation scenario again: how to integrate discussions from all over the web and provide global overview. -&gt; Find value in the aggregate. 
+</p>
+<h2> <span class="mw-headline" id="Data_Portability"> Data Portability </span></h2>
+<p>How important is it to achieve Data Portability?
+</p><p>Danbri: Users of social networking sites are registered on 1,6 of these sites on average. So the vast majority of people use only one site. From that point of view it is not a great big deal to type your profile in again. 
+But many social features are appearing also on last.fm, flickr, dopplr and so on - 
+if you include those and ask users "which of these do you use", you get a lot more usage - there are far more internet users with profiles on many of these sites.
+The data portability initiative highlights also the broken connectivity between people and groups. Some of your friends are on facebook but others are elsewhere - so there are broken connections that could be expressed.
+</p><p>Danbri expects to see relatively soon the ability to connect friends between differnt sites: "through xmpp or open social, whatever the mechanism, it will get manifested in foaf or xfn eventually. similar for sioc."
+</p><p>Uldis: While there is maybe not such a generic way how you move this sort of data or at least notifications of the fact that data has appeared between different sites, many sites do implement their own versions of activity streams, they pull in a user's activity form other sites. Like jaiku would pull in from twitter and flickr and others.
+</p><p>Richard: this is a very interesting thing as it relates to the topic of friend feeds. You publish stuff in many different places, so there is the problem: How can I see all of this in a single place? How can I have one application use the notifications of the stuff happening on another application? That is something SIOC is very suited for.
+</p><p>Danbri suggests maybe using IFrames to display a bit of information from foaf and xfn when you come across a page of someone that you are friends with - that is a very widgety model.
+While that doesn't appeal to Richard, as he is not into widget frontend integration stuff, but more interested in the data behind this, Facebook shows that this is an interesting model. As facebook applications are just a way of spreading widgets around your social network.
+</p>
+<h2> <span class="mw-headline" id="BSCW.2C_synchronization_and_authentication"> BSCW, synchronization and authentication </span></h2>
+<p>Uldis: Talking about activity streams and notifications: In essence we could formulate it as that you are aggregating or collecting meta-data, as opposed to collecting actual content, we are mainly collecting meta data or information about the fact that something has been created. 
+</p><p>Deirdre explains that also in BSCW they are not actually replicating the content.
+In ecospace it is called workspace synchronisation - although it is probably not synchronisation because they are not really synching the data.  
+</p><p>Uldis: what is the motivation for doing this and not content replication?
+</p><p>Deirdre: it is a lot easier as opposed to copying the whole content, which not really necessary, probably the user is not going to look at every single item in the folder. So why bother copying all that and going through all that overhead.
+</p><p>Uldis: In a enterprise environment you are quite confident that the servers will be there and have good lines between them, so that you can reliable deliver the content.
+</p><p>Deirdre: also for the moment the data is quite small and everything is in a closed environment.
+</p>
+<h3> <span class="mw-headline" id="Authentication"> Authentication  </span></h3>
+<p>uldis: that also relates to the problem of access privileges, you might even want to revoke access to data - in this case the less replication, the better.
+</p><p>deirdre: we have big authentification and security issues. even mapping the cwe concepts to sioc concepts is problematic in that respect. <br />
+Is there a way to somehow make a standard atuhentification process? Because with all this data exported and then importers and viewers being there, there has to be some kind of authentification middle-man, but at the moment this is done proprietary. If you want to access data from one cwe then you have to have the auth for that and another for the next cwe. that's an unresolved issue.
+</p><p>danbri: Now everything is all openId and openAuth, we should look at that. We are also looking at <b>OAuth</b>, which is a very small leightweight piece that got traction in the big web site world. The analogy is apparently a valet key - it is a restricted key like: they park your car outside the hotel and you give a key that makes your car explode if it gets stolen - or it only goes at a certain speed and only goes so far. It is a restricted token.
+</p><p>danbri: We thought about a mechanism - if we have a sparql store and you re-write the incoming queries to put in more constraints to make sure you can only look at a part of the graph that you are allowed to that corresponds to your OAuth credentials. We think we can implement that mechanism - it's not going to be efficient, but it can be wrapped around on a sparql store. 
+</p><p>danbri: One basic scenario for OAuth: giving a printing service access to your private pictures on flickr. 
+</p>
+<h2> <span class="mw-headline" id="Chat_logging_and_necessary_semantics"> Chat logging and necessary semantics </span></h2>
+<p>Danbri talk about irc logging and how foaf had some terms for that, which are not documented (class of chat events etc.) 
+</p><p>Two use cases this addresses: 
+</p>
+<ul><li> keeping your traffic to more or less what was said in the channel, may lose some of the actions.
+</li><li> channel discovery, also doing a bit of social network analysis over channel membership. who talks, who is a member, who works in this channel. E.g.: How tightly connected is the debian world to the linux group or the sem web group. Do some pathfinding between those, finding the connected people. 
+</li></ul>
+<p>This is quite important for the jabber scene. It is relatively easy to find irc channles, not really easy in multi user chat and jabber xmpp world. if we had this kind of markup we could have a groups called jabber chat room and their homepage. saying: there is a chat channel and its homepage is there. we could mix that with foaf and skos and all kinds of things.   
+</p><p>Danbri: We are logging swig and foaf channel and we get an rdf file and an html file separate - doing it in RDFa would give it to us in one document - it is quite tempting to do that.
+</p><p>Danbri: SIOC is the natural home for all of that.
+</p><p>What do we need for that?
+</p>
+<ul><li> we don't have chat event, we can add that. 
+</li><li> Authentication issue - it's almost as if you want providence. Wheter or not someone is logged is irrelevant in the sense that you will get the same statements, but it is just that the providence changes from unverified gossip to something that is backed up by a source. Maybe we can keep separate transcripts for "logged in" and "logged out" sessions and then do a merge later. If someone logs off or whatever you put them on the "unverifieds" list.
+</li><li> how to model the sequence of messages? (richard: rdf sequence and list are both broken).
+</li><li> ...
+</li></ul>
+<h2> <span class="mw-headline" id="OWL_1.1"> OWL 1.1 </span></h2>
+<p>It seems they get some more DL features and leave the RDF compatibility issues aside - but that could also be a wrong impression.
+</p><p>danbri: they made some changes that makes it more foaf friendly - the definition of agent is now more or less like foaf:Agent (the wording is differnt, but it seems there are no problems in either direction)
+</p><p>danbri: they were looking at string valued inverse functional properties.
+At the moment we have this issue: if foaf references dublin core, or sioc refrences foaf - not being DL is kind of viral. links between vocabs is generally a good thing. but it means that you get hate mail form people on the protege list, because they can't use our ontology in protege. It forces ppl to disconnet the ontologies which seems to be a bad thing.
+</p>
+<h2> <span class="mw-headline" id="Other_mentioned_topics"> Other mentioned topics </span></h2>
+<ul><li> Tag URIs: <a href="http://en.wikipedia.org/wiki/Tag_URI" class="external text" rel="nofollow">Tag URI @ Wikipedia</a>, <a href="http://www.taguri.org/" class="external text" rel="nofollow">taguri.org</a> <a href="http://www.faqs.org/rfcs/rfc4151.html" class="external text" rel="nofollow">RFC</a>
+</li><li> Groups in foaf and sioc, roles in sioc - danbri suggested <a href="http://danbri.org/yasns/danbri/both.rdf" class="external text" rel="nofollow">this</a> regarding enumerated/rule-based group membership using openid. See also this <a href="http://tuukka.iki.fi/tmp/sioc-2008-04-09.html#16:27:33" class="external text" rel="nofollow">irc discussion</a> about that topic. 
+</li></ul>
+<h2> <span class="mw-headline" id="Next_meetings"> Next meetings </span></h2>
+<ul><li> Done: <a href="http://wiki.sioc-project.org/index.php/WorkingGroup/2008-04-10" title="WorkingGroup/2008-04-10">URI working group</a>
+</li><li> Done: <a href="http://groups.google.com/group/sioc-dev/browse_thread/thread/ac1609a0d028bc82" class="external text" rel="nofollow">Ontology changes</a>
+</li><li> Modelling CWE terms as subclasses from more generic terms as a module for SIOC - if there are cwe terms that could be grouped togther we should easily be able to attach another module to SIOC ontology.
+</li><li> Make proper documentation for sioc modules
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 51/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1546-1!1!0!!en!2!edit=0 and timestamp 20160530174248 -->

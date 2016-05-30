@@ -1,0 +1,41 @@
+<p>This page list common mistakes when exporting SIOC data. 
+</p><p>While this page is written specifically for SIOC data exporters from community sites, most of the problems and solutions also apply to other applications producing XML, RDF/XML and especially those that try to embed HTML content in RDF/XML.
+</p>
+<h2> <span class="mw-headline" id="Invalid_XML_entities"> Invalid XML entities </span></h2>
+<p>Symptoms:
+</p>
+<pre> XML parser error - Entity 'nbsp' not defined
+</pre>
+<p>Reason:
+</p>
+<pre> XML DTD defines only 5 basic entities &lt; " ' &amp; &gt; - all other symbolic entities are invalid in XML unless explicitly defined 
+</pre>
+<p>Solutions:
+</p>
+<pre> a) change all invalid entities to their numberic entity equivalents (preferred)
+</pre>
+<pre> b) explicitly add entity definitions for the missing entities
+</pre>
+<h2> <span class="mw-headline" id="Invalid_labels"> Invalid labels </span></h2>
+<p>When adding labels to resource, take care to replace " by their XML equivalent &amp;quot; , espacially when extracting links from posts, eg
+</p><p>	&lt;sioc:reference rdfs:label=""State of the blogosphere"" rdfs:resource="<a href="http://www.sifry.com/alerts/archives/000419.html" class="external free" rel="nofollow">http://www.sifry.com/alerts/archives/000419.html</a>"/&gt;
+</p><p>should be
+</p><p>	&lt;sioc:reference rdfs:label="&amp;quot;State of the blogosphere&amp;quot;" rdfs:resource="<a href="http://www.sifry.com/alerts/archives/000419.html" class="external free" rel="nofollow">http://www.sifry.com/alerts/archives/000419.html</a>"/&gt;
+</p>
+<h2> <span class="mw-headline" id="CDATA_sections"> CDATA sections </span></h2>
+<p>When using &lt;![CDATA[  ]]&gt; to enclose character data you have to check if the actual content includes "]]&gt;". 
+</p><p>Wikipedia's <a href="http://en.wikipedia.org/wiki/CDATA" class="external text" rel="nofollow">CDATA article</a> says about that problem: to encode "]]&gt;" in the middle of a CDATA section, replace all occurrences with the following:
+</p>
+<pre> ]]]]&gt;&lt;![CDATA[&gt;
+</pre>
+<p>(This effectively stops and restarts the CDATA section).
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 11/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1425-1!1!0!!en!2!edit=0 and timestamp 20160530174249 -->

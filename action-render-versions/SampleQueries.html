@@ -1,0 +1,62 @@
+<p>This page contains sample SPARQL queries that can be performed over SIOC data.
+</p><p>Get the Usergroups Uldis is involved in:
+{{{
+PREFIX rdf: &lt;<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" class="external free" rel="nofollow">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>&gt;
+PREFIX rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#" class="external free" rel="nofollow">http://www.w3.org/2000/01/rdf-schema#</a>&gt;
+PREFIX sioc: &lt;<a href="http://rdfs.org/sioc/ns#" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#</a>&gt;
+PREFIX xsd: &lt;<a href="http://www.w3.org/2001/XMLSchema#" class="external free" rel="nofollow">http://www.w3.org/2001/XMLSchema#</a>&gt;
+SELECT DISTINCT&nbsp;?name&nbsp;?group&nbsp;?description
+WHERE {
+</p>
+<pre>?x rdf:type sioc:User .
+?x sioc:name&nbsp;?name .
+?u sioc:has_member&nbsp;?x .
+{&nbsp;?u sioc:name&nbsp;?group  } UNION
+{&nbsp;?u sioc:description&nbsp;?group } . 
+FILTER REGEX(str(?name), "^Uldis Bojars$") 
+</pre>
+<p>}
+}}}
+</p><p>Comments on last month's topics:
+{{{
+PREFIX sioc:   &lt;<a href="http://rdfs.org/sioc/ns#" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#</a>&gt;
+PREFIX rdfs:   &lt;<a href="http://www.w3.org/2000/01/rdf-schema#" class="external free" rel="nofollow">http://www.w3.org/2000/01/rdf-schema#</a>&gt;
+PREFIX xsd:   &lt;<a href="http://www.w3.org/2001/XMLSchema#" class="external free" rel="nofollow">http://www.w3.org/2001/XMLSchema#</a>&gt;
+SELECT&nbsp;?post&nbsp;?reply&nbsp;?date
+WHERE 
+</p>
+<pre> { 
+&nbsp;?post sioc:has_reply&nbsp;?reply .
+&nbsp;?post sioc:created_at&nbsp;?date .
+ FILTER (xsd:dateTime(?date) &gt;= "2006-05-01T00:00:00Z"^^xsd:dateTime) 
+</pre>
+<p>}
+}}}
+</p><p>"Original" posts, i.e. not replies
+{{{
+PREFIX rdf: &lt;<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" class="external free" rel="nofollow">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>&gt;
+PREFIX sioc:   &lt;<a href="http://rdfs.org/sioc/ns#" class="external free" rel="nofollow">http://rdfs.org/sioc/ns#</a>&gt;
+PREFIX rdfs: &lt;<a href="http://www.w3.org/2000/01/rdf-schema#" class="external free" rel="nofollow">http://www.w3.org/2000/01/rdf-schema#</a>&gt;
+</p><p>SELECT DISTINCT&nbsp;?post&nbsp;?title&nbsp;?date&nbsp;?author
+WHERE {
+</p>
+<pre>&nbsp;?post sioc:title&nbsp;?title .
+&nbsp;?post sioc:created_at&nbsp;?date .
+&nbsp;?post sioc:has_creator&nbsp;?_y .
+&nbsp;?_y rdfs:label&nbsp;?author .
+ OPTIONAL {&nbsp;?_z sioc:has_reply&nbsp;?post }
+ FILTER (!bound(?_z))
+</pre>
+<p>}
+ORDER BY&nbsp;?start
+}}}}
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 4/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1434-1!1!0!!en!2!edit=0 and timestamp 20160530174319 -->

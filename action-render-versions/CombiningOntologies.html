@@ -1,0 +1,118 @@
+<p>This illustrates a use case in <a href="http://rdfs.org/sioc/" class="external text" rel="nofollow">SIOC</a> where an inverse of foaf:holdsAccount is probably necessary express the fact that a sioc:User (subclass of foaf:OnlineAccount) account belongs to a person. We used a fictional property foaf:accountOf in this example to reflect this.
+</p><p>Note: sioc:User has a URI<br />
+Note2: foaf:Person is a blank node
+</p>
+<pre>
+
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix sioc: &lt;http://rdfs.org/sioc/ns#&gt; .
+
+sioc:User rdfs:subClassOf foaf:OnlineAccount .
+
+&lt;http://www.johnbreslin.com/blog/author/cloud/&gt;
+    a sioc:User&nbsp;;
+    foaf:accountName &quot;Cloud&quot;&nbsp;;
+    foaf:accountOf _:person&nbsp;;
+    sioc:created &quot;1999-11-30T00:00:00&quot; .
+
+_:person
+    a foaf:Person&nbsp;;
+    foaf:mbox_sha1 &quot;9a6b7eefc08fd755d51dd9321aecfcc87992e9a2&quot;&nbsp;;
+    foaf:firstName &quot;John&quot;&nbsp;;
+    foaf:surname &quot;Breslin&quot; .
+
+</pre>
+<p>RDF/XML representation:
+</p>
+<pre>
+
+&lt;sioc:User rdf:about=&quot;http://www.johnbreslin.com/blog/author/cloud/&quot;&gt;
+	&lt;foaf:accountName&gt;Cloud&lt;/foaf:accountName&gt;
+	&lt;sioc:created&gt;1999-11-30T00:00:00&lt;/sioc:created&gt;
+	&lt;foaf:accountOf&gt;
+		&lt;foaf:Person&gt;
+			&lt;foaf:firstName&gt;John&lt;/foaf:firstName&gt;
+			&lt;foaf:surname&gt;Breslin&lt;/foaf:surname&gt;
+			&lt;foaf:mbox_sha1&gt;9a6b7eefc08fd755d51dd9321aecfcc87992e9a2&lt;/foaf:mbox_sha1&gt;
+		&lt;/foaf:Person&gt;
+	&lt;/foaf:accountOf&gt;
+&lt;/sioc:User&gt;
+
+</pre>
+<p>In the <a href="http://groups.google.com/group/sioc-dev/browse_frm/thread/b8e3f8ceb73b29f5/3eaf74e9c15d8f1d" class="external text" rel="nofollow">mailing list discussion</a> it was proposed to use a rdfs:seeAlso as a temporary solution (see discussion post #5), but that does not solve much.
+</p>
+<hr />
+<p><b> Discussion on alternatives </b>
+as timbl and danbri mentioned the use of owl:inverse on a rdfs:label
+</p><p>Note: the RDF/XML is an experiment how to express this relation using owl:inverse as proposed by DanBri and TimBL. -- CaptSolo
+</p>
+<pre>
+
+&lt;foaf:Person rdf:ID=&quot;chris&quot;&gt;
+ &lt;rdfs:label&gt;Person&lt;/rdfs:label&gt;
+ &lt;foaf:name&gt;Christoph&lt;/foaf:name&gt;
+&lt;/foaf:Person&gt;
+
+&lt;sioc:User rdf:ID=&quot;goern&quot;&gt;
+ &lt;sioc:name&gt;goern&lt;/sioc:name&gt;
+ &lt;foaf:accountOf rdf:resource=&quot;#chris&quot; /&gt;
+
+&lt;/sioc:User&gt;
+
+&lt;rdf:Property rdf:about=&quot;http://xmlns.com/foaf/0.1/accountOf&quot;&gt;
+ &lt;owl:inverse&gt;
+  &lt;rdf:Property&gt;
+   &lt;rdfs:label&gt;holds account&lt;/rdfs:label&gt;i
+  &lt;/rdf:Property&gt;
+ &lt;/owl:inverse&gt;
+&lt;/rdf:Property&gt;
+
+</pre>
+<p>this assumed foaf:holdsAccount has a rdfs:label of "holds account" (which is true)
+</p>
+<pre>
+
+   &nbsp;:chris     a &lt;http://xmlns.com/foaf/0.1/Person&gt;;
+         rdfs:label &quot;Person&quot;;
+         &lt;http://xmlns.com/foaf/0.1/name&gt; &quot;Christoph&quot; .
+
+   &nbsp;:goern     a &lt;http://rdfs.org/sioc/User&gt;;
+         &lt;http://rdfs.org/sioc/name&gt; &quot;goern&quot;;
+         &lt;http://xmlns.com/foaf/0.1/accountOf&gt;&nbsp;:chris .
+
+    &lt;http://xmlns.com/foaf/0.1/accountOf&gt;     a rdf:Property;
+         owl:inverse  [
+             a rdf:Property;
+             rdfs:label &quot;holds account&quot; ] .
+
+</pre>
+<p><br />
+I'm still a bit confused... Why exactly can't we use this (below). 
+Is the problem because the sioc:User (ie. the OnlineAccount) might be a bNode and note named by URI? --DanBri
+</p>
+<pre>
+
+&lt;sioc:User rdf:about=&quot;http://www.johnbreslin.com/blog/author/cloud/&quot;&gt; 
+  &lt;foaf:accountName&gt;Cloud&lt;/foaf:accountName&gt;
+  &lt;sioc:created&gt;1999-11-30T00:00:00&lt;/sioc:created&gt;
+&lt;/sioc:User&gt;
+&lt;foaf:Person&gt;
+  &lt;foaf:holdsAccount rdf:resource=&quot;www.johnbreslin.com/blog/author/cloud/&quot; /&gt;
+  &lt;foaf:firstName&gt;John&lt;/foaf:firstName&gt;
+  &lt;foaf:surname&gt;Breslin&lt;/foaf:surname&gt;
+  &lt;foaf:mbox_sha1&gt;9a6b7eefc08fd755d51dd9321aecfcc87992e9a2&lt;/foaf:mbox_sha1&gt;
+&lt;/foaf:Person&gt;
+
+</pre>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 16/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1406-1!1!0!!en!2!edit=0 and timestamp 20160530174249 -->

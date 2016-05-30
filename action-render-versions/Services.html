@@ -1,0 +1,26 @@
+<p>These services are currently unavailable.  Live SIOC exports of boards.ie data will be enabled in August.
+</p><p><s>
+</p>
+<h2> <span class="mw-headline" id="Search_and_retrieval_of_data"> Search and retrieval of data </span></h2>
+<p>Here are some search and retrieval services based on this data: 
+</p>
+<ul><li> <a href="http://swse.deri.org/boards/" class="external text" rel="nofollow">SWSE semantic search of the boards.ie Galway forum</a> and <a href="http://swse.deri.org/boards/yars2/" class="external text" rel="nofollow">its SPARQL query interface</a>
+</li></ul>
+<h3> <span class="mw-headline" id="Accessing_live_data_over_HTTP"> Accessing live data over HTTP </span></h3>
+<p>If you want to access the files over HTTP (this is an easy way to make the links work), you can use a http proxy such as the <a href="http://sw.deri.org/svn/sw/2005/08/sioc/crawler/utilities/http_proxy.py" class="external text" rel="nofollow">simple proxy in Python</a>.
+</p>
+<pre>find 1998/ -type f | python http_proxy.py 12345
+
+http_proxy=localhost:12345 wget <a href="http://www.boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=7" class="external free" rel="nofollow">http://www.boards.ie/vbulletin/sioc.php?sioc_type=forum&amp;sioc_id=7</a>
+</pre>
+<p></s>
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 7/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1584-1!1!0!!en!2!edit=0 and timestamp 20160530174739 -->

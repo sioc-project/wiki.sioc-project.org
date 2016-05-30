@@ -1,0 +1,27 @@
+<h3> <span class="mw-headline" id="About"> About </span></h3>
+<p>This plugin for Drupal can be used to export SIOC data from <a href="http://sioc-project.org/drupal" class="external text" rel="nofollow">Drupal blogs and forums</a>. As Drupal can be used as a multi-user blogging platform, the plugin will export all blogs and all users account, so that each post can be clearly identified by its users.  This plugin is currently used in anime.ie, a community website with 120 users.
+</p><p>See: <a href="http://rdfs.org/sioc/drupal" class="external text" rel="nofollow">Drupal SIOC Plugin</a>
+</p>
+<h3> <span class="mw-headline" id="ToDo"> ToDo </span></h3>
+<p>Please record all Drupal SIOC plugin issues at <a href="http://drupal.org/project/issues/sioc" class="external free" rel="nofollow">http://drupal.org/project/issues/sioc</a>
+</p><p>Done:
+</p>
+<pre>* fix problem with subforums missing from forum page as seen on rdfs.org
+* add parseType="Literal" to content_encoded? (IGNORED)
+* change content type to: 'Content-Type: application/rdf+xml'
+* Incorrect information in sioc:link property of the sioc:User. See <a href="http://drupal.org/node/66089" class="external text" rel="nofollow">the bug-report</a>
+* add content_encoded to the export
+* add RDF link to SIOC instance in header
+* REQUEST: auto discovery link on every page
+* BUG: rdf serialization is buggy: (17:04:45)@#swig DanC: I suggest you move the rdfs:label down a level
+  validator gives a clue at: <a href="http://www.w3.org/RDF/Validator/ARPServlet?URI=http%3A%2F%2Frdfs.org%2Fsioc2%2Fsite&amp;PARSE=Parse+URI%3A+&amp;TRIPLES_AND_GRAPH=PRINT_TRIPLES&amp;FORMAT=PNG_EMBED|" class="external text" rel="nofollow">here</a>.
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 10/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1558-1!1!0!!en!2!edit=0 and timestamp 20160530174259 -->

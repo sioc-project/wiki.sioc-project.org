@@ -1,0 +1,38 @@
+<h2> <span class="mw-headline" id="Using_SIOC_data_with_Ruby_and_Ruby_on_Rails"> Using SIOC data with Ruby and Ruby on Rails </span></h2>
+<p>This guide shows you how to use SIOC data with Ruby and Ruby on Rails. 
+</p><p>SIOC data is expressed using the Resource Description Format (RDF), 
+and in order to access RDF data in Ruby you will have to use ActiveRDF. 
+</p><p><a href="http://www.activerdf.org/" class="external text" rel="nofollow">ActiveRDF</a> gives you an object oriented abstraction layer for
+accessing RDF. In stead of manipulating triples, RDF entities get mapped to Ruby objects
+and their properties can be accessed through methods with the same name. Actually, you really
+do not have to worry about how to access RDF data if you use ActiveRDF, just like you do not
+have to worry much about SQL if you use ActiveRecord to access a data base. 
+</p><p>ActiveRDF has in fact been designed as a drop-in for ActiveRecord.
+Your Rails application should not be able to tell the difference between using 
+ActiveRecord as the Model (the M in MVC) or ActiveRDF. You can even use both libraries at the same time.
+</p><p>This Howto gives you pointers for the following:
+</p>
+<ul><li> installing ruby and activerdf
+</li><li> accessing SIOC data provided by a SIOC exporter in Ruby
+</li><li> building a small Ruby on Rails application to access the same SIOC data 
+</li></ul>
+<h2> <span class="mw-headline" id="Installing_Ruby_and_ActiveRDF"> Installing Ruby and ActiveRDF </span></h2>
+<p>The first step is installing Ruby and ActiveRDF, as well as the Redland RDF library.
+These steps are described in the <a href="http://wiki.activerdf.org/GettingStartedGuide" class="external text" rel="nofollow">ActiveRDF Getting Started Guide</a>. 
+</p><p>Please refer to the instructions for your operating system (Linux, Mac OS X and Windows are currently described, for other unix like operating systems take a look at the Mac OS X instructions).
+</p><p>You need to install Ruby, rubygems, redland and the redland language bindings, and Ruby on Rails (if you want to use it later.)
+</p><p><br />
+</p>
+<h2> <span class="mw-headline" id="Accessing_SIOC_data_from_Ruby"> Accessing SIOC data from Ruby </span></h2>
+<p>We will now access some basic SIOC data, which is provided by a SIOC exporter
+(like the wordpress SIOC exporter).
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 10/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1452-1!1!0!!en!2!edit=0 and timestamp 20160530174757 -->

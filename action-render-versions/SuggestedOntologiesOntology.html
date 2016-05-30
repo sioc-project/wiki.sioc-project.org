@@ -1,0 +1,76 @@
+<h2> <span class="mw-headline" id="Idea_.232">Idea #2</span></h2>
+<pre>
+
+&lt;so:suggestedUsage&gt;
+  &lt;so:useAsDomain rdf:about=&quot;#AddressBookUsage&quot;&gt;
+    &lt;so:suggestedProperty 
+rdf:resource=&quot;http://rdfs.org/sioc/ns#container_of&quot;/&gt;
+    &lt;so:suggestedRange rdf:resource=&quot;http://xmlns.com/foaf/0.1/Agent&quot;/&gt;
+  &lt;/so:useAsDomain&gt;
+&lt;/so:suggestedUsage&gt;
+
+</pre>
+<p>or:
+</p>
+<pre>
+
+&lt;so:suggestedUsage&gt;
+  &lt;so:useAsRange rdf:about=&quot;#AddressBookUsage2&quot;&gt;
+    &lt;so:suggestedProperty 
+rdf:resource=&quot;http://rdfs.org/sioc/ns#has_container&quot;/&gt;
+    &lt;so:suggestedDomain rdf:resource=&quot;http://xmlns.com/foaf/0.1/Agent&quot;/&gt;
+  &lt;/so:useAsDomain&gt;
+&lt;/so:suggestedUsage&gt;
+
+</pre>
+<p>Something similar could exist for properties that you want to use to 
+relate to classes ("useAsProperty" with a suggestedDomain and a 
+suggestedRange).
+</p>
+<h2> <span class="mw-headline" id="Idea_.231">Idea #1</span></h2>
+<pre>
+
+&lt;SuggestedOntology&gt;
+  &lt;target_ontology rdf:resource=&quot;...FOAF NS...&quot; /&gt;
+  &lt;ontology_to_use_with rdf:resource= &quot;...SIOC NS...&quot; /&gt;
+&lt;/SuggestedOntology&gt;
+
+&lt;SuggestedProperty&gt;
+  &lt;target_property rdf:resource=&quot;foaf:holdsAccount&quot; /&gt;
+  &lt;domain_of_interest rdf:resource=&quot;foaf:Person&quot; /&gt;
+  &lt;range_of_interest rdf:resource=&quot;sioc:User&quot; /&gt;
+  &lt;defined_in rdf:resource=&quot;http://rdfs.org/sioc/ns#&quot; /&gt;
+&lt;/SuggestedProperty&gt;
+
+&lt;SuggestedUsage&gt;
+  &lt;describes&gt;Online Communities&lt;/describes&gt;
+  &lt;suggested_ontology rdf:resource=&quot;...&quot; /&gt;
+  &lt;suggested_property rdf:resource=&quot;...&quot; /&gt;
+  &lt;example&gt;
+    ...
+  &lt;/example&gt;
+&lt;/SuggestedUsage&gt;
+
+&lt;SuggestedClass&gt;
+  ...
+&lt;/SuggestedClass&gt;
+
+</pre>
+<p>e.g.
+</p><p>foaf:holdsAccount -&gt; type -&gt; SuggestedProperty
+</p><p>foaf:holdsAccount -&gt; has_domain / domain_of_interest -&gt; foaf:Person
+</p><p>foaf:holdsAccount -&gt; has_range / range_of_interest -&gt; sioc:User
+</p><p>e.g.
+</p><p>dc:subject -&gt; has_domain -&gt; Post
+</p><p>These could be added to a "suggested" namespace, separate from the main namespace:
+</p><p><a href="http://rdfs.org/sioc/suggested/dc:subject" class="external free" rel="nofollow">http://rdfs.org/sioc/suggested/dc:subject</a>
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 27/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1408-1!1!0!!en!2!edit=0 and timestamp 20160530174326 -->

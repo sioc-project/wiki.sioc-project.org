@@ -1,0 +1,51 @@
+<p>Note: <a href="http://www.w3.org/2001/sw/Europe/reports/thes/usecase.html" class="external text" rel="nofollow">Use Cases for Thesaurus Service</a> are related to this.
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Use_Case_1"><span class="tocnumber">1</span> <span class="toctext">Use Case 1</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Use_Case_2"><span class="tocnumber">2</span> <span class="toctext">Use Case 2</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Use_Case_3"><span class="tocnumber">3</span> <span class="toctext">Use Case 3</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Use_Case_4"><span class="tocnumber">4</span> <span class="toctext">Use Case 4</span></a></li>
+</ul>
+</td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<h1> <span class="mw-headline" id="Use_Case_1"> Use Case 1 </span></h1>
+<p>A new post is created at a community site.  The community site engine then creates links to the relevant / related information on this and other community sites.  SIOC is being used to locate and identify the related information.
+</p><p>Benefits: This really <b>interconnects sites</b> by creating cross-site links to provide a richer browsing experience to the end user.  The links created this way can be reused by exporting them in SIOC along with the post itself.
+</p><p>How does it work: The question is how will SIOC help to locate and identify related information?  Where do we get the source data that will help to determine what is relevant?
+</p><p>Possible solutions: We might get the relevant information at the site / forum level (by saying that these are the sites / forums which may be of interest), but this will be pretty static for all posts in the given site / forum.  We might do NLP (not feasible / realistic).  We might google for pages similar to our post (this works, but there is no need for SIOC).  We might make the user or moderator add more category metadata about the post when submitting (additional work).  Using categories (ODP, SKOS) seems/seeks to be the answer, but how?
+</p><p>Variations: Can tailor the timing when to create the related links information (at submission time / at regular invervals / at viewing time).
+</p><p>Existing solutions: Googling the title of the current page, googling the pages similar to the post text, showing the pages that refer/trackback to the given post (SIOC version of trackback is has_reply/reply_of), adding links to similar pages based on full-text similarity analysis (used inside blogs, usually updated by cron jobs), adding links to pages having same keywords / in same categories.
+</p><p>The first thing that comes into mind that will work is, if we assume that we have a set of SIOC data that we can query (does not matter now if it is a single site, multiple sites or some central aggregator), we can pose a query "give me information on all posts that are about ODP (or SKOS) concepts A1, A2, ... or concepts broader (and/or narrower) of the concepts thereof" and "give me information on all posts created by person P".
+</p><p>This is the simplest solution (existing solutions list more complex things like full-text indexing), but will work.  The only thing we need is to have posts annotated with their topics and their authors.  There is also other information that we could use / need...
+</p>
+<h1> <span class="mw-headline" id="Use_Case_2"> Use Case 2 </span></h1>
+<p>A user enters keywords to search for in a query box.  The query may be entered at a community site, but it does not really matter.
+</p><p>Scope: Query can be for a single community site (exists already), for a number of sites (by querying sister-sites or P2P routing) or over all data available to an aggregator / RDF data store.
+</p><p>Benefits: Not clear, if we search for keywords, we are just extending keyword search to more sites (and automatically need a keyword search service that we can contact on other sites).  Although, if we query selected forums/sites which <b>are related</b> to this post/site/forum, then we are adding some value to the search.  
+</p><p>Existing solutions: Google and all other search engines!
+</p><p>Problems: We don't really link community sites.  Some good things are added if we search around selectively (but we have the same problem then as with any query: how to do that in real time, or keeping a full-text database of all posts on all related sites).   A central SIOC aggregation/search service (which community sites contact for searches) could be the solution here.
+</p><p>Searching a limited number of _related_ forums/sites/posts is the key here.  But how do we find out what is a related forum/site?  Sounds like a place for manual work.  Automatic guessing would be error-prone.
+</p>
+<h1> <span class="mw-headline" id="Use_Case_3"> Use Case 3 </span></h1>
+<p>A user chooses a set of metadata to search for.
+</p><p>Scope: One or more concepts, persons or any other metadata that we add to the posts and, hence, can search for.
+</p><p>Benefits: This adds more value than just keyword search. 
+</p><p>Existing solutions: Semantic / topic related search engines if there are any (search within ODP categories is loosely related).
+</p><p>Problems: Still not linking community sites.  Same notes as for Use Case 2.
+</p>
+<h1> <span class="mw-headline" id="Use_Case_4"> Use Case 4 </span></h1>
+<p>A user wishes to import information from other data sources.
+</p><p>Benefits: Having the required information in the medium of choice, i.e. mailing list in RSS or forum in SIOC.
+</p><p>Problems: We are mirroring existing data sources, that adds information overload / unnnecessary amount of data.  To find the relevant information, the user needs links to the information, not another copy (unless the information might disappear soon).  Might also have copyright issues: not linking community sites, mirroring instead.
+</p><p>Variations: To export full information about the posts (security issues) acting as a backup / full mirroring service.
+</p><p>Existing solutions: With some extension, RSS can easily do this.  What RSS lacks is the linking to the related articles (so this is the value we are adding) or concepts.  But that also can be easily added, in fact, Morten is using both foaf:topic and SKOS concepts.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 15/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1437-1!1!0!!en!2!edit=0 and timestamp 20160530174329 -->

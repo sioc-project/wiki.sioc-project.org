@@ -1,0 +1,61 @@
+<h3> <span class="mw-headline" id="About"> About </span></h3>
+<p>We have created a <a href="http://sioc-project.org/wordpress" class="external text" rel="nofollow">SIOC export plugin for WordPress</a> - one of the most popular blogging tools. It makes use of existing WordPress PHP functions to access the information from the underlying relational database and generate SIOC metadata in RDF for each concept instance.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="http://wiki.sioc-project.org/index.php/File:Php_api-export-s.png" class="image"><img alt="" src="/images_sioc/thumb/0/0f/Php_api-export-s.png/180px-Php_api-export-s.png" width="180" height="187" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://wiki.sioc-project.org/index.php/File:Php_api-export-s.png" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 1: The architecture of the SIOC plugin for WordPress <a href="http://sw.deri.org/svn/sw/2005/08/sioc/media/php_api/php_api-export-s.png" class="external autonumber" rel="nofollow">[1]</a></div></div></div>
+<p>The export process is illustrated by example in Figure 1. It shows the export process as implemented in a new version of WordPress SIOC plugin (in development) using a SIOC API for PHP. 
+</p><p>In addition to the regular set of SIOC metadata about a blog post, the plugin also mines the post body for hyperlinks and links to additional machine-interpretable information (e.g., those created by <a href="http://semiblog.semanticweb.org/" class="external free" rel="nofollow">http://semiblog.semanticweb.org/</a> semiBlog]).  The plugin exports such links via SIOC as sioc:links_to and using rdfs:seeAlso references in RDF.
+</p><p>WordPress SIOC plugin can also be extended to work with multi-user blogging sites powered by <a href="http://mu.wordpress.org" class="external text" rel="nofollow">WordPress Multiuser</a>, allowing the description of large communities of bloggers.
+</p><p>See also: <a href="http://rdfs.org/sioc/wordpress" class="external text" rel="nofollow">WordPress SIOC Plugin</a>
+</p><p>/WordPressReleases
+</p>
+<h3> <span class="mw-headline" id="ToDo"> ToDo </span></h3>
+<p>Fix these bugs:
+</p>
+<ul><li>  &lt; RKlyne&gt; In version 1.25, the sioc:content of a sioc:Post may contain unquoted angle brackets. See <a href="http://www.johnbreslin.com/blog/index.php?sioc_type=post&amp;sioc_id=1292" class="external free" rel="nofollow">http://www.johnbreslin.com/blog/index.php?sioc_type=post&amp;sioc_id=1292</a> and HTML page of the post at <a href="http://www.johnbreslin.com/blog/2007/08/09/interest-create-and-share-tags-across-your-online-communities/" class="external free" rel="nofollow">http://www.johnbreslin.com/blog/2007/08/09/interest-create-and-share-tags-across-your-online-communities/</a>.
+</li></ul>
+<ul><li> Plugin uses email_sha1 (correct) but also email_sha1sum (wrong)
+</li><li> replace reply_to by reply_of in comments export
+</li><li> update the SIOC plugin according to ontology update - including: 
+<ul><li> changes in the role of sioc:User, foaf:Person and namespace changes for dcterms
+</li><li> use sioct:BlogPost etc.
+</li></ul>
+</li><li> see what's the problem with <a href="http://johnbreslin.com/blog/index.php?sioc_type=post&amp;sioc_id=450" class="external text" rel="nofollow">post #450</a>
+</li><li> don't show properties that have empty string value (e.g., homepage="")
+</li><li> doesn't work now with WPMU RC1 (JB)
+</li><li> remove created from sioc:User (JB)
+</li></ul>
+<p>Improvements:
+</p>
+<ul><li>  WordPress 2.3 - when editing a blog post I can now see who trackbacks have been sent to - expose that via a sioc:reply_of in of the WordPress plugin?
+</li><li> ping PTSW, ... when content is created 
+</li><li> use PHP SIOC API
+</li><li> use filters to "implant" RDFa info into posts
+</li><li> adapt to export the list of blogs from WordPress MU
+</li><li> integrate SIOC WP plugin with Morten's FOAF plugin
+</li><li> add SKOS export
+</li><li> export information about tags (currently have categories)
+</li><li> fix problem exporting content:encoded with parseType="Literal"
+</li><li> add auto-notification of new plugin versions - see <a href="http://wiki.wordpress.org/Plugin" class="external text" rel="nofollow">Plugins</a> and <a href="http://wiki.wordpress.org/AutomaticUpdate" class="external text" rel="nofollow">Automatic Update</a> (WP wiki)
+</li><li> enrich blgo pages with RDFa seeAlso pointers to SIOC data - as [GNU] has done by hacking templates
+</li></ul>
+<p>Maybe:
+</p>
+<ul><li> in the Post SIOC information - has_creator property add rdfs:seeAlso link to the SIOC info about the author.
+</li><li> (low pri) add paging for the list of sioc:Users - as Danny had quite many sioc:Users in the SIOC export 
+</li><li> add extracting of eRDF / RDFa from blog posts
+</li></ul>
+<p>Won't fix:
+</p>
+<ul><li> if original post has invalid Unicode characters - as in <a href="http://www.johnbreslin.com/blog/2005/02/11/the-friday-interview-tom-murphy-boardsie/" class="external text" rel="nofollow">(post #182) Friday Interview - Tom Murphy - boards.ie</a> or <a href="http://www.johnbreslin.com/blog/2005/01/21/vicipid-wikipedia-as-gaeilge/" class="external text" rel="nofollow">(post #173) Wikipedia as Gaeilge</a>
+</li><li> <a href="http://johnbreslin.com/blog/index.php?sioc_type=post&amp;sioc_id=74" class="external text" rel="nofollow">not well-formed XML in post #74</a> - invalid control chars in the original post
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 10/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1565-1!1!0!!en!2!edit=0 and timestamp 20160530174331 -->

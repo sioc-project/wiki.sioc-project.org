@@ -1,0 +1,33 @@
+<p>Identi.ca is using SIOC which is great news. But there are some minor issues w. how SIOC is used in it which is this page about.
+</p><p>Describe here the issues and solutions for identi.ca SIOC data (e.g. contained in its RSS feeds).
+</p>
+<ol><li> A sioc:Site is linked to a sioc:Container (the feed) with sioc:container_of when actually it should use sioc:space_of.
+</li><li> The creator of a post in their feed linked to via sioc:has_creator is a foaf:Person - as you can see when dereferencing the given URI which leads to the FOAF profile <s>(with a 302, which should probably be changed to 303)</s>. They don't really give their user accounts any URIs so maybe they should link to the person via foaf:maker or dcterms:creator (although they already use dc:creator for a textual label of the creator so foaf:maker is probably better to avoid confusion).
+</li><li> sioct:MicroblogPost is being used as a property to link from the feed's rdf:Seq to its items. Rather rdf:li should be used as the property here. Then, in the item descriptions, they could use &lt;rdf:type rdf:resource="<a href="http://rdfs.org/sioc/types#MicroblogPost" class="external free" rel="nofollow">http://rdfs.org/sioc/types#MicroblogPost</a>"/&gt;
+</li><li> there is an inconsistency between type of <a href="http://identi.ca/user/*" class="external free" rel="nofollow">http://identi.ca/user/*</a> resources in identi.ca info: RSS 1.0 feed of a user defines these URIs as sioc:Users (which is a subclass of foaf:OnlineAccount) while the FOAF file for a user defines the same URI as being a foaf:Person (e.g. see <a href="http://identi.ca/jasonjones/foaf" class="external free" rel="nofollow">http://identi.ca/jasonjones/foaf</a> vs. <a href="http://identi.ca/jasonjones/rss" class="external free" rel="nofollow">http://identi.ca/jasonjones/rss</a> ). And it's even worse for a foaf:agent that is defined as a foaf:person&nbsp;: <a href="http://identi.ca/parisweb/foaf" class="external free" rel="nofollow">http://identi.ca/parisweb/foaf</a>&nbsp;: Paris-web is a organization organizing conferences.
+</li></ol>
+<h3> <span class="mw-headline" id="Tickets">Tickets</span></h3>
+<p>Tickets in the Laconica issue tracker relating to FOAF and SIOC:
+</p>
+<ul><li><a href="http://laconi.ca/trac/ticket/1367" class="external text" rel="nofollow">#1367</a>
+</li><li><a href="http://laconi.ca/trac/ticket/1368" class="external text" rel="nofollow">#1368</a>
+</li><li><a href="http://laconi.ca/trac/ticket/1369" class="external text" rel="nofollow">#1369</a>
+</li><li><a href="http://laconi.ca/trac/ticket/1370" class="external text" rel="nofollow">#1370</a>
+</li><li><s><a href="http://laconi.ca/trac/ticket/1371" class="external text" rel="nofollow">#1371</a></s>
+</li><li><a href="http://laconi.ca/trac/ticket/1372" class="external text" rel="nofollow">#1372</a>
+</li></ul>
+<h3> <span class="mw-headline" id="Patches">Patches</span></h3>
+<p><a href="http://buzzword.org.uk/2009/laconica-0.7.3-foafsioc.patch" class="external text" rel="nofollow">This patch</a> fixes pretty much all of the above. <a href="http://wiki.sioc-project.org/index.php/User:TobyInk" title="User:TobyInk">TobyInk</a> 08:31, 7 June 2009 (IST)
+</p>
+<ul><li> Sarven Capadisli has pushed the patch into the repository <a href="http://gitorious.org/~laconica-developers/laconica/dev/commit/e2476307baa8753dc866c7a1aed485d9f6d3fcd0" class="external autonumber" rel="nofollow">[1]</a> <a href="http://gitorious.org/~laconica-developers/laconica/dev/commit/1627fe8f336d435e328dcc3a58e9e08cd4ef1bfe" class="external autonumber" rel="nofollow">[2]</a> <a href="http://gitorious.org/~laconica-developers/laconica/dev/commit/392c8d4a967f01533fd7458298e79c82486dc914" class="external autonumber" rel="nofollow">[3]</a> <a href="http://gitorious.org/~laconica-developers/laconica/dev/commit/4532babb6f3a7c8d2b155483a4a651f83cfc6c8a" class="external autonumber" rel="nofollow">[4]</a> <a href="http://gitorious.org/~laconica-developers/laconica/dev/commit/8524990512d41e9aa7114b6a3b5af073eeb9aabb" class="external autonumber" rel="nofollow">[5]</a> <a href="http://gitorious.org/~laconica-developers/laconica/dev/commit/4c61f98cd027df2ed45ed250840405bebc232e1a" class="external autonumber" rel="nofollow">[6]</a> and it should appear in laconi.ca 0.8.0 which will be out in the next week or two. <a href="http://wiki.sioc-project.org/index.php/User:TobyInk" title="User:TobyInk">TobyInk</a> 18:55, 11 June 2009 (IST)
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 7/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1599-1!1!0!!en!2!edit=0 and timestamp 20160530174303 -->

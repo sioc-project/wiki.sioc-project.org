@@ -1,0 +1,26 @@
+<h3> <span class="mw-headline" id="About"> About </span></h3>
+<p>DotClear is a blogging platform, that is widely used in the French blogosphere and written in PHP.  Using the PHP API, a <a href="http://sioc-project.org/dotclear" class="external text" rel="nofollow">SIOC exporter was written</a> and packaged as a plugin so that users can install it from their software backend. The exporter creates data for users, posts, comments and trackbacks.
+It also extracts external links from any blog post using sioc:links_to property, and uses both categories or tags (requiring the tag plugin to be installed) to define sioc:topic(s).  Finally, it also features autodiscovery links that will point to the SIOC data corresponding to the currently viewed page.
+</p><p>As DotClear is currently being rewritten as a new version with a different plugin architecture, a SIOC exporter for DotClear2 will be created as soon as a stable version is released. In the meantime, this plugin will be packaged as part of a more generic Semantic Web package for DotClear, including FOAF, SIOC and other Semantic Web capabilities.
+</p><p>See also: <a href="http://rdfs.org/sioc/dotclear" class="external text" rel="nofollow">DotClear SIOC Export Plugin </a>
+</p>
+<h3> <span class="mw-headline" id="ToDo"> ToDo </span></h3>
+<p>Bugs in DotClear exporter (using API):
+</p>
+<pre>* in autodiscovery links:
+  * &amp; is not escaped in auto-discovery links (e.g., <a href="http://apassant.net/blog/sioc.php?type=post&amp;post_id=95" class="external free" rel="nofollow">http://apassant.net/blog/sioc.php?type=post&amp;post_id=95</a>)
+  * URLs to SIOC data are incorrect - e.g., <a href="http://apassant.net/blog/sioc.php?type=post&amp;post_id=95" class="external free" rel="nofollow">http://apassant.net/blog/sioc.php?type=post&amp;post_id=95</a> points to non-existant location (information about post is located at ...&amp;id=95)
+* in all SIOC pages:
+  * admin:generatorAgent reports <a href="http://tempurl?version=0.1" class="external free" rel="nofollow">http://tempurl?version=0.1</a> (should it report the version of API or of DotClear exporter? if it is the DotClear exporter, then version should be 1.x for this version)
+* in SIOC page about posts:
+  * for the has_creator property there is only label of the sioc:User shown. no e-mail, sha1_sum or rdfs:seeAlso
+</pre>
+<!-- 
+NewPP limit report
+Preprocessor node count: 10/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key mediawiki_sioc:pcache:idhash:1562-1!1!0!!en!2!edit=0 and timestamp 20160530174259 -->
